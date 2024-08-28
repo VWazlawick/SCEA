@@ -7,37 +7,37 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
+
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Endereco {
+public class Pergunta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private int id;
 
     @NotBlank
     @Column(nullable = false)
-    private String logradouro;
-
-    @NotBlank
-    @Column(nullable = false)
-    private String numero;
-
-    private String complemento;
-
-    private String bairro;
-
-    @Length(min = 8, max = 8)
-    private String cep;
+    private String descricao;
 
     @NotNull
+    @Column(nullable = false)
+    private int pesoPergunta;
+
+    @NotBlank
     @ManyToOne
-    @JoinColumn(name = "cidade_id", referencedColumnName = "id")
-    private Cidade cidade;
-    
+    @JoinColumn(name = "tipoPergunta_id", referencedColumnName = "id")
+    private TipoPergunta tipoPergunta;
+
+    @ManyToMany(mappedBy = "perguntas")
+    private List<SubGrupo> subGrupos;
+
+    @ManyToOne
+    @JoinColumn(name = "avaliacao_id", referencedColumnName = "id")
+    private Avaliacao avaliacao;
 }

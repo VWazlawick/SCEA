@@ -94,7 +94,7 @@ img{
   font-size: 130%;
 }
 
-.itLogin:focus{
+  .itLogin:focus{
   outline: none;
 }
 #divLogin{

@@ -1,8 +1,8 @@
 package br.unipar.scea_api.models;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.Length;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Endereco {
+public class Estado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -22,22 +22,10 @@ public class Endereco {
 
     @NotBlank
     @Column(nullable = false)
-    private String logradouro;
+    private String nome;
 
     @NotBlank
-    @Column(nullable = false)
-    private String numero;
-
-    private String complemento;
-
-    private String bairro;
-
-    @Length(min = 8, max = 8)
-    private String cep;
-
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "cidade_id", referencedColumnName = "id")
-    private Cidade cidade;
-    
+    @Length(min = 2, max = 2)
+    @Column(nullable = false, unique = true)
+    private String sigla;
 }

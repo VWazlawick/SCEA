@@ -1,12 +1,12 @@
 package br.unipar.scea_api.models;
 
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 
 import java.util.List;
 
@@ -15,21 +15,19 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class TipoServico {
+public class TipoPergunta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     @NotBlank
-    @Length(min = 1, max = 50)
     @Column(nullable = false)
     private String descricao;
 
-    @NotBlank
-    @Column(nullable = false)
-    private double valor;
+    @OneToMany(mappedBy = "tipoPergunta", cascade = CascadeType.ALL)
+    private List<Pergunta> perguntas;
 
-    @OneToMany(mappedBy = "aula")
-    private List<Aluno> alunos;
+    @OneToMany(mappedBy = "tipoPergunta", cascade = CascadeType.ALL)
+    private List<OpcaoPergunta> opcoes;
 }

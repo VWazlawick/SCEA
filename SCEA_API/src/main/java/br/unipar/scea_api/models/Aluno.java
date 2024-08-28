@@ -3,12 +3,14 @@ package br.unipar.scea_api.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,23 +23,25 @@ public class Aluno {
     @OneToOne
     private Pessoa pessoa;
 
-    @NotBlank
+    @NotNull
     @Column(nullable = false)
     private Date dtNascimento;
 
-    @NotBlank
-    @OneToOne
+    @NotNull
+    @ManyToOne
     @JoinColumn(name = "profissional_id", referencedColumnName = "id")
     private Profissional professor;
 
-    @NotBlank
-    @OneToOne
+    @NotNull
+    @ManyToOne
     @JoinColumn(name = "tipo_servico_id", referencedColumnName = "id")
     private TipoServico aula;
 
-    @NotBlank
+    @NotNull
     @OneToOne
     @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Endereco endereco;
 
+    @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
+    private List<Avaliacao> avaliacaos;
 }

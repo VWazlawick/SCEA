@@ -7,14 +7,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Endereco {
+public class Cidade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -22,22 +21,10 @@ public class Endereco {
 
     @NotBlank
     @Column(nullable = false)
-    private String logradouro;
-
-    @NotBlank
-    @Column(nullable = false)
-    private String numero;
-
-    private String complemento;
-
-    private String bairro;
-
-    @Length(min = 8, max = 8)
-    private String cep;
+    private String nome;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "cidade_id", referencedColumnName = "id")
-    private Cidade cidade;
-    
+    @JoinColumn(name = "estado_id", referencedColumnName = "id")
+    private Estado estado;
 }

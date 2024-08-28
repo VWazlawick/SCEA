@@ -2,42 +2,37 @@ package br.unipar.scea_api.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Endereco {
+public class OpcaoPergunta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private int id;
 
     @NotBlank
     @Column(nullable = false)
-    private String logradouro;
+    private String descricao;
 
     @NotBlank
     @Column(nullable = false)
-    private String numero;
+    private int escalaMin;
 
-    private String complemento;
+    @NotBlank
+    @Column(nullable = false)
+    private int escalaMax;
 
-    private String bairro;
-
-    @Length(min = 8, max = 8)
-    private String cep;
-
-    @NotNull
+    @NotBlank
     @ManyToOne
-    @JoinColumn(name = "cidade_id", referencedColumnName = "id")
-    private Cidade cidade;
-    
+    @JoinColumn(name = "tipoPergunta_id", referencedColumnName = "id")
+    private TipoPergunta tipoPergunta;
+
 }

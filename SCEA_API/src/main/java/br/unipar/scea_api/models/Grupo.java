@@ -35,14 +35,8 @@ public class Grupo {
     @Column(nullable = false,length = 2)
     private int IdadeLimite;
 
-    @ManyToMany
-    @JoinTable(
-            name = "Grupo_SubGrupo",
-            joinColumns = @JoinColumn(name = "grupo_id"),
-            inverseJoinColumns =  @JoinColumn(name = "sub_Grupo_id")
-    )
+    @NotBlank
+    @OneToMany
     private List<SubGrupo> subGrupos;
 
-    @OneToMany(mappedBy = "grupos", cascade = CascadeType.ALL)
-    private List<Avaliacao> avaliacoes;
 }

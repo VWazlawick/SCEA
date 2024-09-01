@@ -37,8 +37,8 @@ public class Usuario {
     private String senha;
 
     @NotNull
-    @OneToOne
-    @JoinColumn(name = "tpUsuario_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(nullable = false)
     private TipoUsuario tpUsuario;
 
 

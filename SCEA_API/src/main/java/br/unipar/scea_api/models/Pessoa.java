@@ -17,7 +17,7 @@ public abstract class Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private int id;
 
     @NotBlank
     @Length(min = 3, max = 128)

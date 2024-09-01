@@ -20,19 +20,20 @@ import java.util.List;
 public class Profissional {
 
     @Id
+    private Long id;
+
+    @MapsId
     @OneToOne
     private Pessoa pessoa;
 
     @NotNull
-    @Column(nullable = false)
-    @OneToOne
-    @JoinColumn(name = "empresa_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(nullable = false)
     private Empresa empresa;
 
     @NotNull
-    @Column(nullable = false)
     @OneToOne
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    @JoinColumn(nullable = false)
     private Usuario usuario;
 
     @OneToMany(mappedBy = "professor")

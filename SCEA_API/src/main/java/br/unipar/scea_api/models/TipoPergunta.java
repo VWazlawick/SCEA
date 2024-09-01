@@ -25,9 +25,6 @@ public class TipoPergunta {
     @Column(nullable = false)
     private String descricao;
 
-    @OneToMany(mappedBy = "tipoPergunta", cascade = CascadeType.ALL)
-    private List<Pergunta> perguntas;
-
-    @OneToMany(mappedBy = "tipoPergunta", cascade = CascadeType.ALL)
+    @OneToMany
     private List<OpcaoPergunta> opcoes;
 }

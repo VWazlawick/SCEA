@@ -31,13 +31,11 @@ public class Pergunta {
 
     @NotBlank
     @ManyToOne
-    @JoinColumn(name = "tipoPergunta_id", referencedColumnName = "id")
+    @JoinColumn(nullable = false)
     private TipoPergunta tipoPergunta;
 
-    @ManyToMany(mappedBy = "perguntas")
-    private List<SubGrupo> subGrupos;
-
+    @NotBlank
     @ManyToOne
-    @JoinColumn(name = "avaliacao_id", referencedColumnName = "id")
-    private Avaliacao avaliacao;
+    @JoinColumn(nullable = false)
+    private SubGrupo subGrupos;
 }

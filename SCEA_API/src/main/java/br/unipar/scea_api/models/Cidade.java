@@ -25,6 +25,5 @@ public class Cidade {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "estado_id", referencedColumnName = "id")
     private Estado estado;
 }

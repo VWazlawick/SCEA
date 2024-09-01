@@ -1,6 +1,7 @@
 package br.unipar.scea_api.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,16 +20,7 @@ public class SubGrupo {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
+    @NotBlank
+    @Column(nullable = false)
     private String descricao;
-
-    @ManyToMany(mappedBy = "subgrupos")
-    private List<Grupo> grupos;
-
-    @ManyToMany
-    @JoinTable(
-            name = "SubGrupo_Pergunta",
-            joinColumns = @JoinColumn(name = "Sub_grupo_id"),
-            inverseJoinColumns =  @JoinColumn(name = "pergunta_id")
-    )
-    private List<Pergunta> perguntas;
 }

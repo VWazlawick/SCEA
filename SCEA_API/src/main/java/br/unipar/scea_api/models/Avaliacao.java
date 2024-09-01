@@ -21,15 +21,13 @@ public class Avaliacao {
 
     private String resultado;
 
-    @ManyToOne
-    @JoinColumn(name = "grupo_id")
-    private Grupo grupo;
+    @OneToMany
+    private List<Grupo> grupos;
 
-    @OneToMany(mappedBy = "avaliacao", cascade = CascadeType.ALL)
+    @OneToMany
     private List<Pergunta>perguntas;
 
     @ManyToOne
-    @JoinColumn(name = "aluno_id", referencedColumnName = "id")
     private Aluno aluno;
 
 }

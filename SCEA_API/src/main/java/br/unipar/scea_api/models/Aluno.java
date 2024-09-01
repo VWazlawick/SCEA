@@ -20,6 +20,9 @@ import java.util.List;
 public class Aluno {
 
     @Id
+    private Long id;
+
+    @MapsId
     @OneToOne
     private Pessoa pessoa;
 
@@ -28,20 +31,20 @@ public class Aluno {
     private Date dtNascimento;
 
     @NotNull
+    @Column(nullable = false)
+    private Date dtInicio;
+
+    @NotNull
     @ManyToOne
-    @JoinColumn(name = "profissional_id", referencedColumnName = "id")
+    @JoinColumn(nullable = false)
     private Profissional professor;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "tipo_servico_id", referencedColumnName = "id")
+    @JoinColumn(nullable = false)
     private TipoServico aula;
 
     @NotNull
     @OneToOne
-    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Endereco endereco;
-
-    @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
-    private List<Avaliacao> avaliacaos;
 }

@@ -37,7 +37,6 @@ public class Endereco {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "cidade_id", referencedColumnName = "id")
     private Cidade cidade;
     
 }

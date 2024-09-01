@@ -30,9 +30,4 @@ public class OpcaoPergunta {
     @Column(nullable = false)
     private int escalaMax;
 
-    @NotBlank
-    @ManyToOne
-    @JoinColumn(name = "tipoPergunta_id", referencedColumnName = "id")
-    private TipoPergunta tipoPergunta;
-
 }

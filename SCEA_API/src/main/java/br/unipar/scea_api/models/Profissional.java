@@ -17,14 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Profissional {
-
-    @Id
-    private Long id;
-
-    @MapsId
-    @OneToOne
-    private Pessoa pessoa;
+public class Profissional extends DefaultModel{
 
     @NotNull
     @ManyToOne

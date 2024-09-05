@@ -24,8 +24,16 @@ public class AlunoService {
         return aluno;
     }
 
-    public void delete(Long id){
-        alunoRepository.deleteById(id);
+    public void inativar(Long id){
+        Aluno aluno = alunoRepository.findById(id).get();
+        aluno.setStAtivo(false);
+        alunoRepository.save(aluno);
+    }
+
+    public void ativar(Long id){
+        Aluno aluno = alunoRepository.findById(id).get();
+        aluno.setStAtivo(true);
+        alunoRepository.save(aluno);
     }
 
     public Aluno findById(Long id){

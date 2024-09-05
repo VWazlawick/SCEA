@@ -17,14 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Aluno {
-
-    @Id
-    private Long id;
-
-    @MapsId
-    @OneToOne
-    private Pessoa pessoa;
+public class Aluno extends Pessoa{
 
     @NotNull
     @Column(nullable = false)
@@ -47,4 +40,16 @@ public class Aluno {
     @NotNull
     @OneToOne
     private Endereco endereco;
+
+    @NotBlank
+    private double peso;
+
+    @NotBlank
+    private double altura;
+
+    @NotBlank
+    private double cintura;
+
+    @NotBlank
+    private double envergadura;
 }

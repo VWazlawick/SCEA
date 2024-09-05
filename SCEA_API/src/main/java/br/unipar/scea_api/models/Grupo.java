@@ -15,11 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Grupo {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id;
+public class Grupo extends DefaultModel{
 
     @NotBlank
     @Column(nullable = false)

@@ -12,11 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class OpcaoPergunta {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id;
+public class OpcaoPergunta extends DefaultModel{
 
     @NotBlank
     @Column(nullable = false)

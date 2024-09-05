@@ -15,11 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class TipoPergunta {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id;
+public class TipoPergunta extends DefaultModel{
 
     @NotBlank
     @Column(nullable = false)

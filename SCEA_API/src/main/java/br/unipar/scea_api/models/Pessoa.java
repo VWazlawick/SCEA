@@ -13,11 +13,8 @@ import org.hibernate.validator.constraints.Length;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public abstract class Pessoa {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id;
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Pessoa extends DefaultModel{
 
     @NotBlank
     @Length(min = 3, max = 128)

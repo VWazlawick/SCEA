@@ -14,11 +14,7 @@ import org.hibernate.validator.constraints.Length;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Endereco {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+public class Endereco extends DefaultModel{
 
     @NotBlank
     @Column(nullable = false)

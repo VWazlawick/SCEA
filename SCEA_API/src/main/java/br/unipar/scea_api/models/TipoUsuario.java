@@ -15,11 +15,7 @@ import org.hibernate.validator.constraints.Length;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class TipoUsuario {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id;
+public class TipoUsuario extends DefaultModel{
 
     @NotBlank
     @Length(min = 3, max = 20)

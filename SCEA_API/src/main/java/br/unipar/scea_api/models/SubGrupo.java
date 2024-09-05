@@ -14,11 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class SubGrupo {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id;
+public class SubGrupo extends DefaultModel{
 
     @NotBlank
     @Column(nullable = false)

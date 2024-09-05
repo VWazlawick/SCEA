@@ -13,11 +13,7 @@ import org.hibernate.validator.constraints.Length;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Empresa {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+public class Empresa extends DefaultModel{
 
     @NotBlank
     @Length(min = 5, max = 128)

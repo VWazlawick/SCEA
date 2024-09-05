@@ -15,11 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class TipoServico {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id;
+public class TipoServico extends DefaultModel{
 
     @NotBlank
     @Length(min = 1, max = 50)

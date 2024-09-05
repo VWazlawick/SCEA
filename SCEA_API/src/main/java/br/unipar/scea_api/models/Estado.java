@@ -14,11 +14,8 @@ import org.hibernate.validator.constraints.Length;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Estado {
+public class Estado extends DefaultModel{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
 
     @NotBlank
     @Column(nullable = false)

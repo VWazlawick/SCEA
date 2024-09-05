@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "OpcaoPergunta")
 public class OpcaoPergunta extends DefaultModel{
 
     @NotBlank

@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.Length;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "Usuario")
 public class Usuario extends DefaultModel{
 
     @NotBlank

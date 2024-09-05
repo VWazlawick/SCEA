@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "Profissional")
 public class Profissional extends DefaultModel{
 
     @NotNull
@@ -29,6 +29,6 @@ public class Profissional extends DefaultModel{
     @JoinColumn(nullable = false)
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "professor")
+    @OneToMany
     private List<Aluno> alunos;
 }

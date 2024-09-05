@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "Avaliacao")
 public class Avaliacao extends DefaultModel{
 
     private String resultado;

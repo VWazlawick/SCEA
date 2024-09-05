@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "SubGrupo")
 public class SubGrupo extends DefaultModel{
 
     @NotBlank

@@ -12,7 +12,7 @@ import org.hibernate.validator.constraints.Length;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "Pessoa")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Pessoa extends DefaultModel{
 

@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "TipoPergunta")
 public class TipoPergunta extends DefaultModel{
 
     @NotBlank

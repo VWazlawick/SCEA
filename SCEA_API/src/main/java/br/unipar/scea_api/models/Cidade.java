@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "Cidade")
 public class Cidade extends DefaultModel{
 
     @NotBlank

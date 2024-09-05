@@ -13,7 +13,7 @@ import org.hibernate.validator.constraints.Length;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "Endereco")
 public class Endereco extends DefaultModel{
 
     @NotBlank

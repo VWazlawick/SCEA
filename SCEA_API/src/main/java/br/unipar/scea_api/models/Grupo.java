@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "Grupo")
 public class Grupo extends DefaultModel{
 
     @NotBlank

@@ -41,15 +41,13 @@ public class Aluno extends Pessoa{
     @OneToOne
     private Endereco endereco;
 
-    @NotBlank
     private double peso;
 
-    @NotBlank
     private double altura;
 
-    @NotBlank
     private double cintura;
 
-    @NotBlank
     private double envergadura;
+
+    private String nmResponsavel;
 }

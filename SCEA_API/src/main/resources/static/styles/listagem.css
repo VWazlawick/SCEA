@@ -1,0 +1,41 @@
+body {
+    background-color: #f5f7fa;
+    font-family: 'Arial', sans-serif;
+}
+
+.listagem-container {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header-buttons img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.table {
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.btn-sm {
+    font-size: 0.875rem;
+}
+
+/* Estilo personalizado para alternar cores entre azul claro e branco */
+.custom-table tbody tr:nth-child(odd) {
+    background-color: #e6f7ff; /* Azul claro */
+}
+
+.custom-table tbody tr:nth-child(even) {
+    background-color: #ffffff; /* Branco */
+}

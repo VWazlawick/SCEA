@@ -46,7 +46,7 @@
             <div class="col-md-2">
                 <label for="rg" class="form-label">RG</label>
                 <input type="text" class="form-control" id="rg" placeholder="__.___.___-_" maxlength="12" required>
-                <span class="error-message" id="rg-error">RG é obrigatório.</span>
+                <span class="error-message" id="rg-error">RG inválido.</span>
             </div>
         </div>
 
@@ -55,22 +55,26 @@
             <div class="col-md-2">
                 <label for="telefone" class="form-label">Telefone</label>
                 <input type="text" class="form-control" id="telefone" placeholder="( __ ) ____-____" maxlength="15">
+                <span class="error-message" id="telefone-error">Telefone inválido.</span>
             </div>
             <div class="col-md-4">
                 <label for="nome-responsavel" class="form-label">Nome do Responsável</label>
                 <input type="text" class="form-control" id="nome-responsavel">
+                <span class="error-message" id="nome-responsavel-error">Nome do responsável é obrigatório.</span>
             </div>
             <div class="col-md-3">
                 <label for="professor" class="form-label">Professor</label>
                 <select class="form-select" id="professor">
                     <option selected>Selecione</option>
                 </select>
+                <span class="error-message" id="professor-error">Selecione um professor.</span>
             </div>
             <div class="col-md-3">
                 <label for="tipo-servico" class="form-label">Tipo do Serviço</label>
                 <select class="form-select" id="tipo-servico">
                     <option selected>Selecione</option>
                 </select>
+                <span class="error-message" id="tipo-servico-error">Selecione um tipo de serviço.</span>
             </div>
         </div>
 
@@ -80,47 +84,56 @@
             <div class="col-md-2">
                 <label for="cep" class="form-label">CEP</label>
                 <input type="text" class="form-control" id="cep" placeholder="_____-___" maxlength="9">
+                <span class="error-message" id="cep-error">CEP inválido.</span>
             </div>
             <div class="col-md-2">
                 <label for="estado" class="form-label">Estado</label>
                 <input type="text" class="form-control" id="estado">
+                <span class="error-message" id="estado-error">Estado é obrigatório.</span>
             </div>
             <div class="col-md-3">
                 <label for="cidade" class="form-label">Cidade</label>
                 <input type="text" class="form-control" id="cidade">
+                <span class="error-message" id="cidade-error">Cidade é obrigatória.</span>
             </div>
             <div class="col-md-3">
                 <label for="rua" class="form-label">Rua</label>
                 <input type="text" class="form-control" id="rua">
+                <span class="error-message" id="rua-error">Rua é obrigatória.</span>
             </div>
             <div class="col-md-2">
                 <label for="numero" class="form-label">Número</label>
                 <input type="text" class="form-control" id="numero">
+                <span class="error-message" id="numero-error">Número é obrigatório.</span>
+            </div>
+            <div class="col-md-2">
+                <label for="complemento" class="form-label">Complemento</label>
+                <input type="text" class="form-control" id="complemento">
             </div>
         </div>
 
         <!-- Health and Physical Information Section -->
         <div class="form-section-heading">Informações de Saúde e Medidas Físicas</div>
         <div class="row">
-            <div class="col-md-2">
-                <label for="pais" class="form-label">País</label>
-                <input type="text" class="form-control" id="pais">
-            </div>
             <div class="col-md-2 animated-input">
                 <label for="data-inicio" class="form-label">Data de Início</label>
                 <input type="date" class="form-control" id="data-inicio">
+                <span class="error-message" id="data-inicio-error">Data de início é obrigatória.</span>
             </div>
             <div class="col-md-1">
                 <label for="peso" class="form-label">Peso</label>
                 <input type="text" class="form-control" id="peso">
+                <span class="error-message" id="peso-error">Peso é obrigatório.</span>
             </div>
             <div class="col-md-1">
                 <label for="altura" class="form-label">Altura</label>
                 <input type="text" class="form-control" id="altura">
+                <span class="error-message" id="altura-error">Altura é obrigatória.</span>
             </div>
             <div class="col-md-1">
                 <label for="cintura" class="form-label">Cintura</label>
                 <input type="text" class="form-control" id="cintura">
+                <span class="error-message" id="cintura-error">Cintura é obrigatória.</span>
             </div>
             <div class="col-md-1">
                 <label for="imc" class="form-label">IMC</label>
@@ -133,6 +146,7 @@
             <div class="col-md-2">
                 <label for="envergadura" class="form-label">Envergadura</label>
                 <input type="text" class="form-control" id="envergadura">
+                <span class="error-message" id="envergadura-error">Envergadura é obrigatória.</span>
             </div>
         </div>
 

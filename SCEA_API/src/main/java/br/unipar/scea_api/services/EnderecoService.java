@@ -16,6 +16,9 @@ public class EnderecoService {
     private EnderecoRepository enderecoRepository;
 
     public Endereco insert(Endereco endereco){
+        if(endereco.getCep()!=null){
+            String cep = endereco.getCep().replaceAll("[^0-9]", "");
+        }
         return enderecoRepository.save(endereco);
     }
 

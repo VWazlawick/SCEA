@@ -42,22 +42,13 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Os registros serão inseridos aqui dinamicamente -->
-                <tr>
-                    <td>1</td>
-                    <td>João Silva</td>
-                    <td>123.456.789-00</td>
-                    <td>01/01/1980</td>
-                    <td>(11) 98765-4321</td>
-                    <td>Prof. Carlos</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Maria Oliveira</td>
-                    <td>987.654.321-00</td>
-                    <td>15/05/1990</td>
-                    <td>(21) 91234-5678</td>
-                    <td>Prof. Ana</td>
+                <tr th:each="aluno : ${alunos}">
+                    <td th:text="${aluno.id}"></td>
+                    <td th:text="${aluno.nome}"></td>
+                    <td th:text="${aluno.cpf}"></td>
+                    <td th:text="${aluno.dtNascimento}"></td>
+                    <td th:text="${aluno.telefone}"></td>
+                    <td th:text="${aluno.professor.nome}"></td>
                 </tr>
             </tbody>
         </table>

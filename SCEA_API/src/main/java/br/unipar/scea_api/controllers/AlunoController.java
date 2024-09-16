@@ -2,18 +2,14 @@ package br.unipar.scea_api.controllers;
 
 import br.unipar.scea_api.models.*;
 import br.unipar.scea_api.services.AlunoService;
+import br.unipar.scea_api.services.CidadeService;
 import br.unipar.scea_api.services.ProfissionalService;
 import br.unipar.scea_api.services.TipoServicoService;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +27,15 @@ public class AlunoController {
     private TipoServicoService tipoServicoService;
 
     @Autowired
-    ProfissionalService profissionalService;
+    private ProfissionalService profissionalService;
+
+    @Autowired
+    private CidadeService cidadeService;
 
     @PostMapping
     public String insert(@ModelAttribute Aluno aluno){
         alunoService.insert(aluno);
-        return "redirect:/aluno/cadastrar";
+        return "redirect:/aluno/listagem";
     }
 
     @GetMapping
@@ -44,7 +43,7 @@ public class AlunoController {
         List<Aluno> alunos = alunoService.findAll();
         model.addAttribute("alunos", alunos);
 
-        return "aluno/cadastro";
+        return "aluno/listagem";
     }
 
     @GetMapping("/cadastrar")
@@ -72,5 +71,13 @@ public class AlunoController {
         model.addAttribute("aluno", aluno);
 
         return "aluno/cadastro";
+    }
+
+    @PostMapping("/buscarEstado")
+    @ResponseBody
+    public Long buscarEstado(@RequestParam("cidadeId") Long id){
+        Cidade cidade = cidadeService.findById(id);
+        Estado estado = cidade.getEstado();
+        return estado.getId();
     }
 }

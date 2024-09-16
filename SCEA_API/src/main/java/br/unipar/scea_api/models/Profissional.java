@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "Profissional")
-public class Profissional extends DefaultModel{
+public class Profissional extends Pessoa{
 
     @NotNull
     @ManyToOne

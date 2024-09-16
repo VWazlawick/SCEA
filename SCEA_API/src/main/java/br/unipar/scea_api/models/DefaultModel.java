@@ -1,15 +1,15 @@
 package br.unipar.scea_api.models;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -23,9 +23,15 @@ public abstract class DefaultModel {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @NotBlank
+    @NotNull
     private boolean stAtivo;
 
-    @NotBlank
-    private Date dtInsert;
+    @NotNull
+    private LocalDate dtInsert;
+
+    @PrePersist
+    protected void onCreate(){
+        this.dtInsert = LocalDate.now();
+    }
 }
+

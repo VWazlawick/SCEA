@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -21,11 +22,11 @@ public class Aluno extends Pessoa{
 
     @NotNull
     @Column(nullable = false)
-    private Date dtNascimento;
+    private LocalDate dtNascimento;
 
     @NotNull
     @Column(nullable = false)
-    private Date dtInicio;
+    private LocalDate dtInicio;
 
     @NotNull
     @ManyToOne

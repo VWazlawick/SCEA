@@ -24,7 +24,7 @@ public abstract class DefaultModel {
     private Long id;
 
     @NotNull
-    private boolean stAtivo;
+    private boolean stAtivo = true;
 
     @NotNull
     private LocalDate dtInsert;

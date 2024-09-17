@@ -17,4 +17,23 @@ function filterTable(columnIndex) {
             }
         }
     });
+
+    document.addEventListener('DOMContentLoaded', function (){
+        var cpfElement = document.getElementById('cpf');
+        var telefoneElement = document.getElementById('cpf');
+
+        var cpf = cpfElement.textContent.trim();
+        var telefone = telefoneElement.textContent.trim();
+
+        function formatarCpf(cpf){
+            return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+        }
+
+        function formatarTelefone(telefone){
+            return telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        }
+
+        cpfElement.textContent = formatarCpf(cpf);
+        telefoneElement.textContent = formatarTelefone(telefone);
+    })
 }

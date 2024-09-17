@@ -138,7 +138,6 @@
 
         // Validação de campos obrigatórios (genérica)
         const requiredFields = [
-            { id: 'id', errorId: 'id-error', errorMessage: 'ID é obrigatório.' },
             { id: 'nome-responsavel', errorId: 'nome-responsavel-error', errorMessage: 'Nome do responsável é obrigatório.' },
             { id: 'professor', errorId: 'professor-error', errorMessage: 'Selecione um professor.' },
             { id: 'tipo-servico', errorId: 'tipo-servico-error', errorMessage: 'Selecione um tipo de serviço.' },
@@ -201,3 +200,34 @@
         document.getElementById('cadastroForm').reset();
         document.querySelectorAll('.is-valid, .is-invalid').forEach(field => field.classList.remove('is-valid', 'is-invalid'));
     });
+
+    document.getElementById('altura').addEventListener('blur', function(){
+        var peso = parseFloat(document.getElementById('peso').value);
+        var altura = parseFloat(document.getElementById('altura').value);
+
+        var altura = altura/100;
+
+        function calcularIMC(peso, altura){
+            if(peso>0 && altura>0){
+                return(peso/(altura*altura)).toFixed(2);
+            }else{
+                return '';
+            }
+        }
+        document.getElementById('imc').value = calcularIMC(peso, altura);
+    })
+
+    document.getElementById('cintura').addEventListener('blur', function (){
+        var altura = parseFloat(document.getElementById('altura').value);
+        var cintura = parseFloat(document.getElementById('cintura').value);
+
+        function calcularRCE(altura, cintura){
+            if(altura>0 && cintura>0){
+                return(cintura/altura).toFixed(2);
+            }
+            else{
+                return '';
+            }
+        }
+        document.getElementById('rce').value = calcularRCE(altura, cintura);
+    })

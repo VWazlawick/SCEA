@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class AlunoController {
     @PostMapping
     public String insert(@ModelAttribute Aluno aluno){
         alunoService.insert(aluno);
-        return "redirect:/aluno/listagem";
+        return "redirect:/aluno";
     }
 
     @GetMapping
@@ -43,7 +44,7 @@ public class AlunoController {
         List<Aluno> alunos = alunoService.findAll();
         model.addAttribute("alunos", alunos);
 
-        return "aluno/listagem";
+        return "/aluno/listagem";
     }
 
     @GetMapping("/cadastrar")

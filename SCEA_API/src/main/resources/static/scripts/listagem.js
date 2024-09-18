@@ -18,22 +18,62 @@ function filterTable(columnIndex) {
         }
     });
 
-    document.addEventListener('DOMContentLoaded', function (){
-        var cpfElement = document.getElementById('cpf');
-        var telefoneElement = document.getElementById('cpf');
 
-        var cpf = cpfElement.textContent.trim();
-        var telefone = telefoneElement.textContent.trim();
-
-        function formatarCpf(cpf){
-            return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-        }
-
-        function formatarTelefone(telefone){
-            return telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-        }
-
-        cpfElement.textContent = formatarCpf(cpf);
-        telefoneElement.textContent = formatarTelefone(telefone);
-    })
 }
+
+document.addEventListener('DOMContentLoaded', function (){
+    var cpfElement = document.querySelectorAll('.cpf');
+    var telefoneElement = document.querySelectorAll('.telefone');
+
+    function formatarCpf(cpf){
+        return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    }
+
+    function formatarTelefone(telefone){
+        return telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+    }
+
+    cpfElement.forEach(function (element){
+        var cpf = element.textContent.trim();
+        element.textContent = formatarCpf(cpf);
+    })
+
+    telefoneElement.forEach(function (element){
+        var telefone = element.textContent.trim();
+        element.textContent = formatarTelefone(telefone);
+    })
+});
+
+document.addEventListener('DOMContentLoaded', function (){
+    const tableRows = document.querySelectorAll('.table-row');
+    const editButton = document.getElementById('editButton');
+
+    tableRows.forEach(row =>{
+        row.addEventListener('click', function (){
+            tableRows.forEach(r => r.classList.remove('selected'));
+
+            this.classList.add('selected');
+        })
+    })
+
+    editButton.addEventListener('click', function (){
+        const selectedRow = document.querySelector('.table-row.selected');
+
+        if(selectedRow){
+            const idCell = selectedRow.querySelector('.id');
+            const id = idCell ? idCell.textContent.trim() : null;
+            if(id){
+                window.location.href = '/aluno/editar/' + id;
+            }else{
+                alert('ID aluno não encontrado')
+            }
+        }
+        else{
+            alert('Por favor, selecione um item');
+        }
+    })
+})
+
+
+
+

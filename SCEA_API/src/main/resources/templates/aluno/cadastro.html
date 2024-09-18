@@ -13,7 +13,9 @@
 <div class="form-container animate__animated animate__fadeInUp">
     <!-- Header with icons -->
     <div class="d-flex justify-content-start mb-3 header-buttons">
-        <img src="/images/sair.png" alt="Sair" id="sairButton" data-bs-toggle="tooltip" title="Sair">
+        <a th:href="@{/aluno}" data-bs-toggle="tooltip" title="Sair">
+            <img src="/images/sair.png" alt="Sair" id="sairButton">
+        </a>
         <img src="/images/salvar.png" alt="Salvar" id="saveButton" data-bs-toggle="tooltip" title="Salvar">
         <img src="/images/excluir.png" alt="Excluir" id="excluirButton" data-bs-toggle="tooltip" title="Excluir">
         <button class="btn btn-secondary ms-auto" id="clearButton" data-bs-toggle="tooltip" title="Limpar todos os campos">Limpar</button>

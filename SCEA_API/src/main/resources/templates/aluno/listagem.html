@@ -44,12 +44,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="aluno : ${alunos}">
-                    <td th:text="${aluno.id}"></td>
+                <tr th:each="aluno : ${alunos}"  class="table-row">
+                    <td th:text="${aluno.id}" class="id"></td>
                     <td th:text="${aluno.nome}"></td>
-                    <td th:text="${aluno.cpf}" id="cpf"></td>
+                    <td th:text="${aluno.cpf}" class="cpf"></td>
                     <td th:text="${#temporals.format(aluno.dtNascimento, 'dd/MM/yyyy')}"></td>
-                    <td th:text="${aluno.telefone}" id="telefone"></td>
+                    <td th:text="${aluno.telefone}" class="telefone"></td>
                     <td th:text="${aluno.professor.nome}"></td>
                 </tr>
             </tbody>

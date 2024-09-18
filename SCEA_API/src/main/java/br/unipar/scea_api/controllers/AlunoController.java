@@ -74,6 +74,24 @@ public class AlunoController {
         return "aluno/cadastro";
     }
 
+    @GetMapping("/editar/{id}")
+    public String update(@PathVariable Long id, ModelMap model){
+        Aluno aluno = alunoService.findById(id);
+        List<Profissional> professores = profissionalService.findAll();
+        List<TipoServico> aulas = tipoServicoService.findAll();
+        if(professores == null){
+            professores = new ArrayList<>();
+        }
+        if(aulas == null){
+            aulas = new ArrayList<>();
+        }
+
+        model.addAttribute("aulas", aulas);
+        model.addAttribute("professores", professores);
+        model.addAttribute("aluno", aluno);
+        return "aluno/cadastro";
+    }
+
     @PostMapping("/buscarEstado")
     @ResponseBody
     public Long buscarEstado(@RequestParam("cidadeId") Long id){

@@ -231,3 +231,11 @@
         }
         document.getElementById('rce').value = calcularRCE(altura, cintura);
     })
+
+    document.addEventListener('DOMContentLoaded', function (){
+        var dtNascimento = document.getElementById('dtNascimento');
+        var dtLimpa = dtNascimento.split('/');
+        var dtFormatada = `${dtLimpa[2]}-${dtLimpa[1]}-${dtLimpa[0]}`
+
+        document.getElementById('dtNascimento').value = dtFormatada;
+    })

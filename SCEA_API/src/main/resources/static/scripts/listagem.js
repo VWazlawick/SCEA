@@ -44,35 +44,38 @@ document.addEventListener('DOMContentLoaded', function (){
     })
 });
 
-document.addEventListener('DOMContentLoaded', function (){
-    const tableRows = document.querySelectorAll('.table-row');
-    const editButton = document.getElementById('editButton');
+function toggleRowSelection(event){
+    const rows = document.querySelectorAll('.table-row');
+    rows.forEach(row => row.classList.remove('selected'));
 
-    tableRows.forEach(row =>{
-        row.addEventListener('click', function (){
-            tableRows.forEach(r => r.classList.remove('selected'));
+    const target = event.currentTarget;
+    if(target.classList.contains('table-row')){
+        target.classList.add('selected');
+    }
+}
 
-            this.classList.add('selected');
-        })
-    })
-
-    editButton.addEventListener('click', function (){
-        const selectedRow = document.querySelector('.table-row.selected');
-
-        if(selectedRow){
-            const idCell = selectedRow.querySelector('.id');
-            const id = idCell ? idCell.textContent.trim() : null;
-            if(id){
-                window.location.href = '/aluno/editar/' + id;
-            }else{
-                alert('ID aluno não encontrado')
-            }
-        }
-        else{
-            alert('Por favor, selecione um item');
-        }
-    })
+document.querySelectorAll('.table-row').forEach(row => {
+    row.addEventListener('click', toggleRowSelection);
 })
+
+
+const editButton = document.querySelector('#editButton');
+editButton.addEventListener('click', function (){
+    const selectedRow = document.querySelector('.table-row.selected');
+
+    if(selectedRow){
+        const idCell = selectedRow.querySelector('.id');
+        const id = idCell ? idCell.textContent.trim() : null;
+        if(id){
+            window.location.href = '/aluno/editar/' + id;
+        }else{
+            alert('ID aluno não encontrado')
+        }
+    }
+    else{
+        alert('Por favor, selecione um item');
+    }
+});
 
 
 

@@ -31,9 +31,13 @@ body {
     font-size: 0.875rem;
 }
 
-.table-row.selected {
-    background-color: #ff9900;
-}
+    .table-row{
+        cursor: pointer;
+    }
+    .table-row.selected {
+        background-color: #ff9900 !important;
+        color: red !important;
+    }
 
 /* Estilo personalizado para alternar cores entre azul claro e branco */
 .custom-table tbody tr:nth-child(odd) {

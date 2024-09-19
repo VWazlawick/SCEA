@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Ficha Avaliativa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/cadastro.css" rel="stylesheet"> <!-- Reutilizando o CSS existente -->
+</head>
+<body>
+
+<div class="form-container animate__animated animate__fadeInUp">
+    <!-- Header with icons -->
+    <div class="d-flex justify-content-start mb-3 header-buttons">
+        <img src="images/sair.png" alt="Sair" id="sairButton" data-bs-toggle="tooltip" title="Sair">
+        <img src="images/salvar.png" alt="Salvar" id="saveButton" data-bs-toggle="tooltip" title="Salvar">
+        <img src="images/excluir.png" alt="Excluir" id="excluirButton" data-bs-toggle="tooltip" title="Excluir">
+    </div>
+
+    <!-- Ficha Avaliativa Information Section -->
+    <div class="form-section-heading">Cadastro Ficha Avaliativa</div>
+    <form id="fichaAvaliativaForm">
+        <div class="row">
+            <div class="col-md-2">
+                <label for="id" class="form-label">ID</label>
+                <input type="text" class="form-control" id="id" aria-label="ID da Ficha Avaliativa" readonly>
+                <span class="error-message" id="id-error">ID é obrigatório.</span>
+            </div>
+            <div class="col-md-6">
+                <label for="descricao-ficha" class="form-label">Descrição da Ficha Avaliativa</label>
+                <input type="text" class="form-control" id="descricao-ficha" placeholder="Digite a descrição da ficha">
+                <span class="error-message" id="descricao-ficha-error">Descrição é obrigatória.</span>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <label for="selecionar-grupos" class="form-label">Selecionar Grupos</label>
+                <select class="form-select" id="selecionar-grupos">
+                    <option selected>Selecione</option>
+                    <!-- Adicione as opções de grupos aqui -->
+                </select>
+                <span class="error-message" id="selecionar-grupos-error">Selecione um grupo.</span>
+            </div>
+            <div class="col-md-4">
+                <label for="selecionar-subgrupos" class="form-label">Selecionar Sub Grupos</label>
+                <select class="form-select" id="selecionar-subgrupos">
+                    <option selected>Selecione</option>
+                    <!-- Adicione as opções de subgrupos aqui -->
+                </select>
+                <span class="error-message" id="selecionar-subgrupos-error">Selecione um subgrupo.</span>
+            </div>
+        </div>
+
+        <!-- Switch personalizado estilo slide round -->
+        <div class="form-check form-switch mb-4 mt-3">
+            <div class="row">
+                <div class="col-md-2">
+                    <label class="form-check-label" for="ativo">Ativo</label>
+                    <input type="checkbox" id="ativo" class="form-check-input custom-switch" checked>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="scripts/cadastroFichaAvaliativa.js"></script> <!-- JavaScript específico para esta página -->
+</body>
+</html>

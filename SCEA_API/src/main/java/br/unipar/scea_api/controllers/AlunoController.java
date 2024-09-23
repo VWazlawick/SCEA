@@ -77,6 +77,9 @@ public class AlunoController {
     @GetMapping("/editar/{id}")
     public String update(@PathVariable Long id, ModelMap model){
         Aluno aluno = alunoService.findById(id);
+
+        System.out.println("Dt Nascimento" + aluno.getDtNascimento());
+
         List<Profissional> professores = profissionalService.findAll();
         List<TipoServico> aulas = tipoServicoService.findAll();
         if(professores == null){

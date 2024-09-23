@@ -232,10 +232,30 @@
         document.getElementById('rce').value = calcularRCE(altura, cintura);
     })
 
-    document.addEventListener('DOMContentLoaded', function (){
-        var dtNascimento = document.getElementById('dtNascimento');
-        var dtLimpa = dtNascimento.split('/');
-        var dtFormatada = `${dtLimpa[2]}-${dtLimpa[1]}-${dtLimpa[0]}`
+    /*document.addEventListener('DOMContentLoaded', function (){
+        const dtNascimentoInput = document.getElementById('data-nascimento');
 
-        document.getElementById('dtNascimento').value = dtFormatada;
-    })
+        if(dtNascimentoInput){
+            const dtNascimento = dtNascimentoInput.value;
+            console.log("Input: " + dtNascimentoInput);
+
+            if(dtNascimento){
+                const dtLimpa = dtNascimento.split('/');
+                console.log("Data limpa: " + dtLimpa);
+
+                if(dtLimpa.length===3){
+                    const dtFormatada = `${dtLimpa[2]}-${dtLimpa[1]}-${dtLimpa[0]}`;
+                    console.log('Data formatada:', dtFormatada);
+
+                    document.getElementById('data-nascimento').value = dtFormatada;
+                    console.log('Novo valor de data-nascimento:', dtNascimentoInput.value);
+                }else {
+                    console.error('Formato de data inválido.'); // Log de erro se o formato não for válido
+                }
+            }else {
+                console.warn('O campo data-nascimento está vazio.'); // Log de aviso se o campo estiver vazio
+            }
+        }else {
+            console.error('Elemento data-nascimento não encontrado.'); // Log de erro se o elemento não existir
+        }
+    })*/

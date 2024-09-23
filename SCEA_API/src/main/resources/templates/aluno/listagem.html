@@ -20,7 +20,6 @@
         <img src="images/excluir.png" alt="Excluir" id="deleteButton" data-bs-toggle="tooltip" title="Excluir Cadastro Selecionado">
     </div>
 
-    <!-- Table for Listing Cadastros -->
     <div class="table-responsive">
         <table class="table table-hover custom-table" id="tabelaTeste">
             <thead class="table-light">
@@ -32,7 +31,7 @@
                     <th scope="col">Telefone</th>
                     <th scope="col">Professor</th>
                 </tr>
-                <!-- Filtro abaixo dos títulos das colunas -->
+
                 <tr>
                     <th><input type="text" class="form-control filter-input" placeholder="Filtrar ID" onkeyup="filterTable(0)"></th>
                     <th><input type="text" class="form-control filter-input" placeholder="Filtrar Nome" onkeyup="filterTable(1)"></th>
@@ -40,7 +39,6 @@
                     <th><input type="text" class="form-control filter-input" placeholder="Filtrar Data" onkeyup="filterTable(3)"></th>
                     <th><input type="text" class="form-control filter-input" placeholder="Filtrar Telefone" onkeyup="filterTable(4)"></th>
                     <th><input type="text" class="form-control filter-input" placeholder="Filtrar Professor" onkeyup="filterTable(5)"></th>
-                    <th></th> <!-- Ações não precisam de filtro -->
                 </tr>
             </thead>
             <tbody>
@@ -58,6 +56,6 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="scripts/listagem.js"></script> <!-- JavaScript específico para esta página -->
+<script src="/scripts/listagem.js"></script> <!-- JavaScript específico para esta página -->
 </body>
 </html>

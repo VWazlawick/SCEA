@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -19,6 +21,13 @@ public class ProfissionalController {
     @Autowired
     private ProfissionalService profissionalService;
 
+
+    @PostMapping
+    public String insert(@ModelAttribute Profissional profissional){
+        profissionalService.insert(profissional);
+        return "redirect:/profissional";
+    }
+
     @GetMapping
     public String findAll(ModelMap model){
         List<Profissional> profissionais = profissionalService.findAll();
@@ -30,6 +39,8 @@ public class ProfissionalController {
     public String novoCadastro(ModelMap model){
         Profissional profissional = new Profissional();
         model.addAttribute("profissional", profissional);
-        return "profissional/cadastro";
+        return "/profissional/cadastro";
     }
+
+
 }

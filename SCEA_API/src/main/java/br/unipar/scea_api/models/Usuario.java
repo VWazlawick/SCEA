@@ -37,5 +37,8 @@ public class Usuario extends DefaultModel{
     @JoinColumn(nullable = false)
     private TipoUsuario tpUsuario;
 
-
+    @NotNull
+    @OneToOne
+    @JoinColumn(nullable = false)
+    private Profissional profissional;
 }

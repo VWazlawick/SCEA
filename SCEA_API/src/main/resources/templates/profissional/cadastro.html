@@ -21,7 +21,7 @@
     </div>
 
     <div class="form-section-heading">Cadastro de Profissional</div>
-    <form th:object="${profissional}" th:action="@{/profissional}" id="cadastroProfissionalForm">
+    <form th:object="${profissional}" th:action="@{/profissional}" method="post" id="cadastroProfissionalForm">
         <div class="row">
             <div class="col-md-2">
                 <label for="id" class="form-label">ID</label>
@@ -59,8 +59,16 @@
                 </div>
             </div>
         </div>
+
+
+        <div id="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div id="success-message">Formulário enviado com sucesso!</div>
     </form>
 </div>
+
+
 
 <!-- Modal de Confirmação -->
 <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">

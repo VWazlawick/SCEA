@@ -24,11 +24,6 @@ public class Profissional extends Pessoa{
     @JoinColumn(nullable = false)
     private Empresa empresa;
 
-    @NotNull
-    @OneToOne
-    @JoinColumn(nullable = false)
-    private Usuario usuario;
-
     @OneToMany
     private List<Aluno> alunos;
 }

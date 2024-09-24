@@ -17,6 +17,14 @@ public class ProfissionalService {
     private ProfissionalRepository profissionalRepository;
 
     public Profissional insert(Profissional profissional){
+        if(profissional.getCpf()!=null && profissional.getRg()!=null && profissional.getTelefone()!=null){
+            String cpf = profissional.getCpf().replaceAll("[^0-9]", "");
+            String rg = profissional.getRg().replaceAll("[^0-9]", "");
+            String telefone = profissional.getTelefone().replaceAll("[^0-9]", "");
+            profissional.setCpf(cpf);
+            profissional.setRg(rg);
+            profissional.setTelefone(telefone);
+        }
         return profissionalRepository.save(profissional);
     }
 

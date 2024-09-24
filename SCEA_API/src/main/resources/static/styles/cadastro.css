@@ -6,6 +6,23 @@ body {
     overflow-x: hidden;
 }
 
+/* Estilo personalizado para o botão "Adicionar Tipo de Pergunta" */
+.btn-custom-roxo {
+    background-color: #A07BE5; /* Cor roxa */
+    color: white; /* Cor do texto */
+    border: none;
+    border-radius: 5px; /* Cantos arredondados */
+    padding: 8px 20px; /* Espaçamento interno */
+    font-weight: bold; /* Texto em negrito */
+    transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.btn-custom-roxo:hover {
+    background-color: #8A5DC4; /* Cor mais escura ao passar o mouse */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+}
+
+
 .custom-switch:checked {
     background-color: #b3d1ff; /* Cor de fundo azul claro quando ativado */
 }

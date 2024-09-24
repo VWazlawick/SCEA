@@ -45,15 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return isValid;
     }
 
-    // Evento de clique no botão Salvar
-    document.getElementById('saveButton').addEventListener('click', () => {
-        if (validateForm()) {
-            alert('Formulário válido. Pronto para salvar.');
-            // Adicione aqui a lógica para salvar os dados
-        } else {
-            alert('Por favor, preencha todos os campos obrigatórios.');
-        }
-    });
 
     // Evento de clique no botão Limpar
     document.getElementById('clearButton').addEventListener('click', () => {
@@ -72,3 +63,47 @@ document.addEventListener('DOMContentLoaded', () => {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
 });
+
+let actionToConfirm = ''; // Variável para controlar a ação que será confirmada
+
+// Função para abrir o modal de confirmação
+function openConfirmationModal(action) {
+    actionToConfirm = action;
+    const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+    confirmModal.show();
+}
+
+// Eventos dos botões
+document.getElementById('saveButton').addEventListener('click', function () {
+    openConfirmationModal('salvar');
+});
+
+document.getElementById('sairButton').addEventListener('click', function () {
+    openConfirmationModal('sair');
+});
+
+document.getElementById('excluirButton').addEventListener('click', function () {
+    openConfirmationModal('excluir');
+});
+
+document.getElementById('clearButton').addEventListener('click', function () {
+    // Lógica para limpar o formulário
+    document.getElementById('cadastroForm').reset(); // Limpa todos os campos do formulário
+});
+
+// Evento de confirmação do modal
+document.getElementById('confirmYes').addEventListener('click', function () {
+    if (actionToConfirm === 'salvar') {
+        // Lógica para salvar o cadastro
+        console.log('Cadastro salvo com sucesso!');
+        // Aqui você pode chamar a função de salvar do formulário
+    } else if (actionToConfirm === 'sair') {
+        // Lógica para sair da página ou do formulário
+        window.location.href = 'pagina_de_saida.html'; // Redireciona para uma página de saída, por exemplo
+    } else if (actionToConfirm === 'excluir') {
+        // Lógica para excluir o cadastro
+        console.log('Cadastro excluído com sucesso!');
+        // Aqui você pode chamar a função de exclusão
+    }
+});
+

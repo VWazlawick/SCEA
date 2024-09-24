@@ -24,24 +24,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     const telefoneMask = IMask(telefoneInput, {
-        mask: '(00) 0000-0000'
+        mask: '(00) 00000-0000'
     });
 
     function validateForm() {
         let isValid = true;
 
-        // Validação do ID
-        const id = document.getElementById('id');
-        const idError = document.getElementById('id-error');
-        if (id.value.trim() === '') {
-            id.classList.add('is-invalid');
-            idError.style.display = 'block';
-            isValid = false;
-        } else {
-            id.classList.remove('is-invalid');
-            id.classList.add('is-valid');
-            idError.style.display = 'none';
-        }
 
         // Validação do Nome Completo
         const nome = document.getElementById('nome');
@@ -140,10 +128,6 @@ document.getElementById('saveButton').addEventListener('click', function () {
     openConfirmationModal('salvar');
 });
 
-document.getElementById('sairButton').addEventListener('click', function () {
-    openConfirmationModal('sair');
-});
-
 document.getElementById('excluirButton').addEventListener('click', function () {
     openConfirmationModal('excluir');
 });
@@ -159,9 +143,6 @@ document.getElementById('confirmYes').addEventListener('click', function () {
         // Lógica para salvar o cadastro
         console.log('Cadastro salvo com sucesso!');
         // Aqui você pode chamar a função de salvar do formulário
-    } else if (actionToConfirm === 'sair') {
-        // Lógica para sair da página ou do formulário
-        window.location.href = 'pagina_de_saida.html'; // Redireciona para uma página de saída, por exemplo
     } else if (actionToConfirm === 'excluir') {
         // Lógica para excluir o cadastro
         console.log('Cadastro excluído com sucesso!');

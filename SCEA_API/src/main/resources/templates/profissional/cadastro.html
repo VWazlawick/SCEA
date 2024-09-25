@@ -35,8 +35,10 @@
             </div>
             <div class="col-md-4">
                 <label for="empresa" class="form-label">Empresa</label>
-                <input th:field="*{empresa}" type="text" class="form-control" id="empresa" placeholder="Digite o nome completo" required>
-                <span class="error-message" id="empresa-error">Nome é obrigatório.</span>
+                <select id="empresa" class="form-control" required>
+                    <option value="">Selecione uma empresa</option>
+                </select>
+                <span class="error-message" id="empresa-error">O campo Empresa é obrigatório.</span>
             </div>
             <div class="col-md-2">
                 <label for="cpf" class="form-label">CPF</label>

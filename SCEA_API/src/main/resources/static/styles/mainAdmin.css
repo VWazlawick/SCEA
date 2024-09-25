@@ -1,0 +1,113 @@
+body {
+    background-color: #e0f7f9;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ajuste dos ícones na barra de navegação */
+.icon-image {
+    width: 24px;
+    height: 24px;
+}
+
+
+/* Estilo do título */
+.title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #b799e3; /* Cor roxa similar à da imagem */
+    margin-bottom: 10px;
+}
+
+/* Estilo do subtítulo */
+.subtitle {
+    font-size: 1.2rem;
+    color: #b799e3; /* Cor roxa similar à da imagem */
+}
+
+/* Centralização vertical e horizontal do conteúdo */
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 80px; /* Espaço para compensar a barra de navegação fixa */
+}
+
+/* Estilo da barra de navegação */
+.navbar {
+    background-color: #f8f9fa;
+    padding: 10px;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+/* Estilo do menu lateral */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    height: 100%;
+    width: 250px;
+    background-color: #b799e3;
+    transition: left 0.3s ease;
+    padding-top: 60px;
+}
+
+/* Ativando o menu lateral */
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar ul {
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px 20px;
+    list-style-type: none;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #a47ad9;
+    padding-left: 30px;
+    transition: 0.3s;
+}
+
+/* Submenu escondido inicialmente */
+.sub-menu {
+    display: none;
+}
+
+/* Quando o item do menu é clicado, exibe o submenu */
+.menu-item.active + .sub-menu {
+    display: block;
+}
+
+/* Botão para fechar o menu */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Configurações na parte inferior */
+.sidebar-footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar-footer a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}

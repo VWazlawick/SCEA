@@ -22,9 +22,6 @@ public class TipoServico extends DefaultModel{
     @Column(nullable = false)
     private String descricao;
 
-    @NotBlank
-    @Column(nullable = false)
-    private double valor;
 
     @OneToMany(mappedBy = "aula")
     private List<Aluno> alunos;

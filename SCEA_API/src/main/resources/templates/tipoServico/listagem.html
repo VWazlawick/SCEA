@@ -13,7 +13,9 @@
     <!-- Header with icons -->
     <div class="d-flex justify-content-start mb-3 header-buttons">
         <img src="images/sair.png" alt="Sair" id="sairButton" data-bs-toggle="tooltip" title="Sair Da Tela de Cadastro">
-        <img src="images/adicionar.png" alt="Adicionar" id="addButton" data-bs-toggle="tooltip" title="Adicionar Novo Cadastro">
+        <a th:href="@{/tiposervico/cadastrar}" data-bs-toggle="tooltip" title="Adicionar Novo Cadastro">
+            <img src="images/adicionar.png" alt="Adicionar" id="addButton">
+        </a>
         <img src="images/editar-arquivo.png" alt="Editar" id="editButton" data-bs-toggle="tooltip" title="Editar Cadastro Selecionado">
         <img src="images/excluir.png" alt="Excluir" id="deleteButton" data-bs-toggle="tooltip" title="Excluir Cadastro Selecionado">
     </div>
@@ -24,40 +26,17 @@
             <thead class="table-light">
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Nome Completo</th>
-                    <th scope="col">CPF</th>
-                    <th scope="col">Data de Nascimento</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">Professor</th>
+                    <th scope="col">Descrição</th>
                 </tr>
-                <!-- Filtro abaixo dos títulos das colunas -->
                 <tr>
                     <th><input type="text" class="form-control filter-input" placeholder="Filtrar ID" onkeyup="filterTable(0)"></th>
-                    <th><input type="text" class="form-control filter-input" placeholder="Filtrar Nome" onkeyup="filterTable(1)"></th>
-                    <th><input type="text" class="form-control filter-input" placeholder="Filtrar CPF" onkeyup="filterTable(2)"></th>
-                    <th><input type="text" class="form-control filter-input" placeholder="Filtrar Data" onkeyup="filterTable(3)"></th>
-                    <th><input type="text" class="form-control filter-input" placeholder="Filtrar Telefone" onkeyup="filterTable(4)"></th>
-                    <th><input type="text" class="form-control filter-input" placeholder="Filtrar Professor" onkeyup="filterTable(5)"></th>
-                    <th></th> <!-- Ações não precisam de filtro -->
+                    <th><input type="text" class="form-control filter-input" placeholder="Filtrar Descrição" onkeyup="filterTable(1)"></th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Os registros serão inseridos aqui dinamicamente -->
-                <tr>
-                    <td>1</td>
-                    <td>João Silva</td>
-                    <td>123.456.789-00</td>
-                    <td>01/01/1980</td>
-                    <td>(11) 98765-4321</td>
-                    <td>Prof. Carlos</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Maria Oliveira</td>
-                    <td>987.654.321-00</td>
-                    <td>15/05/1990</td>
-                    <td>(21) 91234-5678</td>
-                    <td>Prof. Ana</td>
+                <tr th:each="tiposervico : ${tipoServicos}">
+                    <td th:text="${tiposervico.id}"></td>
+                    <td th:text="${tiposervico.descricao}"></td>
                 </tr>
             </tbody>
         </table>

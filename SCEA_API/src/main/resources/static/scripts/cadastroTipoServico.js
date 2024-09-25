@@ -1,96 +1,59 @@
-// Habilita o tooltip do Bootstrap
-document.addEventListener('DOMContentLoaded', function () {
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-});
+function validateForm() {
+    let isValid = true;
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Botão Salvar
-    const saveButton = document.getElementById('saveButton');
-
-    // Adicionando evento de clique ao botão Salvar
-    saveButton.addEventListener('click', function () {
-        if (validateForm()) {
-            // Exibir modal de confirmação
-            showModal();
-        }
-    });
-
-    // Função para exibir o modal de confirmação
-    function showModal() {
-        const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
-        modal.show();
-
-        // Ação de confirmação do modal
-        document.getElementById('confirmYes').onclick = function () {
-            modal.hide();
-            // Aqui você pode adicionar a lógica para salvar os dados ou enviar o formulário
-            alert('Tipo de Serviço cadastrado com sucesso!');
-        };
+    // Validação do Nome do Tipo de Serviço
+    const nomeTipoServico = document.getElementById('nome-tipo-servico');
+    if (nomeTipoServico.value.trim() === '') {
+        nomeTipoServico.classList.add('is-invalid');
+        document.getElementById('nome-tipo-servico-error').style.display = 'block';
+        isValid = false;
+    } else {
+        nomeTipoServico.classList.remove('is-invalid');
+        nomeTipoServico.classList.add('is-valid');
+        document.getElementById('nome-tipo-servico-error').style.display = 'none';
     }
 
-    // Validação do formulário de cadastro de Tipo de Serviço
-    function validateForm() {
-        let isValid = true;
+    return isValid;
+};
 
-        // Validação do Nome do Tipo de Serviço
-        const nomeTipoServico = document.getElementById('nome-tipo-servico');
-        if (nomeTipoServico.value.trim() === '') {
-            nomeTipoServico.classList.add('is-invalid');
-            document.getElementById('nome-tipo-servico-error').style.display = 'block';
-            isValid = false;
-        } else {
-            nomeTipoServico.classList.remove('is-invalid');
-            nomeTipoServico.classList.add('is-valid');
-            document.getElementById('nome-tipo-servico-error').style.display = 'none';
-        }
-
-        return isValid;
+// Mostrar modal ao clicar em Salvar
+document.getElementById('saveButton').addEventListener('click', function() {
+    if (validateForm()) {
+        showModal("salvar");
     }
 });
 
-let actionToConfirm = ''; // Variável para controlar a ação que será confirmada
+// Função para exibir o modal de confirmação
+function showModal(action) {
+    var modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+    modal.show();
 
-// Função para abrir o modal de confirmação
-function openConfirmationModal(action) {
-    actionToConfirm = action;
-    const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
-    confirmModal.show();
+    document.getElementById('confirmYes').onclick = function() {
+        modal.hide();
+        if (action === "salvar") {
+            showProgressBar();
+
+            document.getElementById('tipoServicoForm').submit();
+        }
+    };
 }
 
-// Eventos dos botões
-document.getElementById('saveButton').addEventListener('click', function () {
-    openConfirmationModal('salvar');
-});
+// Função de feedback visual no envio
+function showProgressBar() {
+    const progressBar = document.getElementById('progress-bar');
+    const progressContainer = document.getElementById('progress-container');
+    const successMessage = document.getElementById('success-message');
 
-document.getElementById('sairButton').addEventListener('click', function () {
-    openConfirmationModal('sair');
-});
+    progressContainer.style.display = 'block';
+    progressBar.style.width = '100%';
 
-document.getElementById('excluirButton').addEventListener('click', function () {
-    openConfirmationModal('excluir');
-});
+    setTimeout(function() {
+        progressContainer.style.display = 'none';
+        successMessage.style.display = 'block';
+    }, 2000);
+}
 
-document.getElementById('clearButton').addEventListener('click', function () {
-    // Lógica para limpar o formulário
-    document.getElementById('cadastroForm').reset(); // Limpa todos os campos do formulário
-});
 
-// Evento de confirmação do modal
-document.getElementById('confirmYes').addEventListener('click', function () {
-    if (actionToConfirm === 'salvar') {
-        // Lógica para salvar o cadastro
-        console.log('Cadastro salvo com sucesso!');
-        // Aqui você pode chamar a função de salvar do formulário
-    } else if (actionToConfirm === 'sair') {
-        // Lógica para sair da página ou do formulário
-        window.location.href = 'pagina_de_saida.html'; // Redireciona para uma página de saída, por exemplo
-    } else if (actionToConfirm === 'excluir') {
-        // Lógica para excluir o cadastro
-        console.log('Cadastro excluído com sucesso!');
-        // Aqui você pode chamar a função de exclusão
-    }
-});
+
+
 

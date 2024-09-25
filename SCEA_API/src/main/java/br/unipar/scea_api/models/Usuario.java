@@ -2,7 +2,6 @@ package br.unipar.scea_api.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,8 +36,11 @@ public class Usuario extends DefaultModel{
     @JoinColumn(nullable = false)
     private TipoUsuario tpUsuario;
 
-    @NotNull
     @OneToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn()
     private Profissional profissional;
+
+    @OneToOne
+    @JoinColumn()
+    private Aluno aluno;
 }

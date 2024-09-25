@@ -26,6 +26,10 @@ public class EmpresaService {
     }
 
     public Empresa insert(Empresa empresa) {
+        if(empresa.getCnpj()!=null) {
+            String cnpj = empresa.getCnpj().replaceAll("[^0-9]", "");
+            empresa.setCnpj(cnpj);
+        }
         return empresaRepository.save(empresa);
     }
 

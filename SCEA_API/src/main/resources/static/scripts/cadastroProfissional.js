@@ -13,12 +13,12 @@ document.addEventListener('DOMContentLoaded', function () {
 function validateForm() {
     let isValid = true;
 
-
     // Validação do Nome Completo
     const nome = document.getElementById('nome');
     const nomeError = document.getElementById('nome-error');
     if (nome.value.trim() === '') {
         nome.classList.add('is-invalid');
+        nomeError.textContent = 'O campo Nome é obrigatório.';
         nomeError.style.display = 'block';
         isValid = false;
     } else {
@@ -27,12 +27,27 @@ function validateForm() {
         nomeError.style.display = 'none';
     }
 
+    // Validação da Empresa
+    const empresa = document.getElementById('empresa');
+    const empresaError = document.getElementById('empresa-error');
+    if (empresa.value === '') {
+        empresa.classList.add('is-invalid');
+        empresaError.textContent = 'O campo Empresa é obrigatório.';
+        empresaError.style.display = 'block';
+        isValid = false;
+    } else {
+        empresa.classList.remove('is-invalid');
+        empresa.classList.add('is-valid');
+        empresaError.style.display = 'none';
+    }
+
     // Validação de CPF
     const cpf = document.getElementById('cpf');
     const cpfError = document.getElementById('cpf-error');
     const cpfPattern = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
     if (!cpfPattern.test(cpf.value)) {
         cpf.classList.add('is-invalid');
+        cpfError.textContent = 'CPF inválido.';
         cpfError.style.display = 'block';
         isValid = false;
     } else {
@@ -45,9 +60,9 @@ function validateForm() {
     const rg = document.getElementById('rg');
     const rgError = document.getElementById('rg-error');
     const rgPattern = /^\d{2}\.\d{3}\.\d{3}-\d{1}$/;
-
     if (!rgPattern.test(rg.value)) {
         rg.classList.add('is-invalid');
+        rgError.textContent = 'RG inválido.';
         rgError.style.display = 'block';
         isValid = false;
     } else {
@@ -61,25 +76,14 @@ function validateForm() {
     const telefoneError = document.getElementById('telefone-error');
     const telefonePattern = /^\(\d{2}\) \d{4,5}-\d{4}$/;
     if (!telefonePattern.test(telefone.value)) {
-        telefonePattern.classList.add('is-invalid');
-        telefoneError.parentElement.appendChild('is-invalid');
+        telefone.classList.add('is-invalid');
+        telefoneError.textContent = 'Telefone inválido.';
+        telefoneError.style.display = 'block';
         isValid = false;
     } else {
         telefone.classList.remove('is-invalid');
         telefone.classList.add('is-valid');
         telefoneError.style.display = 'none';
-    }
-
-    // Validação do Status Ativo
-    const statusAtivo = document.getElementById('ativo');
-    const statusError = document.getElementById('status-error');
-    if (statusAtivo.value === 'Selecione') {
-        statusAtivo.classList.add('is-invalid');
-        statusError.style.display = 'block';
-        isValid = false;
-    } else {
-        statusAtivo.classList.remove('is-invalid');
-        statusAtivo.classList.add('is-valid');
     }
 
     return isValid;
@@ -101,7 +105,6 @@ function showModal(action) {
         modal.hide();
         if (action === "salvar") {
             showProgressBar();
-
             document.getElementById('cadastroProfissionalForm').submit();
         }
     };
@@ -121,3 +124,21 @@ function showProgressBar() {
         successMessage.style.display = 'block';
     }, 2000);
 }
+
+// Função para limpar os campos do formulário
+document.getElementById('clearButton').addEventListener('click', function() {
+    const form = document.getElementById('cadastroProfissionalForm');
+    form.reset();  // Limpa todos os campos do formulário
+    // Remove as classes de validação
+    const inputs = form.querySelectorAll('input, select');
+    inputs.forEach(input => {
+        input.classList.remove('is-invalid');
+        input.classList.remove('is-valid');
+    });
+
+    // Oculta todas as mensagens de erro
+    const errorMessages = document.querySelectorAll('.error-message');
+    errorMessages.forEach(error => {
+        error.style.display = 'none';
+    });
+});

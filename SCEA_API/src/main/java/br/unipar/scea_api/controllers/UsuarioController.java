@@ -64,7 +64,7 @@ public class UsuarioController {
         model.addAttribute("tipoUsuarios", tipoUsuarios);
         model.addAttribute("profissionais", profissionais);
 
-        return "usuario/cadastro";
+        return "/usuario/cadastro";
     }
 
 

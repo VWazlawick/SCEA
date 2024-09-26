@@ -23,4 +23,7 @@ public class TipoPergunta extends DefaultModel{
 
     @OneToMany
     private List<OpcaoPergunta> opcoes;
+
+    @NotBlank
+    private String estiloTpPergunta;
 }

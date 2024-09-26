@@ -14,6 +14,11 @@
         .is-invalid + .error-message {
             display: block;
         }
+
+        #resultadoBusca {
+            max-height: 200px;
+            overflow-y: auto;
+        }
     </style>
 </head>
 <body>
@@ -32,16 +37,16 @@
         <div class="row">
             <div class="col-md-2">
                 <label for="id" class="form-label">ID</label>
-                <input th:label="*{id}" type="text" class="form-control" id="id" disabled>
+                <input th:field="*{id}" type="text" class="form-control" id="id" disabled>
             </div>
             <div class="col-md-4">
                 <label for="nome-usuario" class="form-label">Nome de Usuário</label>
-                <input th:label="*{nome}" type="text" class="form-control" id="nome-usuario" required>
+                <input th:field="*{nome}" type="text" class="form-control" id="nome-usuario" required>
                 <span class="error-message" id="nome-error">Nome de Usuário é obrigatório.</span>
             </div>
             <div class="col-md-4">
                 <label for="email" class="form-label">Email</label>
-                <input th:label="*{email}" type="email" class="form-control" id="email" required>
+                <input th:field="*{email}" type="email" class="form-control" id="email" required>
                 <span class="error-message" id="email-error">Email é obrigatório.</span>
             </div>
         </div>
@@ -49,7 +54,7 @@
         <div class="row mt-3">
             <div class="col-md-4">
                 <label for="senha" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="senha" required>
+                <input th:field="*{senha}" type="password" class="form-control" id="senha" required>
                 <span class="error-message" id="senha-error">Senha é obrigatória.</span>
             </div>
             <div class="col-md-4">
@@ -62,26 +67,28 @@
         <div class="row mt-3">
             <div class="col-md-4">
                 <label for="tipo-usuario" class="form-label">Tipo do Usuário</label>
-                <select class="form-select" id="tipo-usuario" required>
-                    <option selected disabled>Selecione</option>
-                    <option value="Administrador">Administrador</option>
-                    <option value="Usuário Comum">Usuário Comum</option>
+                <select th:field="*{tpUsuario}" class="form-select" id="tipo-usuario" required>
+                    <option value="" selected>Selecione</option>
+                    <option th:each="tpUsuario : ${tipoUsuarios}" th:value="${tpUsuario.id}" th:text="${tpUsuario.descricao}"></option>
                 </select>
                 <span class="error-message" id="tipo-usuario-error">Selecione o tipo de Usuário.</span>
             </div>
-            <div class="col-md-4">
+
+            <div class="col-md-4" id="vinculoDiv" style="display: none; position: relative">
                 <label for="vinculo" class="form-label">Vínculo</label>
                 <input type="text" class="form-control" id="vinculo" placeholder="Preencha o vínculo" required>
+                <input type="hidden" id="vinculoId" name="vinculoId">
                 <span class="error-message" id="vinculo-error">Vínculo é obrigatório.</span>
+
+                <ul id="resultadoBusca" class="list-group" style="display: none; position: absolute; z-index: 1000; width: 100%;"></ul>
             </div>
         </div>
 
-        <!-- Switch Ativo -->
         <div class="form-check form-switch mb-4 mt-3">
             <div class="row">
                 <div class="col-md-2">
                     <label class="form-check-label" for="ativo">Ativo</label>
-                    <input type="checkbox" id="ativo" class="form-check-input custom-switch" checked>
+                    <input th:field="*{stAtivo}" type="checkbox" id="ativo" class="form-check-input custom-switch" checked>
                 </div>
             </div>
         </div>
@@ -93,7 +100,6 @@
     </form>
 </div>
 
-<!-- Modal de Confirmação -->
 <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

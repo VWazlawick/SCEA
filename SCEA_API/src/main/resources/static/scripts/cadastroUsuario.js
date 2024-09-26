@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-document.getElementById('saveButton').addEventListener('click', function () {
+function validateForm(){
     let isValid = true;
 
     // Validação do Nome de Usuário
@@ -87,52 +87,120 @@ document.getElementById('saveButton').addEventListener('click', function () {
         vinculoError.style.display = 'none';
     }
 
-    if (isValid) {
-        // Lógica para salvar o cadastro
-        alert('Cadastro realizado com sucesso!');
+    return isValid;
+}
+document.getElementById('saveButton').addEventListener('click', function() {
+    if (validateForm()) {
+        showModal("salvar");
     }
 });
 
-let actionToConfirm = ''; // Variável para controlar a ação que será confirmada
+// Função para exibir o modal de confirmação
+function showModal(action) {
+    var modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+    modal.show();
 
-// Função para abrir o modal de confirmação
-function openConfirmationModal(action) {
-    actionToConfirm = action;
-    const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
-    confirmModal.show();
+    document.getElementById('confirmYes').onclick = function() {
+        modal.hide();
+        if (action === "salvar") {
+            showProgressBar();
+
+            document.getElementById('cadastroUsuarioForm').submit();
+        }
+    };
 }
 
-// Eventos dos botões
-document.getElementById('saveButton').addEventListener('click', function () {
-    openConfirmationModal('salvar');
+// Função de feedback visual no envio
+function showProgressBar() {
+    const progressBar = document.getElementById('progress-bar');
+    const progressContainer = document.getElementById('progress-container');
+    const successMessage = document.getElementById('success-message');
+
+    progressContainer.style.display = 'block';
+    progressBar.style.width = '100%';
+
+    setTimeout(function() {
+        progressContainer.style.display = 'none';
+        successMessage.style.display = 'block';
+    }, 2000);
+}
+
+// Limpar todos os campos
+document.getElementById('clearButton').addEventListener('click', function() {
+    document.getElementById('cadastroForm').reset();
+    document.querySelectorAll('.is-valid, .is-invalid').forEach(field => field.classList.remove('is-valid', 'is-invalid'));
 });
 
-document.getElementById('sairButton').addEventListener('click', function () {
-    openConfirmationModal('sair');
+document.getElementById('tipo-usuario').addEventListener('blur', exibirVinculo);
+
+document.getElementById('vinculo').addEventListener('input', function (){
+    const nome = this.value;
+    buscarPorNome(nome);
 });
 
-document.getElementById('excluirButton').addEventListener('click', function () {
-    openConfirmationModal('excluir');
-});
+function exibirVinculo(){
+    var tpUsuario = parseInt(document.getElementById('tipo-usuario').value);
+    var vinculoDiv = document.getElementById('vinculoDiv');
+    var vinculoInput = document.getElementById('vinculo');
+    var vinculoLabel = document.querySelector('label[for="vinculo"]');
 
-document.getElementById('clearButton').addEventListener('click', function () {
-    // Lógica para limpar o formulário
-    document.getElementById('cadastroForm').reset(); // Limpa todos os campos do formulário
-});
-
-// Evento de confirmação do modal
-document.getElementById('confirmYes').addEventListener('click', function () {
-    if (actionToConfirm === 'salvar') {
-        // Lógica para salvar o cadastro
-        console.log('Cadastro salvo com sucesso!');
-        // Aqui você pode chamar a função de salvar do formulário
-    } else if (actionToConfirm === 'sair') {
-        // Lógica para sair da página ou do formulário
-        window.location.href = 'pagina_de_saida.html'; // Redireciona para uma página de saída, por exemplo
-    } else if (actionToConfirm === 'excluir') {
-        // Lógica para excluir o cadastro
-        console.log('Cadastro excluído com sucesso!');
-        // Aqui você pode chamar a função de exclusão
+    if(tpUsuario === 1){
+        vinculoDiv.style.display = 'none';
+        vinculoInput.removeAttribute("th:field");
+    }else if(tpUsuario === 2){
+        vinculoDiv.style.display = 'block';
+        vinculoInput.setAttribute("th:field", "*{professor}")
+        vinculoInput.placeholder = "Preencha o nome do profissional"
+        vinculoLabel.textContent = "Profissional"
+    }else if(tpUsuario === 3){
+        vinculoDiv.style.display = 'block';
+        vinculoInput.setAttribute("th:field", "*{aluno}");
+        vinculoInput.placeholder = "Preencha o nome do aluno"
+        vinculoLabel.textContent = "Aluno"
     }
-});
+}
+
+function buscarPorNome(nome){
+    var tpUsuario = parseInt(document.getElementById('tipo-usuario').value);
+
+    if(nome.length<3){
+        document.getElementById('resultadoBusca').style.display = 'none';
+        return
+    }
+
+    const url = tpUsuario === 2 ?
+        `/profissional/buscarNome?nome=${encodeURIComponent(nome)}` :
+        `/aluno/buscarNome?nome=${encodeURIComponent(nome)}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const resultadoBusca = document.getElementById('resultadoBusca');
+
+            resultadoBusca.innerHTML = '';
+
+            if(data.length>0){
+                resultadoBusca.style.display = 'block';
+                data.forEach(item =>{
+                    const li = document.createElement('li');
+
+                    li.innerText = item.nome;
+                    li.classList.add('list-group-item');
+                    li.classList.add('list-group-item-action');
+                    li.style.cursor = 'pointer';
+
+                    li.onclick = function (){
+                        document.getElementById('vinculo').value = item.nome;
+                        document.getElementById('vinculoId').value = item.id;
+                        resultadoBusca.style.display = 'none'
+                    };
+                    resultadoBusca.appendChild(li);
+                });
+            }else{
+                resultadoBusca.style.display = 'none';
+            }
+        }).catch(error =>{
+            console.error('Erro ao buscar: ', error)
+    })
+}
 

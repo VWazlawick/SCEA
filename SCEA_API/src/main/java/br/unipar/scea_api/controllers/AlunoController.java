@@ -102,4 +102,10 @@ public class AlunoController {
         Estado estado = cidade.getEstado();
         return estado.getId();
     }
+
+    @GetMapping("/buscarNome")
+    @ResponseBody
+    public List<Aluno> findByNome(@RequestParam String nome){
+        return alunoService.findByNome(nome);
+    }
 }

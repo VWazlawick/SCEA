@@ -1,16 +1,16 @@
 package br.unipar.scea_api.controllers;
 
+import br.unipar.scea_api.models.Empresa;
 import br.unipar.scea_api.models.Profissional;
+import br.unipar.scea_api.services.EmpresaService;
 import br.unipar.scea_api.services.ProfissionalService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Tag(name = "Profissional")
@@ -20,6 +20,9 @@ public class ProfissionalController {
 
     @Autowired
     private ProfissionalService profissionalService;
+
+    @Autowired
+    private EmpresaService empresaService;
 
 
     @PostMapping
@@ -38,9 +41,20 @@ public class ProfissionalController {
     @GetMapping("/cadastrar")
     public String novoCadastro(ModelMap model){
         Profissional profissional = new Profissional();
+        List<Empresa> empresas = empresaService.findAll();
+
+        if(empresas==null){
+            empresas = new ArrayList<>();
+        }
+
         model.addAttribute("profissional", profissional);
+        model.addAttribute("empresas", empresas);
         return "/profissional/cadastro";
     }
 
-
+    @GetMapping("/buscarNome")
+    @ResponseBody
+    public List<Profissional> findByNome(@RequestParam String nome){
+            return profissionalService.findByNome(nome);
+    }
 }

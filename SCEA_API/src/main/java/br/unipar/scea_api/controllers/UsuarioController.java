@@ -1,7 +1,10 @@
 package br.unipar.scea_api.controllers;
 
+import br.unipar.scea_api.models.Profissional;
 import br.unipar.scea_api.models.TipoUsuario;
 import br.unipar.scea_api.models.Usuario;
+import br.unipar.scea_api.services.AlunoService;
+import br.unipar.scea_api.services.ProfissionalService;
 import br.unipar.scea_api.services.TipoUsuarioService;
 import br.unipar.scea_api.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,12 @@ public class UsuarioController {
     @Autowired
     private TipoUsuarioService tipoUsuarioService;
 
+    @Autowired
+    private ProfissionalService profissionalService;
+
+    @Autowired
+    private AlunoService alunoService;
+
     @PostMapping
     public String insert(@ModelAttribute Usuario usuario){
         usuarioService.insert(usuario);
@@ -43,12 +52,17 @@ public class UsuarioController {
     public String cadastrar(ModelMap model) {
         Usuario usuario = new Usuario();
         List<TipoUsuario> tipoUsuarios = tipoUsuarioService.findAll();
+        List<Profissional> profissionais = profissionalService.findAll();
         if(tipoUsuarios==null){
-            tipoUsuarios = new ArrayList<TipoUsuario>();
+            tipoUsuarios = new ArrayList<>();
+        }
+        if(profissionais==null){
+            profissionais = new ArrayList<>();
         }
 
         model.addAttribute("usuario", usuario);
         model.addAttribute("tipoUsuarios", tipoUsuarios);
+        model.addAttribute("profissionais", profissionais);
 
         return "usuario/cadastro";
     }

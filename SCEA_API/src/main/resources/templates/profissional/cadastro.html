@@ -35,8 +35,9 @@
             </div>
             <div class="col-md-4">
                 <label for="empresa" class="form-label">Empresa</label>
-                <select id="empresa" class="form-control" required>
-                    <option value="">Selecione uma empresa</option>
+                <select th:field="*{empresa}" id="empresa" class="form-control" required>
+                    <option value="" selected>Selecione</option>
+                    <option th:each="empresa : ${empresas}" th:value="${empresa.id}" th:text="${empresa.nomeFantasia}"></option>
                 </select>
                 <span class="error-message" id="empresa-error">O campo Empresa é obrigatório.</span>
             </div>

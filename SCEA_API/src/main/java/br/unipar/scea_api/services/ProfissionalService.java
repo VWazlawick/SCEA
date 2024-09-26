@@ -52,4 +52,8 @@ public class ProfissionalService {
     public List<Profissional> findAll(){
         return profissionalRepository.findAll();
     }
+
+    public List<Profissional> findByNome(String nome){
+        return profissionalRepository.findByNomeContainingIgnoreCase(nome);
+    }
 }

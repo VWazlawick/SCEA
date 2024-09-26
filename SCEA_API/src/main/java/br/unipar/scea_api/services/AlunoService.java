@@ -65,4 +65,8 @@ public class AlunoService {
     public List<Aluno> findAll(){
         return alunoRepository.findAll();
     }
+
+    public List<Aluno> findByNome(String nome){
+        return alunoRepository.findByNomeContainingIgnoreCase(nome);
+    }
 }

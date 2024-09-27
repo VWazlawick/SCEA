@@ -5,66 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Tipo de Pergunta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/styles/cadastro.css" rel="stylesheet">
+    <link href="styles/cadastro.css" rel="stylesheet">
+    
+    <!-- Adicionar o CSS do Choices.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
 </head>
 <body>
 
 <div class="form-container animate__animated animate__fadeInUp">
+    <!-- Header with icons -->
     <div class="d-flex justify-content-start mb-3 header-buttons">
-        <img src="/images/sair.png" alt="Sair" id="sairButton" data-bs-toggle="tooltip" title="Sair">
-        <img src="/images/salvar.png" alt="Salvar" id="saveButton" data-bs-toggle="tooltip" title="Salvar">
-        <img src="/images/excluir.png" alt="Excluir" id="excluirButton" data-bs-toggle="tooltip" title="Excluir">
+        <img src="images/sair.png" alt="Sair" id="sairButton" data-bs-toggle="tooltip" title="Sair">
+        <img src="images/salvar.png" alt="Salvar" id="saveButton" data-bs-toggle="tooltip" title="Salvar">
+        <img src="images/excluir.png" alt="Excluir" id="excluirButton" data-bs-toggle="tooltip" title="Excluir">
     </div>
 
+    <!-- Tipo de Pergunta Section -->
     <div class="form-section-heading">Cadastro Tipo de Pergunta</div>
-    <form th:object="${tipoPergunta}" th:action="@{/tipoServico/cadastrar}" method="post" id="tipoPerguntaForm">
+    <form id="tipoPerguntaForm">
         <div class="row">
             <div class="col-md-2">
                 <label for="id" class="form-label">ID</label>
-                <input th:field="*{id}" type="text" class="form-control" id="id" aria-label="ID" disabled>
+                <input type="text" class="form-control" id="id" aria-label="ID" readonly>
             </div>
             <div class="col-md-4">
                 <label for="descricao" class="form-label">Descrição do Tipo da Pergunta</label>
-                <input th:field="*{descricao}" type="text" class="form-control" id="descricao" required>
+                <input type="text" class="form-control" id="descricao" required>
             </div>
             <div class="col-md-4">
                 <label for="tipo-pergunta" class="form-label">Tipo da Pergunta</label>
-                <select th:field="*{estiloTpPergunta}" class="form-select" id="tipo-pergunta" required>
-                    <option selected value="">Selecione</option>
+                <select class="form-select" id="tipo-pergunta" required>
+                    <option selected disabled>Selecione</option>
                     <option value="Texto">Texto</option>
                     <option value="Múltipla Escolha">Múltipla Escolha</option>
                     <option value="Escala">Escala</option>
+                    <option value="Data">Data</option>
+                    <option value="Número">Número</option>
+                    <option value="Dropdown">Dropdown</option>
+                    <option value="Checkbox">Checkbox</option>
+                    <option value="Radio">Radio</option>
                 </select>
             </div>
         </div>
+
         <div class="row mt-3 opcoes-section">
             <div class="col-md-6">
-                <label for="opcoes" class="form-label">Opções</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" id="opcoes" placeholder="Adicionar opção">
-                    <button type="button" class="btn btn-custom-roxo" id="addOption">Adicionar Opções</button>
-                </div>
-                <ul class="list-group mt-2" id="optionsList">
-                </ul>
+                <label for="opcoesDropdown" class="form-label">Opções</label>
+                <select id="opcoesDropdown" class="form-select" multiple>
+                    <!-- As opções serão adicionadas dinamicamente aqui -->
+                </select>
             </div>
         </div>
 
+        <div class="row mt-2">
+            <div class="col-md-6 d-flex justify-content-center">
+                <button type="button" class="btn btn-custom-roxo btn-sm" id="addOption">Adicionar Opção</button>
+            </div>
+        </div>
+
+        <!-- Switch Ativo -->
         <div class="form-check form-switch mb-4 mt-3">
             <div class="row">
                 <div class="col-md-2">
                     <label class="form-check-label" for="ativo">Ativo</label>
-                    <input th:field="*{stAtivo}" type="checkbox" id="ativo" class="form-check-input custom-switch" checked>
+                    <input type="checkbox" id="ativo" class="form-check-input custom-switch" checked>
                 </div>
             </div>
         </div>
-
-        <div id="progress-container">
-            <div class="progress-bar" id="progress-bar"></div>
-            </div>
-        <div id="success-message">Formulário enviado com sucesso!</div>
     </form>
 </div>
 
+<!-- Modal de Confirmação -->
 <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -83,7 +94,31 @@
     </div>
 </div>
 
+<!-- Modal para adicionar opção -->
+<div class="modal fade" id="addOptionModal" tabindex="-1" aria-labelledby="addOptionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addOptionModalLabel">Adicionar Nova Opção</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="newOptionDescription" class="form-label">Descrição da Opção</label>
+                    <input type="text" id="newOptionDescription" class="form-control" placeholder="Digite a descrição da nova opção">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="confirmAddOption">Adicionar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Adicionar o JS do Choices.js -->
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 <script src="scripts/cadastroTipoPergunta.js"></script>
 </body>
 </html>

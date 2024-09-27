@@ -1,50 +1,44 @@
-// Habilita o tooltip do Bootstrap
 document.addEventListener('DOMContentLoaded', function () {
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
+    // Inicializa o componente Choices.js no dropdown
+    const choices = new Choices('#opcoesDropdown', {
+        removeItemButton: true,  
+        searchEnabled: false,    
+        shouldSort: false,       
+        placeholder: true,
+        placeholderValue: 'Selecione uma ou mais opções',
+        noResultsText: 'Nenhuma opção encontrada',
+        noChoicesText: 'Sem opções disponíveis',
+        itemSelectText: 'Pressione para selecionar' // Texto traduzido para português
+    });
+
+    // Função para abrir o modal de adicionar opções
+    document.getElementById('addOption').addEventListener('click', function () {
+        const addOptionModal = new bootstrap.Modal(document.getElementById('addOptionModal'));
+        addOptionModal.show();
+    });
+
+    // Função para adicionar nova opção ao dropdown
+    document.getElementById('confirmAddOption').addEventListener('click', function () {
+        const newOptionDescription = document.getElementById('newOptionDescription').value.trim();
+        
+        if (newOptionDescription !== '') {
+            // Adicionar nova opção ao Choices.js
+            choices.setChoices([{ value: newOptionDescription, label: newOptionDescription, selected: false }]);
+            
+            // Limpar campo de entrada do modal
+            document.getElementById('newOptionDescription').value = '';
+
+            // Fechar o modal após adicionar
+            const addOptionModal = bootstrap.Modal.getInstance(document.getElementById('addOptionModal'));
+            addOptionModal.hide();
+        } else {
+            alert('Por favor, insira a descrição da opção.');
+        }
     });
 });
 
-document.getElementById('tipo-pergunta').addEventListener('change', function () {
-    const tipoSelecionado = this.value;
-    const opcoesSection = document.querySelector('.opcoes-section');
-
-    // Regras para ocultar ou exibir a seção de opções
-    if (['Escala', 'Texto', 'Data', 'Número', 'Arquivo', 'Hora', 'E-mail', 'URL'].includes(tipoSelecionado)) {
-        opcoesSection.style.display = 'none';
-    } else {
-        opcoesSection.style.display = 'block';
-    }
-});
-
-
-// Adicionar opções à lista
-document.getElementById('addOption').addEventListener('click', function () {
-    const optionsInput = document.getElementById('opcoes');
-    const optionsList = document.getElementById('optionsList');
-
-    if (optionsInput.value.trim() !== '') {
-        // Criar um novo item de lista
-        const li = document.createElement('li');
-        li.textContent = optionsInput.value;
-
-        // Adicionar botão de remoção
-        const removeButton = document.createElement('button');
-        removeButton.innerHTML = '&times;';
-        removeButton.addEventListener('click', function () {
-            optionsList.removeChild(li);
-        });
-
-        li.appendChild(removeButton);
-        optionsList.appendChild(li);
-
-        // Limpar o campo de entrada
-        optionsInput.value = '';
-    }
-});
-
-let actionToConfirm = ''; // Variável para controlar a ação que será confirmada
+// Variável para controlar a ação a ser confirmada
+let actionToConfirm = '';
 
 // Função para abrir o modal de confirmação
 function openConfirmationModal(action) {
@@ -66,23 +60,13 @@ document.getElementById('excluirButton').addEventListener('click', function () {
     openConfirmationModal('excluir');
 });
 
-document.getElementById('clearButton').addEventListener('click', function () {
-    // Lógica para limpar o formulário
-    document.getElementById('cadastroForm').reset(); // Limpa todos os campos do formulário
-});
-
 // Evento de confirmação do modal
 document.getElementById('confirmYes').addEventListener('click', function () {
     if (actionToConfirm === 'salvar') {
-        // Lógica para salvar o cadastro
         console.log('Cadastro salvo com sucesso!');
-        // Aqui você pode chamar a função de salvar do formulário
     } else if (actionToConfirm === 'sair') {
-        // Lógica para sair da página ou do formulário
-        window.location.href = 'pagina_de_saida.html'; // Redireciona para uma página de saída, por exemplo
+        window.location.href = 'pagina_de_saida.html';
     } else if (actionToConfirm === 'excluir') {
-        // Lógica para excluir o cadastro
         console.log('Cadastro excluído com sucesso!');
-        // Aqui você pode chamar a função de exclusão
     }
 });

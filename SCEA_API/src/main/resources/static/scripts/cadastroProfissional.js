@@ -2,7 +2,6 @@ IMask(document.getElementById('cpf'), { mask: '000.000.000-00' });
 IMask(document.getElementById('telefone'), { mask: '(00) 00000-0000' });
 IMask(document.getElementById('rg'), { mask: '00.000.000-0' });
 
-// Habilita o tooltip do Bootstrap
 document.addEventListener('DOMContentLoaded', function () {
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -13,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
 function validateForm() {
     let isValid = true;
 
-    // Validação do Nome Completo
     const nome = document.getElementById('nome');
     const nomeError = document.getElementById('nome-error');
     if (nome.value.trim() === '') {
@@ -27,7 +25,6 @@ function validateForm() {
         nomeError.style.display = 'none';
     }
 
-    // Validação da Empresa
     const empresa = document.getElementById('empresa');
     const empresaError = document.getElementById('empresa-error');
     if (empresa.value === '') {
@@ -41,7 +38,6 @@ function validateForm() {
         empresaError.style.display = 'none';
     }
 
-    // Validação de CPF
     const cpf = document.getElementById('cpf');
     const cpfError = document.getElementById('cpf-error');
     const cpfPattern = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
@@ -56,7 +52,6 @@ function validateForm() {
         cpfError.style.display = 'none';
     }
 
-    // Validação de RG
     const rg = document.getElementById('rg');
     const rgError = document.getElementById('rg-error');
     const rgPattern = /^\d{2}\.\d{3}\.\d{3}-\d{1}$/;
@@ -71,7 +66,6 @@ function validateForm() {
         rgError.style.display = 'none';
     }
 
-    // Validação de Telefone
     const telefone = document.getElementById('telefone');
     const telefoneError = document.getElementById('telefone-error');
     const telefonePattern = /^\(\d{2}\) \d{4,5}-\d{4}$/;
@@ -89,14 +83,12 @@ function validateForm() {
     return isValid;
 }
 
-// Mostrar modal ao clicar em Salvar
 document.getElementById('saveButton').addEventListener('click', function() {
     if (validateForm()) {
         showModal("salvar");
     }
 });
 
-// Função para exibir o modal de confirmação
 function showModal(action) {
     var modal = new bootstrap.Modal(document.getElementById('confirmModal'));
     modal.show();
@@ -110,7 +102,6 @@ function showModal(action) {
     };
 }
 
-// Função de feedback visual no envio
 function showProgressBar() {
     const progressBar = document.getElementById('progress-bar');
     const progressContainer = document.getElementById('progress-container');
@@ -125,18 +116,15 @@ function showProgressBar() {
     }, 2000);
 }
 
-// Função para limpar os campos do formulário
 document.getElementById('clearButton').addEventListener('click', function() {
     const form = document.getElementById('cadastroProfissionalForm');
-    form.reset();  // Limpa todos os campos do formulário
-    // Remove as classes de validação
+    form.reset();
     const inputs = form.querySelectorAll('input, select');
     inputs.forEach(input => {
         input.classList.remove('is-invalid');
         input.classList.remove('is-valid');
     });
 
-    // Oculta todas as mensagens de erro
     const errorMessages = document.querySelectorAll('.error-message');
     errorMessages.forEach(error => {
         error.style.display = 'none';

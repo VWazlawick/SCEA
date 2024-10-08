@@ -18,12 +18,4 @@ public class OpcaoPergunta extends DefaultModel{
     @Column(nullable = false)
     private String descricao;
 
-    @NotBlank
-    @Column(nullable = false)
-    private int escalaMin;
-
-    @NotBlank
-    @Column(nullable = false)
-    private int escalaMax;
-
 }

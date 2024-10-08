@@ -1,4 +1,3 @@
-// Habilita o tooltip do Bootstrap
 document.addEventListener('DOMContentLoaded', function () {
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -9,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
 function validateForm(){
     let isValid = true;
 
-    // Validação do Nome de Usuário
     const nomeUsuario = document.getElementById('nome-usuario');
     const nomeError = document.getElementById('nome-error');
     if (nomeUsuario.value.trim() === '') {
@@ -22,7 +20,6 @@ function validateForm(){
         nomeError.style.display = 'none';
     }
 
-    // Validação do Email
     const email = document.getElementById('email');
     const emailError = document.getElementById('email-error');
     if (email.value.trim() === '') {
@@ -35,7 +32,6 @@ function validateForm(){
         emailError.style.display = 'none';
     }
 
-    // Validação da Senha
     const senha = document.getElementById('senha');
     const senhaError = document.getElementById('senha-error');
     if (senha.value.trim() === '') {
@@ -48,7 +44,6 @@ function validateForm(){
         senhaError.style.display = 'none';
     }
 
-    // Validação da Repetir Senha
     const repetirSenha = document.getElementById('repetir-senha');
     const repetirSenhaError = document.getElementById('repetir-senha-error');
     if (repetirSenha.value.trim() === '' || repetirSenha.value !== senha.value) {
@@ -61,7 +56,6 @@ function validateForm(){
         repetirSenhaError.style.display = 'none';
     }
 
-    // Validação do Tipo de Usuário
     const tipoUsuario = document.getElementById('tipo-usuario');
     const tipoUsuarioError = document.getElementById('tipo-usuario-error');
     if (tipoUsuario.value === 'Selecione') {
@@ -74,7 +68,6 @@ function validateForm(){
         tipoUsuarioError.style.display = 'none';
     }
 
-    // Validação do Vínculo
     const vinculo = document.getElementById('vinculo');
     const vinculoError = document.getElementById('vinculo-error');
     if (vinculo.value === 'Selecione') {
@@ -95,7 +88,6 @@ document.getElementById('saveButton').addEventListener('click', function() {
     }
 });
 
-// Função para exibir o modal de confirmação
 function showModal(action) {
     var modal = new bootstrap.Modal(document.getElementById('confirmModal'));
     modal.show();
@@ -110,7 +102,6 @@ function showModal(action) {
     };
 }
 
-// Função de feedback visual no envio
 function showProgressBar() {
     const progressBar = document.getElementById('progress-bar');
     const progressContainer = document.getElementById('progress-container');
@@ -125,7 +116,6 @@ function showProgressBar() {
     }, 2000);
 }
 
-// Limpar todos os campos
 document.getElementById('clearButton').addEventListener('click', function() {
     document.getElementById('cadastroForm').reset();
     document.querySelectorAll('.is-valid, .is-invalid').forEach(field => field.classList.remove('is-valid', 'is-invalid'));

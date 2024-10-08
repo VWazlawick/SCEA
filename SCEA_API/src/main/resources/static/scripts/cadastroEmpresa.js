@@ -3,7 +3,6 @@ IMask(document.getElementById('cnpj'), { mask: '00.000.000/0000-00'});
 function validateForm() {
     let isValid = true;
 
-    // Validação do Nome da Empresa
     const nomeEmpresa = document.getElementById('razaoSocial');
     if (nomeEmpresa.value.trim() === '') {
         nomeEmpresa.classList.add('is-invalid');
@@ -15,7 +14,6 @@ function validateForm() {
         document.getElementById('nome-empresa-error').style.display = 'none';
     }
 
-    // Validação do CNPJ
     const cnpj = document.getElementById('cnpj');
     const cnpjPattern = /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/;
     if (!cnpjPattern.test(cnpj.value)) {
@@ -31,14 +29,12 @@ function validateForm() {
     return isValid;
 }
 
-// Mostrar modal ao clicar em Salvar
 document.getElementById('saveButton').addEventListener('click', function() {
     if (validateForm()) {
         showModal("salvar");
     }
 });
 
-// Função para exibir o modal de confirmação
 function showModal(action) {
     var modal = new bootstrap.Modal(document.getElementById('confirmModal'));
     modal.show();
@@ -53,7 +49,7 @@ function showModal(action) {
     };
 }
 
-// Função de feedback visual no envio
+
 function showProgressBar() {
     const progressBar = document.getElementById('progress-bar');
     const progressContainer = document.getElementById('progress-container');
@@ -68,7 +64,6 @@ function showProgressBar() {
     }, 2000);
 }
 
-// Limpar todos os campos
 document.getElementById('clearButton').addEventListener('click', function() {
     document.getElementById('cadastroForm').reset();
     document.querySelectorAll('.is-valid, .is-invalid').forEach(field => field.classList.remove('is-valid', 'is-invalid'));

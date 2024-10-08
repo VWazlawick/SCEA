@@ -1,5 +1,6 @@
 package br.unipar.scea_api.services;
 
+import br.unipar.scea_api.models.OpcaoPergunta;
 import br.unipar.scea_api.models.SubGrupo;
 import br.unipar.scea_api.models.TipoPergunta;
 import br.unipar.scea_api.repositories.SubGrupoRepository;
@@ -16,7 +17,13 @@ public class TipoPerguntaService {
     @Autowired
     private TipoPerguntaRepository tipoPerguntaRepository;
 
-    public TipoPergunta insert(TipoPergunta tipoPergunta){
+    @Autowired
+    private OpcaoPerguntaService opcaoPerguntaService;
+
+    public TipoPergunta insert(TipoPergunta tipoPergunta, List<Long> opcoesPerguntaIds){
+        List<OpcaoPergunta> opcoes = opcaoPerguntaService.findAllByIds(opcoesPerguntaIds);
+        tipoPergunta.setOpcoes(opcoes);
+
         return tipoPerguntaRepository.save(tipoPergunta);
     }
 

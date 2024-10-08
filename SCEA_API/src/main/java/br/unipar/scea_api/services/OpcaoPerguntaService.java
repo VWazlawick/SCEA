@@ -43,4 +43,8 @@ public class OpcaoPerguntaService {
     public List<OpcaoPergunta> findAll(){
         return opcaoPerguntaRepository.findAll();
     }
+
+    public List<OpcaoPergunta> findAllByIds(List<Long> opcoes){
+        return opcaoPerguntaRepository.findAllById(opcoes);
+    }
 }

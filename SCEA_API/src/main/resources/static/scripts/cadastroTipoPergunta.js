@@ -1,3 +1,69 @@
+function validateForm(){
+    let isValid = true;
+
+    const descricao = document.getElementById("descricao");
+    const descricaoError = document.getElementById("descricao-error")
+
+    if (descricao.value.trim() === '') {
+        descricao.classList.add('is-invalid');
+        descricaoError.textContent = 'O campo Nome é obrigatório.';
+        descricaoError.style.display = 'block';
+        isValid = false;
+    } else {
+        descricao.classList.remove('is-invalid');
+        descricao.classList.add('is-valid');
+        descricaoError.style.display = 'none';
+    }
+
+    const estiloPergunta = document.getElementById("tipo-pergunta");
+
+    if (estiloPergunta.value.trim() === '') {
+        estiloPergunta.classList.add('is-invalid');
+        isValid = false;
+    } else {
+        estiloPergunta.classList.remove('is-invalid');
+        estiloPergunta.classList.add('is-valid');
+    }
+
+    return isValid;
+}
+
+document.getElementById('saveButton').addEventListener('click', function() {
+    if (validateForm()) {
+        showModal("salvar");
+    }
+});
+
+
+function showModal(action) {
+    var modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+    modal.show();
+
+    document.getElementById('confirmYes').onclick = function() {
+        modal.hide();
+        if (action === "salvar") {
+            showProgressBar();
+
+            document.getElementById('tipoPerguntaForm').submit();
+        }
+    };
+}
+
+function showProgressBar() {
+    const progressBar = document.getElementById('progress-bar');
+    const progressContainer = document.getElementById('progress-container');
+    const successMessage = document.getElementById('success-message');
+
+    progressContainer.style.display = 'block';
+    progressBar.style.width = '100%';
+
+    setTimeout(function() {
+        progressContainer.style.display = 'none';
+        successMessage.style.display = 'block';
+    }, 2000);
+};
+
+
 document.addEventListener('DOMContentLoaded', function () {
     // Inicializa o componente Choices.js no dropdown
     const choices = new Choices('#opcoesDropdown', {
@@ -8,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
         placeholderValue: 'Selecione uma ou mais opções',
         noResultsText: 'Nenhuma opção encontrada',
         noChoicesText: 'Sem opções disponíveis',
-        itemSelectText: 'Pressione para selecionar' // Texto traduzido para português
+        itemSelectText: 'Pressione para selecionar'
     });
 
     // Função para abrir o modal de adicionar opções
@@ -22,7 +88,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const newOptionDescription = document.getElementById('newOptionDescription').value.trim();
         
         if (newOptionDescription !== '') {
-            // Adicionar nova opção ao Choices.js
+            document.getElementById('newOptionDescription').value = newOptionDescription;
+
+            document.querySelector('#addOptionModal form').submit();
+
             choices.setChoices([{ value: newOptionDescription, label: newOptionDescription, selected: false }]);
             
             // Limpar campo de entrada do modal
@@ -37,36 +106,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Variável para controlar a ação a ser confirmada
-let actionToConfirm = '';
 
-// Função para abrir o modal de confirmação
-function openConfirmationModal(action) {
-    actionToConfirm = action;
-    const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
-    confirmModal.show();
-}
 
-// Eventos dos botões
-document.getElementById('saveButton').addEventListener('click', function () {
-    openConfirmationModal('salvar');
-});
-
-document.getElementById('sairButton').addEventListener('click', function () {
-    openConfirmationModal('sair');
-});
-
-document.getElementById('excluirButton').addEventListener('click', function () {
-    openConfirmationModal('excluir');
-});
-
-// Evento de confirmação do modal
-document.getElementById('confirmYes').addEventListener('click', function () {
-    if (actionToConfirm === 'salvar') {
-        console.log('Cadastro salvo com sucesso!');
-    } else if (actionToConfirm === 'sair') {
-        window.location.href = 'pagina_de_saida.html';
-    } else if (actionToConfirm === 'excluir') {
-        console.log('Cadastro excluído com sucesso!');
-    }
-});

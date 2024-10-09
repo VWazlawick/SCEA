@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Perguntas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="styles/cadastro.css" rel="stylesheet"> <!-- Reutilizando o CSS existente -->
+    <link href="styles/cadastro.css" rel="stylesheet">
 </head>
 <body>
 
@@ -25,12 +25,12 @@
             <div class="col-md-2">
                 <label for="id" class="form-label">ID</label>
                 <input type="text" class="form-control" id="id" aria-label="ID da Pergunta" readonly>
-                <span class="error-message" id="id-error">ID é obrigatório.</span>
+                <span class="error-message" id="id-error" style="display: none; color: red;">ID é obrigatório.</span>
             </div>
             <div class="col-md-6">
                 <label for="descricao-pergunta" class="form-label">Descrição da Pergunta</label>
                 <input type="text" class="form-control" id="descricao-pergunta" placeholder="Digite a descrição da pergunta">
-                <span class="error-message" id="descricao-pergunta-error">Descrição é obrigatória.</span>
+                <span class="error-message" id="descricao-pergunta-error" style="display: none; color: red;">Descrição é obrigatória.</span>
             </div>
         </div>
 
@@ -42,18 +42,72 @@
                         <option selected>Selecione</option>
                         <option value="Escala">Escala</option>
                         <option value="Outra">Outra</option>
-                        <!-- Adicione outros tipos aqui -->
                     </select>
                 </div>
-                <span class="error-message" id="tipo-pergunta-error">Selecione um tipo de pergunta.</span>
+                <span class="error-message" id="tipo-pergunta-error" style="display: none; color: red;">Selecione um tipo de pergunta.</span>
             </div>
             <div class="col-md-4">
                 <label for="sub-grupos" class="form-label">Sub Grupos</label>
                 <select class="form-select" id="sub-grupos">
                     <option selected>Selecione</option>
-                    <!-- Adicione as opções de subgrupos aqui -->
                 </select>
-                <span class="error-message" id="sub-grupos-error">Selecione um subgrupo.</span>
+                <span class="error-message" id="sub-grupos-error" style="display: none; color: red;">Selecione um subgrupo.</span>
+            </div>
+        </div>
+
+        <!-- Nova Listagem de Escalas com Checkboxes -->
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <label for="escala" class="form-label">Escalas</label>
+                <div id="lista-escalas">
+                    <!-- Exemplo de listagem com escalas -->
+                    <!-- Será preenchido dinamicamente com JavaScript -->
+                </div>
+                <span class="error-message" id="escala-error" style="display: none; color: red;">Selecione ao menos uma escala.</span>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-2 mt-3">
+                <button type="button" class="btn btn-custom-roxo btn-sm" id="addEscala">Adicionar Escala</button>
+            </div>
+        </div>
+
+        <!-- Modal para adicionar escala -->
+        <div class="modal fade" id="addOptionModal" tabindex="-1" aria-labelledby="addOptionModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addOptionModalLabel">Adicionar Nova Escala</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="newOptionDescription" class="form-label">Descrição da Escala</label>
+                            <input type="text" id="newOptionDescription" class="form-control" placeholder="Digite a descrição da escala">
+                            <span class="error-message" id="newOptionDescription-error" style="display: none; color: red;">A descrição da escala é obrigatória.</span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newOptionMin" class="form-label">Escala Mínima</label>
+                            <input type="number" id="newOptionMin" class="form-control" placeholder="Digite a escala mínima">
+                        </div>
+                        <div class="mb-3">
+                            <label for="newOptionMax" class="form-label">Escala Máxima</label>
+                            <input type="number" id="newOptionMax" class="form-control" placeholder="Digite a escala máxima">
+                        </div>
+                        <label for="limite-bom" class="form-label">Limite Bom</label>
+                        <select class="form-select" id="limite-bom">
+                            <option selected>Selecione</option>
+                            <option value="Mínimo">Escala Mínima</option>
+                            <option value="Máximo">Escala Mediana</option>
+                            <option value="Máximo">Escala Máxima</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" id="confirmAddOption">Adicionar</button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -63,7 +117,7 @@
                 <div class="col-md-4">
                     <label for="limite-maximo" class="form-label">Limite Máximo da Resposta</label>
                     <input type="number" class="form-control" id="limite-maximo" placeholder="Digite o limite máximo">
-                    <span class="error-message" id="limite-maximo-error">Por favor, insira um número válido.</span>
+                    <span class="error-message" id="limite-maximo-error" style="display: none; color: red;">Por favor, insira um número válido.</span>
                     <div class="form-check mt-2">
                         <input class="form-check-input" type="checkbox" id="limite-maximo-bom">
                         <label class="form-check-label" for="limite-maximo-bom">Limite Bom</label>
@@ -72,7 +126,7 @@
                 <div class="col-md-4">
                     <label for="limite-minimo" class="form-label">Limite Mínimo da Resposta</label>
                     <input type="number" class="form-control" id="limite-minimo" placeholder="Digite o limite mínimo">
-                    <span class="error-message" id="limite-minimo-error">Por favor, insira um número válido.</span>
+                    <span class="error-message" id="limite-minimo-error" style="display: none; color: red;">Por favor, insira um número válido.</span>
                     <div class="form-check mt-2">
                         <input class="form-check-input" type="checkbox" id="limite-minimo-bom">
                         <label class="form-check-label" for="limite-minimo-bom">Limite Bom</label>
@@ -93,7 +147,7 @@
     </form>
 </div>
 
-<!-- Modal de Confirmação -->
+<!-- Modal de Confirmação para Salvar, Excluir e Sair -->
 <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -112,8 +166,7 @@
     </div>
 </div>
 
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="scripts/cadastroPerguntas.js"></script> <!-- JavaScript específico para esta página -->
+<script src="scripts/cadastroPerguntas.js"></script>
 </body>
 </html>

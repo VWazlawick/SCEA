@@ -27,6 +27,8 @@ public class TipoPerguntaController {
     @Autowired
     private OpcaoPerguntaService opcaoPerguntaService;
 
+    private TipoPergunta tipoPergunta;
+
     @GetMapping
     public String findAll(ModelMap model){
         List<TipoPergunta> tiposPergunta = tipoPerguntaService.findAll();
@@ -41,13 +43,10 @@ public class TipoPerguntaController {
     }
 
     @GetMapping("/cadastrar")
-    public String novoCadastro(ModelMap model, HttpSession session){
+    public String novoCadastro(ModelMap model){
         TipoPergunta tipoPergunta = new TipoPergunta();
         OpcaoPergunta opcao = new OpcaoPergunta();
         List<OpcaoPergunta> opcoes = opcaoPerguntaService.findAll();
-
-        session.setAttribute("descricao", tipoPergunta.getDescricao());
-        session.setAttribute("tipo", tipoPergunta.getEstiloTpPergunta());
 
         if(opcoes==null){
             opcoes = new ArrayList<>();
@@ -61,12 +60,10 @@ public class TipoPerguntaController {
     }
 
     @PostMapping("/opcaoPergunta/cadastrar")
-    public String insertOpcao(@ModelAttribute OpcaoPergunta opcaoPergunta, HttpSession session){
+    public String insertOpcao(@ModelAttribute OpcaoPergunta opcaoPergunta, @RequestParam TipoPergunta tipoPergunta){
         opcaoPerguntaService.insert(opcaoPergunta);
 
-        TipoPergunta tp = new TipoPergunta();
-        tp.setDescricao((String) session.getAttribute("descricao"));
-        tp.setEstiloTpPergunta((String) session.getAttribute("estiloTipoPergunta"));
+        tipoPergunta.setDescricao(tipoPergunta.getDescricao());
 
         return "redirect:/tipoPergunta/cadastrar";
     }

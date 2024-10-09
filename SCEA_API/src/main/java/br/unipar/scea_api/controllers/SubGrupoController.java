@@ -32,7 +32,7 @@ public class SubGrupoController {
     @PostMapping
     public String insert(@ModelAttribute SubGrupo subGrupo){
         subGrupoService.insert(subGrupo);
-        return "redirect:/subGrupo";
+        return "redirect:/subgrupo";
     }
 
     @GetMapping("/cadastrar")

@@ -11,7 +11,7 @@
 
 <div class="form-container animate__animated animate__fadeInUp">
     <div class="d-flex justify-content-start mb-3 header-buttons">
-        <a th:href="@{/subGrupo}" data-bs-toggle="tooltip" title="Sair">
+        <a th:href="@{/subgrupo}" data-bs-toggle="tooltip" title="Sair">
             <img src="/images/sair.png" alt="Sair" id="sairButton">
         </a>
         <img src="/images/salvar.png" alt="Salvar" id="saveButton" data-bs-toggle="tooltip" title="Salvar">
@@ -20,7 +20,7 @@
     </div>
 
     <div class="form-section-heading">Cadastro Sub Grupo</div>
-    <form th:object="${subGrupo}" th:action="@{/subGrupo}" method="post" id="subGrupoForm">
+    <form th:object="${subGrupo}" th:action="@{/subgrupo}" method="post" id="subGrupoForm">
         <div class="row">
             <div class="col-md-2">
                 <label for="id" class="form-label">ID</label>
@@ -41,6 +41,12 @@
                 </div>
             </div>
         </div>
+
+        <div id="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div id="success-message">Formulário enviado com sucesso!</div>
+
     </form>
 </div>
 

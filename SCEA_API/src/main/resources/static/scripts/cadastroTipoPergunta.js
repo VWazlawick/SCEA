@@ -40,6 +40,10 @@ function showModal(action) {
     modal.show();
 
     document.getElementById('confirmYes').onclick = function() {
+        localStorage.setItem('descricao', '');
+        localStorage.setItem('estilo', '');
+
+
         modal.hide();
         if (action === "salvar") {
             showProgressBar();
@@ -77,8 +81,20 @@ document.addEventListener('DOMContentLoaded', function () {
         itemSelectText: 'Pressione para selecionar'
     });
 
-    // Função para abrir o modal de adicionar opções
     document.getElementById('addOption').addEventListener('click', function () {
+        const descricao = document.getElementById('descricao').value;
+        const estilo = document.getElementById('tipo-pergunta').value;
+        const opcoes = document.getElementById('opcoesDropdown');
+        const opcoesItens = Array.from(opcoes.selectedOptions).map(option => ({
+            id: option.value,
+            descricao: option.text
+        }));
+
+
+        localStorage.setItem('descricao', descricao);
+        localStorage.setItem('estilo', estilo);
+        localStorage.setItem('opcoes', JSON.stringify(opcoesItens));
+
         const addOptionModal = new bootstrap.Modal(document.getElementById('addOptionModal'));
         addOptionModal.show();
     });
@@ -86,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Função para adicionar nova opção ao dropdown
     document.getElementById('confirmAddOption').addEventListener('click', function () {
         const newOptionDescription = document.getElementById('newOptionDescription').value.trim();
-        
+
         if (newOptionDescription !== '') {
             document.getElementById('newOptionDescription').value = newOptionDescription;
 
@@ -105,6 +121,25 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded',function (){
+    const estilo = localStorage.getItem('estilo');
+    const descricao = localStorage.getItem('descricao');
+
+    document.getElementById('descricao').value = descricao;
+    document.getElementById('tipo-pergunta').value = estilo;
+
+    const opcoes = JSON.parse(localStorage.getItem('opcoes')) || [];
+    const lista = document.getElementById('opcoesDropdown');
+
+    opcoes.forEach(opcao =>{
+        const opcaoItem = Array.from(lista.options).find(option => option.value === String(opcao.id));
+        if(opcaoItem){
+            opcaoItem.selected = true;
+        }
+    })
+})
+
 
 
 

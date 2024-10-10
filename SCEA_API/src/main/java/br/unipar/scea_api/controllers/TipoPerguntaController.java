@@ -27,8 +27,6 @@ public class TipoPerguntaController {
     @Autowired
     private OpcaoPerguntaService opcaoPerguntaService;
 
-    private TipoPergunta tipoPergunta;
-
     @GetMapping
     public String findAll(ModelMap model){
         List<TipoPergunta> tiposPergunta = tipoPerguntaService.findAll();
@@ -60,10 +58,8 @@ public class TipoPerguntaController {
     }
 
     @PostMapping("/opcaoPergunta/cadastrar")
-    public String insertOpcao(@ModelAttribute OpcaoPergunta opcaoPergunta, @RequestParam TipoPergunta tipoPergunta){
+    public String insertOpcao(@ModelAttribute OpcaoPergunta opcaoPergunta){
         opcaoPerguntaService.insert(opcaoPergunta);
-
-        tipoPergunta.setDescricao(tipoPergunta.getDescricao());
 
         return "redirect:/tipoPergunta/cadastrar";
     }

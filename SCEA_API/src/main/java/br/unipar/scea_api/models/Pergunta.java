@@ -34,4 +34,7 @@ public class Pergunta extends DefaultModel{
     @ManyToOne
     @JoinColumn(nullable = false)
     private SubGrupo subGrupos;
+
+    @OneToMany(mappedBy = "pergunta")
+    private List<Escala> escalas;
 }

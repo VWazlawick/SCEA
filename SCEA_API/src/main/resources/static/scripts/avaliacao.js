@@ -1,3 +1,7 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const alunoSelect = document.getElementById('alunoSelect');
+    const avaliacoesContainer = document.getElementById('avaliacoesContainer');
+
 // Função para abrir e fechar o menu lateral
 document.getElementById('toggleMenu').addEventListener('click', function () {
     var sidebar = document.getElementById('sidebarMenu');
@@ -22,6 +26,30 @@ menuItems.forEach(function (item) {
             submenu.style.display = "none";
         } else {
             submenu.style.display = "block";
+        }
+    });
+});
+
+
+    // Exibir avaliações ao selecionar um aluno
+    alunoSelect.addEventListener('change', () => {
+        const alunoId = alunoSelect.value;
+
+        if (alunoId) {
+            avaliacoesContainer.innerHTML = `
+                <div class="card">
+                    <div class="card-header">
+                        Avaliações do Aluno ${alunoId}
+                    </div>
+                    <div class="card-body">
+                        <p>Ficha 1: Avaliação Física</p>
+                        <p>Ficha 2: Progresso Acadêmico</p>
+                        <p>Ficha 3: Comportamento</p>
+                    </div>
+                </div>
+            `;
+        } else {
+            avaliacoesContainer.innerHTML = `<h5 class="text-muted text-center">Selecione um aluno para visualizar as avaliações</h5>`;
         }
     });
 });

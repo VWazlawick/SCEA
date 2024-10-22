@@ -20,6 +20,14 @@ body {
     margin-bottom: 10px;
 }
 
+/* Estilo do título (Avaliacao) */
+.titleAvaliacao {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #b799e3; /* Cor roxa similar à da imagem */
+    margin-bottom: 10px;
+}
+
 /* Estilo do subtítulo */
 .subtitle {
     font-size: 1.2rem;
@@ -110,4 +118,107 @@ body {
     color: white;
     text-decoration: none;
     font-size: 18px;
+}
+
+/*CSS - Avaliações */
+/* Título Principal */
+.titleAvaliacao {
+    font-size: 3rem;
+    color: #5b95eb;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Select Customizado */
+.select2-container--default .select2-selection--single {
+    border: 2px solid #a07be5;
+    border-radius: 20px;
+    padding: 5px;
+    height: 50px;
+    font-size: 1.2rem;
+    transition: 0.3s ease-in-out;
+}
+
+.select2-container--default .select2-selection--single:hover {
+    background-color: #e5d9f5;
+    border-color: #5b95eb;
+}
+
+.select2-selection__arrow {
+    color: #a07be5;
+}
+
+/* Container de Avaliações */
+#avaliacoesContainer {
+    display: none;
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 15px;
+    
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    text-align: center;
+    color: #5b95eb;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Estilo da Tabela */
+table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #5b95eb;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+td {
+    background-color: #fffbe6;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 5px 0;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Customizando Inputs e Selects */
+input[type="number"], select, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #a07be5;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #5b95eb;
+    box-shadow: 0 0 8px rgba(91, 149, 235, 0.3);
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+/* Estilo para Mobile */
+@media (max-width: 768px) {
+    .titleAvaliacao {
+        font-size: 2.5rem;
+    }
+
+    .form-title {
+        font-size: 1.6rem;
+    }
 }

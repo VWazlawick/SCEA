@@ -9,18 +9,20 @@
     <link rel="stylesheet" href="/static/styles/mainAdmin.css">
 </head>
 <body>
-     <!-- Navbar com ícones de imagens -->
-     <nav class="navbar navbar-light bg-light justify-content-between">
+
+    <!-- Navbar com ícones -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <div class="navbar-brand">
-                <ul class="nav">
-                    <!-- Botão para abrir o menu lateral -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="#" class="nav-link" id="toggleMenu">
+                        <a href="#" id="toggleMenu" class="nav-link">
                             <img src="/static/images/menu_roxo.png" alt="Menu Icon" class="icon-image">
                         </a>
                     </li>
-                    <!-- Ícones de navegação -->
                     <li class="nav-item">
                         <a href="page1.html" class="nav-link">
                             <img src="/static/images/cadastros.png" alt="People Icon" class="icon-image">
@@ -37,23 +39,22 @@
                         </a>
                     </li>
                 </ul>
-            </div>
-            <!-- Botão de sair com ícone de perfil -->
-            <div class="d-flex align-items-center">
-                <span class="me-2">Sair</span>
-                <img src="/static/images/perfil.png" alt="Profile Icon" class="icon-image">
+                <div class="d-flex align-items-center">
+                    <span class="me-2">Sair</span>
+                    <img src="/static/images/perfil.png" alt="Profile Icon" class="icon-image" id="logoutButton">
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Menu lateral -->
     <div id="sidebarMenu" class="sidebar">
-        <!-- Botão para fechar o menu -->
         <div class="close-btn">
-            <a href="#" id="closeMenu"><img src="/static/images/menu_branco.png" alt="Fechar Menu" class="icon-image"></a>
+            <a href="#" id="closeMenu">
+                <img src="/static/images/menu_branco.png" alt="Fechar Menu" class="icon-image">
+            </a>
         </div>
 
-        <!-- Opções do menu lateral com subitens ocultos -->
         <ul class="list-unstyled">
             <li>
                 <a href="#" class="menu-item" data-toggle="cadastros">Cadastros</a>
@@ -80,11 +81,10 @@
                     <li><a href="#">Distribuição de Alunos por cidade</a></li>
                 </ul>
             </li>
-            <li><a href="#">Avaliações</a></li>
+            <li><a href="avaliacao.html">Avaliações</a></li>
             <li><a href="#">Controle de Acessos</a></li>
         </ul>
 
-        <!-- Configurações na parte inferior do menu lateral -->
         <div class="sidebar-footer">
             <a href="#">
                 <img src="/static/images/config_branco.png" alt="Configurações" class="icon-image">
@@ -93,10 +93,28 @@
         </div>
     </div>
 
-    <!-- Conteúdo principal -->
     <div class="container text-center mt-5">
         <h1 class="title">SCEA</h1>
         <p class="subtitle">Sistema para Controle de Evolução de Alunos</p>
+    </div>
+
+    <!-- Modal de Confirmação para Logout -->
+    <div class="modal fade" id="confirmLogoutModal" tabindex="-1" aria-labelledby="confirmLogoutLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmLogoutLabel">Confirmação de Saída</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    Tem certeza de que deseja sair?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmLogout">Sair</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

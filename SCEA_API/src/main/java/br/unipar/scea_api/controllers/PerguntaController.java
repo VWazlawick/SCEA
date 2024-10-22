@@ -1,16 +1,19 @@
 package br.unipar.scea_api.controllers;
 
+import br.unipar.scea_api.models.Escala;
 import br.unipar.scea_api.models.Pergunta;
+import br.unipar.scea_api.models.SubGrupo;
+import br.unipar.scea_api.models.TipoPergunta;
 import br.unipar.scea_api.services.PerguntaService;
+import br.unipar.scea_api.services.SubGrupoService;
+import br.unipar.scea_api.services.TipoPerguntaService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Tag(name = "Pergunta")
@@ -21,8 +24,14 @@ public class PerguntaController {
     @Autowired
     private PerguntaService perguntaService;
 
+    @Autowired
+    private TipoPerguntaService tipoPerguntaService;
+
+    @Autowired
+    private SubGrupoService subGrupoService;
+
     @PostMapping
-    public String insert(@RequestBody Pergunta pergunta) {
+    public String insert(@ModelAttribute Pergunta pergunta) {
         perguntaService.insert(pergunta);
         return "redirect:/pergunta";
     }
@@ -38,7 +47,25 @@ public class PerguntaController {
     @GetMapping("/cadastrar")
     public String novoCadastro(ModelMap model) {
         Pergunta pergunta = new Pergunta();
+        Escala escala = new Escala();
+
+        List<TipoPergunta> tipoPerguntas = tipoPerguntaService.findAll();
+        List<SubGrupo> subGrupos = subGrupoService.findAll();
+        List<Escala> escalas = new ArrayList<>();
+
+        if(tipoPerguntas == null){
+            tipoPerguntas = new ArrayList<>();
+        }
+        if(subGrupos == null){
+            subGrupos = new ArrayList<>();
+        }
+
         model.addAttribute("pergunta", pergunta);
-        return "/pergunta/cadastro";
+        model.addAttribute("escala", escala);
+        model.addAttribute("tipoPerguntas", tipoPerguntas);
+        model.addAttribute("subGrupos", subGrupos);
+        model.addAttribute("escalas", escalas);
+
+        return "pergunta/cadastro";
     }
 }

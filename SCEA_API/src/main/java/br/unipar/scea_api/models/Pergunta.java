@@ -21,9 +21,9 @@ public class Pergunta extends DefaultModel{
     @Column(nullable = false)
     private String descricao;
 
-    @NotNull
+    /*@NotNull
     @Column(nullable = false)
-    private int pesoPergunta;
+    private int pesoPergunta;'*/
 
     @NotBlank
     @ManyToOne
@@ -33,7 +33,7 @@ public class Pergunta extends DefaultModel{
     @NotBlank
     @ManyToOne
     @JoinColumn(nullable = false)
-    private SubGrupo subGrupos;
+    private SubGrupo subGrupo;
 
     @OneToMany(mappedBy = "pergunta")
     private List<Escala> escalas;

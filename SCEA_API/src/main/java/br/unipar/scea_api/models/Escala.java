@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "Pergunta")
+@Entity(name = "Escala")
 public class Escala extends DefaultModel{
 
     private double escalaMin;

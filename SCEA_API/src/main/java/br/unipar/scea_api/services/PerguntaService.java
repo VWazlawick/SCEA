@@ -1,7 +1,9 @@
 package br.unipar.scea_api.services;
 
+import br.unipar.scea_api.models.Escala;
 import br.unipar.scea_api.models.OpcaoPergunta;
 import br.unipar.scea_api.models.Pergunta;
+import br.unipar.scea_api.repositories.EscalaRepository;
 import br.unipar.scea_api.repositories.OpcaoPerguntaRepository;
 import br.unipar.scea_api.repositories.PerguntaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +18,19 @@ public class PerguntaService {
     @Autowired
     private PerguntaRepository perguntaRepository;
 
-    public Pergunta insert(Pergunta pergunta){
-        return perguntaRepository.save(pergunta);
+    @Autowired
+    private EscalaRepository escalaRepository;
+
+    public void insert(Pergunta pergunta){
+        perguntaRepository.save(pergunta);
+
+        if(pergunta.getEscalas() != null){
+            List<Escala> escalas = pergunta.getEscalas();
+            for(int i = 0; i<escalas.size();i++){
+                escalas.get(i).setPergunta(pergunta);
+            }
+            escalaRepository.saveAll(escalas);
+        }
     }
 
     public Pergunta update(Pergunta pergunta){

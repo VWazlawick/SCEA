@@ -51,7 +51,9 @@ public class PerguntaController {
 
         List<TipoPergunta> tipoPerguntas = tipoPerguntaService.findAll();
         List<SubGrupo> subGrupos = subGrupoService.findAll();
-        List<Escala> escalas = new ArrayList<>();
+
+        pergunta.setEscalas(new ArrayList<>());
+        pergunta.getEscalas().add(escala);
 
         if(tipoPerguntas == null){
             tipoPerguntas = new ArrayList<>();
@@ -64,7 +66,6 @@ public class PerguntaController {
         model.addAttribute("escala", escala);
         model.addAttribute("tipoPerguntas", tipoPerguntas);
         model.addAttribute("subGrupos", subGrupos);
-        model.addAttribute("escalas", escalas);
 
         return "pergunta/cadastro";
     }

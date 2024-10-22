@@ -25,12 +25,12 @@ public class Pergunta extends DefaultModel{
     @Column(nullable = false)
     private int pesoPergunta;'*/
 
-    @NotBlank
+    @NotNull
     @ManyToOne
     @JoinColumn(nullable = false)
     private TipoPergunta tipoPergunta;
 
-    @NotBlank
+    @NotNull
     @ManyToOne
     @JoinColumn(nullable = false)
     private SubGrupo subGrupo;

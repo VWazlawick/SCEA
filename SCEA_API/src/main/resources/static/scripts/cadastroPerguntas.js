@@ -202,15 +202,18 @@ document.addEventListener("DOMContentLoaded", function(){
 
         const div = document.createElement('div');
         div.innerHTML = `
-        <input type = "number" name = "escala[${index}].escalaMin"/>
-        <input type = "number" name= "escala[${index}].escalaMax"/>
-        <select name = "escala[${index}].status"/>
+        <label>Opção ${index+1}</label>
+        <input type = "number" name = "escalas[${index}].escalaMin"/>
+        <input type = "number" name= "escalas[${index}].escalaMax"/>
+        <select name = "escalas[${index}].status"/>
             <option value = "" selected > Selecione </option>
             <option value="minima">Minima</option>
             <option value="media">Média</option>
             <option value="maxima">Máxima</option>
         </select>
-        <button type="button" id="removerEscala"></button>`;
+        <button type="button" onclick="removeEscala(this)">Remover</button>`;
+
+        container.appendChild(div);
     });
 })
 

@@ -100,18 +100,19 @@
 <!--            </div>-->
         <div id="escalaContainer">
             <div th:each="escala, stat : *{escalas}">
-                <input type="number" th:field="*{escala[__${stat.index}__].escalaMin}">
-                <input type="number" th:field="*{escala[__${stat.index}__].escalaMax}">
-                <select th:field="*{escala[__${stat.index}__].status}">
+                <label th:text="'Opção ' + (${stat.index+1})"></label>
+                <input type="number" th:field="*{escalas[__${stat.index}__].escalaMin}">
+                <input type="number" th:field="*{escalas[__${stat.index}__].escalaMax}">
+                <select th:field="*{escalas[__${stat.index}__].status}">
                     <option value="" selected>Selecione</option>
                     <option value="minima">Minima</option>
                     <option value="media">Média</option>
                     <option value="maxima">Máxima</option>
                 </select>
-                <button type="button" onclick="removeEscala(this)"></button>
+                <button type="button" onclick="removeEscala(this)">Remover</button>
             </div>
-            <button type="button" id="adicionarEscala">Adicionar Escala</button>
         </div>
+        <button type="button" id="adicionarEscala">Adicionar Escala</button>
 
 
 <!--        <div class="row mt-3">-->

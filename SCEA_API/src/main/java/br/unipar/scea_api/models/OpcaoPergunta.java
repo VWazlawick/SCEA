@@ -18,4 +18,6 @@ public class OpcaoPergunta extends DefaultModel{
     @Column(nullable = false)
     private String descricao;
 
+    @ManyToOne
+    private TipoPergunta tipoPergunta;
 }

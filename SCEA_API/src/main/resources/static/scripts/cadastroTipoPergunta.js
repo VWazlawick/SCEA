@@ -68,77 +68,94 @@ function showProgressBar() {
 };
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Inicializa o componente Choices.js no dropdown
-    const choices = new Choices('#opcoesDropdown', {
-        removeItemButton: true,  
-        searchEnabled: false,    
-        shouldSort: false,       
-        placeholder: true,
-        placeholderValue: 'Selecione uma ou mais opções',
-        noResultsText: 'Nenhuma opção encontrada',
-        noChoicesText: 'Sem opções disponíveis',
-        itemSelectText: 'Pressione para selecionar'
-    });
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("adicionarOpcao").addEventListener("click", function () {
+        const container = document.getElementById("opcaoContainer");
+        const index = container.children.length;
 
-    document.getElementById('addOption').addEventListener('click', function () {
-        const descricao = document.getElementById('descricao').value;
-        const estilo = document.getElementById('tipo-pergunta').value;
-        const opcoes = document.getElementById('opcoesDropdown');
-        const opcoesItens = Array.from(opcoes.selectedOptions).map(option => ({
-            id: option.value,
-            descricao: option.text
-        }));
+        const div = document.createElement('div');
+        div.innerHTML = `
+                <label>Opção ${index+1}</label>
+                <input type="text" name="opcoes[${index}].descricao"/>
+                <button type="button" onclick="removeEscala(this)">Remover</button>`;
 
-
-        localStorage.setItem('descricao', descricao);
-        localStorage.setItem('estilo', estilo);
-        localStorage.setItem('opcoes', JSON.stringify(opcoesItens));
-
-        const addOptionModal = new bootstrap.Modal(document.getElementById('addOptionModal'));
-        addOptionModal.show();
-    });
-
-    // Função para adicionar nova opção ao dropdown
-    document.getElementById('confirmAddOption').addEventListener('click', function () {
-        const newOptionDescription = document.getElementById('newOptionDescription').value.trim();
-
-        if (newOptionDescription !== '') {
-            document.getElementById('newOptionDescription').value = newOptionDescription;
-
-            document.querySelector('#addOptionModal form').submit();
-
-            choices.setChoices([{ value: newOptionDescription, label: newOptionDescription, selected: false }]);
-            
-            // Limpar campo de entrada do modal
-            document.getElementById('newOptionDescription').value = '';
-
-            // Fechar o modal após adicionar
-            const addOptionModal = bootstrap.Modal.getInstance(document.getElementById('addOptionModal'));
-            addOptionModal.hide();
-        } else {
-            alert('Por favor, insira a descrição da opção.');
-        }
+        container.appendChild(div);
     });
 });
 
-document.addEventListener('DOMContentLoaded',function (){
-    const estilo = localStorage.getItem('estilo');
-    const descricao = localStorage.getItem('descricao');
+// document.addEventListener('DOMContentLoaded', function () {
+//     // Inicializa o componente Choices.js no dropdown
+//     const choices = new Choices('#opcoesDropdown', {
+//         removeItemButton: true,
+//         searchEnabled: false,
+//         shouldSort: false,
+//         placeholder: true,
+//         placeholderValue: 'Selecione uma ou mais opções',
+//         noResultsText: 'Nenhuma opção encontrada',
+//         noChoicesText: 'Sem opções disponíveis',
+//         itemSelectText: 'Pressione para selecionar'
+//     });
 
-    document.getElementById('descricao').value = descricao;
-    document.getElementById('tipo-pergunta').value = estilo;
+    // document.getElementById('addOption').addEventListener('click', function () {
+    //     const descricao = document.getElementById('descricao').value;
+    //     const estilo = document.getElementById('tipo-pergunta').value;
+    //     const opcoes = document.getElementById('opcoesDropdown');
+    //     const opcoesItens = Array.from(opcoes.selectedOptions).map(option => ({
+    //         id: option.value,
+    //         descricao: option.text
+    //     }));
+    //
+    //
+    //     localStorage.setItem('descricao', descricao);
+    //     localStorage.setItem('estilo', estilo);
+    //     localStorage.setItem('opcoes', JSON.stringify(opcoesItens));
+    //
+    //     const addOptionModal = new bootstrap.Modal(document.getElementById('addOptionModal'));
+    //     addOptionModal.show();
+    // });
 
-    const opcoes = JSON.parse(localStorage.getItem('opcoes')) || [];
-    const lista = document.getElementById('opcoesDropdown');
+    // Função para adicionar nova opção ao dropdown
+    // document.getElementById('confirmAddOption').addEventListener('click', function () {
+    //     const newOptionDescription = document.getElementById('newOptionDescription').value.trim();
+    //
+    //     if (newOptionDescription !== '') {
+    //         document.getElementById('newOptionDescription').value = newOptionDescription;
+    //
+    //         document.querySelector('#addOptionModal form').submit();
+    //
+    //         choices.setChoices([{ value: newOptionDescription, label: newOptionDescription, selected: false }]);
+    //
+    //         // Limpar campo de entrada do modal
+    //         document.getElementById('newOptionDescription').value = '';
+    //
+    //         // Fechar o modal após adicionar
+    //         const addOptionModal = bootstrap.Modal.getInstance(document.getElementById('addOptionModal'));
+    //         addOptionModal.hide();
+    //     } else {
+    //         alert('Por favor, insira a descrição da opção.');
+    //     }
+    // });
+// });
 
-    opcoes.forEach(opcao =>{
-        const opcaoItem = Array.from(lista.options).find(option => option.value === String(opcao.id));
-        if(opcaoItem){
-            opcaoItem.selected = true;
-        }
-    })
-})
+// document.addEventListener('DOMContentLoaded',function (){
+//     const estilo = localStorage.getItem('estilo');
+//     const descricao = localStorage.getItem('descricao');
+//
+//     document.getElementById('descricao').value = descricao;
+//     document.getElementById('tipo-pergunta').value = estilo;
+//
+//     const opcoes = JSON.parse(localStorage.getItem('opcoes')) || [];
+//     const lista = document.getElementById('opcoesDropdown');
+//
+//     opcoes.forEach(opcao =>{
+//         const opcaoItem = Array.from(lista.options).find(option => option.value === String(opcao.id));
+//         if(opcaoItem){
+//             opcaoItem.selected = true;
+//         }
+//     })
+// })
+
+
 
 
 

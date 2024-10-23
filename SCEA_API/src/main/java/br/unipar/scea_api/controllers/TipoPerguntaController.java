@@ -35,24 +35,21 @@ public class TipoPerguntaController {
     }
 
     @PostMapping
-    public String insert(@ModelAttribute TipoPergunta tipoPergunta, @RequestParam List<Long> opcoes){
-        tipoPerguntaService.insert(tipoPergunta, opcoes);
+    public String insert(@ModelAttribute TipoPergunta tipoPergunta){
+        tipoPerguntaService.insert(tipoPergunta);
         return "redirect:/tipoPergunta";
     }
 
     @GetMapping("/cadastrar")
     public String novoCadastro(ModelMap model){
         TipoPergunta tipoPergunta = new TipoPergunta();
-        OpcaoPergunta opcao = new OpcaoPergunta();
-        List<OpcaoPergunta> opcoes = opcaoPerguntaService.findAll();
 
-        if(opcoes==null){
-            opcoes = new ArrayList<>();
-        }
+        OpcaoPergunta opcao = new OpcaoPergunta();
+        tipoPergunta.setOpcoes(new ArrayList<>());
+        tipoPergunta.getOpcoes().add(opcao);
 
         model.addAttribute("tipoPergunta", tipoPergunta);
         model.addAttribute("opcao", opcao);
-        model.addAttribute("opcoes", opcoes);
 
         return "/tipoPergunta/cadastro";
     }

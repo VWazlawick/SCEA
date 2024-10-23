@@ -21,7 +21,7 @@ public class TipoPergunta extends DefaultModel{
     @Column(nullable = false)
     private String descricao;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "tipoPergunta")
     private List<OpcaoPergunta> opcoes;
 
     @NotBlank

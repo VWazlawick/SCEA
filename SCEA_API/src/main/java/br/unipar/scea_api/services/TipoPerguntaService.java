@@ -3,6 +3,7 @@ package br.unipar.scea_api.services;
 import br.unipar.scea_api.models.OpcaoPergunta;
 import br.unipar.scea_api.models.SubGrupo;
 import br.unipar.scea_api.models.TipoPergunta;
+import br.unipar.scea_api.repositories.OpcaoPerguntaRepository;
 import br.unipar.scea_api.repositories.SubGrupoRepository;
 import br.unipar.scea_api.repositories.TipoPerguntaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +19,19 @@ public class TipoPerguntaService {
     private TipoPerguntaRepository tipoPerguntaRepository;
 
     @Autowired
-    private OpcaoPerguntaService opcaoPerguntaService;
+    private OpcaoPerguntaRepository opcaoPerguntaRepository;
 
-    public TipoPergunta insert(TipoPergunta tipoPergunta, List<Long> opcoesPerguntaIds){
-        List<OpcaoPergunta> opcoes = opcaoPerguntaService.findAllByIds(opcoesPerguntaIds);
-        tipoPergunta.setOpcoes(opcoes);
+    public void insert(TipoPergunta tipoPergunta){
+        tipoPerguntaRepository.save(tipoPergunta);
 
-        return tipoPerguntaRepository.save(tipoPergunta);
+        if(tipoPergunta.getOpcoes() != null){
+            List<OpcaoPergunta> opcoes = tipoPergunta.getOpcoes();
+            for(int i = 0;i<opcoes.size();i++){
+                opcoes.get(i).setTipoPergunta(tipoPergunta);
+            }
+
+            opcaoPerguntaRepository.saveAll(opcoes);
+        }
     }
 
     public TipoPergunta update(TipoPergunta tipoPergunta){

@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-wid/th, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Tipo de Pergunta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/styles/cadastro.css" rel="stylesheet">
@@ -44,20 +44,30 @@
             </div>
         </div>
 
-        <div class="row mt-3 opcoes-section">
-            <div class="col-md-6">
-                <label for="opcoesDropdown" class="form-label">Opções</label>
-                <select th:field="*{opcoes}" id="opcoesDropdown" class="form-select" multiple>
-                    <option th:each="opcao : ${opcoes}" th:value="${opcao.id}" th:text="${opcao.descricao}"></option>
-                </select>
+        <div id="opcaoContainer">
+            <div th:each="opcao, stat : *{opcoes}">
+                <label th:text="'Opção ' + (${stat.index+1})"></label>
+                <input type="text" th:field="*{opcoes[__${stat.index}__].descricao}">
+                <button type="button" onclick="removeEscala(this)">Remover</button>
             </div>
         </div>
 
+
         <div class="row mt-2">
             <div class="col-md-6 d-flex justify-content-center">
-                <button type="button" class="btn btn-custom-roxo btn-sm" id="addOption">Adicionar Opção</button>
+                <button type="button" class="btn btn-custom-roxo btn-sm" id="adicionarOpcao">Adicionar Opção</button>
             </div>
         </div>
+<!--        <div class="row mt-3 opcoes-section">-->
+<!--            <div class="col-md-6">-->
+<!--                <label for="opcoesDropdown" class="form-label">Opções</label>-->
+<!--                <select th:field="*{opcoes}" id="opcoesDropdown" class="form-select" multiple>-->
+<!--                    <option th:each="opcao : ${opcoes}" th:value="${opcao.id}" th:text="${opcao.descricao}"></option>-->
+<!--                </select>-->
+<!--            </div>-->
+<!--        </div>-->
+
+
 
         <div class="form-check form-switch mb-4 mt-3">
             <div class="row">
@@ -100,14 +110,14 @@
                 <h5 class="modal-title" id="addOptionModalLabel">Adicionar Nova Opção</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form th:action="@{/tipoPergunta/opcaoPergunta/cadastrar}" method="post">
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="newOptionDescription" class="form-label">Descrição da Opção</label>
-                        <input th:field="*{opcao.descricao}" type="text" id="newOptionDescription" class="form-control" placeholder="Digite a descrição da nova opção">
-                    </div>
-                     </div>
-            </form>
+<!--            <form th:action="@{/tipoPergunta/opcaoPergunta/cadastrar}" method="post">-->
+<!--                <div class="modal-body">-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="newOptionDescription" class="form-label">Descrição da Opção</label>-->
+<!--                        <input th:field="*{opcao.descricao}" type="text" id="newOptionDescription" class="form-control" placeholder="Digite a descrição da nova opção">-->
+<!--                    </div>-->
+<!--                     </div>-->
+<!--            </form>-->
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" id="confirmAddOption">Adicionar</button>
@@ -119,5 +129,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 <script src="/scripts/cadastroTipoPergunta.js"></script>
+<script>
+    function removeEscala(button){
+        const div =button.parentNode;
+        div.remove();
+    }
+</script>
 </body>
 </html>

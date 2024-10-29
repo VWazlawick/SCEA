@@ -35,3 +35,4 @@ document.getElementById('logoutButton').addEventListener('click', function () {
 document.getElementById('confirmLogout').addEventListener('click', function () {
     window.location.href = '/logout';
 });
+

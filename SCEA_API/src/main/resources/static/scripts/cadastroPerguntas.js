@@ -195,25 +195,38 @@
     // });
 
 
-document.addEventListener("DOMContentLoaded", function(){
-    document.getElementById("adicionarEscala").addEventListener("click", function() {
+    document.getElementById("adicionarEscala").addEventListener("click", function () {
         const container = document.getElementById("escalaContainer");
-        const index = container.children.length;
+        const index = container.children.length + 1;
 
         const div = document.createElement('div');
+        div.className = "d-flex align-items-center mb-2";
+
+        // A label é um único bloco para garantir que "Opção 1" fique junto
         div.innerHTML = `
-        <label>Opção ${index+1}</label>
-        <input type = "number" name = "escalas[${index}].escalaMin"/>
-        <input type = "number" name= "escalas[${index}].escalaMax"/>
-        <select name = "escalas[${index}].status"/>
-            <option value = "" selected > Selecione </option>
-            <option value="minima">Minima</option>
+        <div class="d-flex align-items-center me-3" style="min-width: 80px;">
+            <span>Opção ${index}</span>
+        </div>
+        <input type="number" class="form-control me-2" placeholder="Mínimo" style="max-width: 120px;">
+        <input type="number" class="form-control me-2" placeholder="Máximo" style="max-width: 120px;">
+        <select class="form-select me-2" style="max-width: 150px;">
+            <option value="">Selecione</option>
+            <option value="minima">Mínima</option>
             <option value="media">Média</option>
             <option value="maxima">Máxima</option>
         </select>
-        <button type="button" onclick="removeEscala(this)">Remover</button>`;
+        <button type="button" class="btn btn-custom-roxo" onclick="removeEscala(this)">Remover</button>
+    `;
 
         container.appendChild(div);
     });
-})
+
+    function removeEscala(button) {
+        button.parentElement.remove();
+    }
+
+
+
+
+
 

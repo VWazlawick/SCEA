@@ -34,7 +34,7 @@
 
             <div class="col-md-6">
                 <label for="descricao-pergunta" class="form-label">Descrição da Pergunta</label>
-                <input type="text" class="form-control" id="descricao-pergunta" placeholder="Digite a descrição">
+                <input th:field="descricao" type="text" class="form-control" id="descricao-pergunta" placeholder="Digite a descrição">
                 <span class="error-message" id="descricao-pergunta-error" style="display: none;">Descrição é obrigatória.</span>
             </div>
         </div>
@@ -42,30 +42,31 @@
         <div class="row mb-3">
             <div class="col-md-4">
                 <label for="tipo-pergunta" class="form-label">Tipo da Pergunta</label>
-                <select class="form-select" id="tipo-pergunta">
+                <select th:field="*{tipoPergunta}" class="form-select" id="tipo-pergunta">
                     <option value="" selected>Selecione</option>
-                    <option value="1">Múltipla Escolha</option>
-                    <option value="2">Escala</option>
+                    <option th:each="tipoPergunta : ${tipoPerguntas}" th:value="${tipoPergunta.id}" th:text="${tipoPergunta.descricao}"></option>
                 </select>
                 <span class="error-message" id="tipo-pergunta-error" style="display: none;">Selecione um tipo.</span>
             </div>
 
             <div class="col-md-4">
                 <label for="sub-grupos" class="form-label">Sub Grupos</label>
-                <select class="form-select" id="sub-grupos">
+                <select th:field="*{subGrupo}" class="form-select" id="sub-grupos">
+                    <option value="" selected>Selecione</option>
+                    <option th:each="subGrupo : ${subGrupos}" th:value="${subGrupo.id}" th:text="${subGrupo.descricao}"></option>
                 </select>
                 <span class="error-message" id="sub-grupos-error" style="display: none;">Selecione um subgrupo.</span>
             </div>
         </div>
 
         <div id="escalaContainer" class="mb-3"></div>
-
         <button type="button" class="btn btn-custom-roxo mb-3" id="adicionarEscala">
             Adicionar Escala
         </button>
 
+
         <div class="form-check form-switch mb-4">
-            <input class="form-check-input" type="checkbox" id="ativo" checked>
+            <input th:field="stAtivo" class="form-check-input" type="checkbox" id="ativo" checked>
             <label class="form-check-label ms-2" for="ativo">Ativo</label>
         </div>
 

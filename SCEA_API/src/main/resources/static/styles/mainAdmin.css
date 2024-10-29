@@ -222,3 +222,87 @@ textarea {
         font-size: 1.6rem;
     }
 }
+
+/* Estilo para tela de perfil */
+
+/* Container do Perfil */
+#profileSection {
+    margin-top: 50px;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagem de Perfil e Avatar */
+.profile-avatar {
+    position: relative;
+    margin-top: -50px;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.profile-avatar:hover .profile-image {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* Efeito nos Botões */
+button {
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #5b95eb;
+    transform: scale(1.05);
+}
+
+/* Input Fields */
+input[type="text"], input[type="email"], input[type="password"] {
+    border: 2px solid #a07be5;
+    border-radius: 10px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #5b95eb;
+    box-shadow: 0 0 8px rgba(91, 149, 235, 0.3);
+}
+
+/* Ícones nos Labels */
+.form-label i {
+    margin-right: 8px;
+    color: #5b95eb;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .card-body {
+        text-align: center;
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .text-end {
+        text-align: center;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+

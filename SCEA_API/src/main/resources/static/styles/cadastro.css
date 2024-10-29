@@ -135,3 +135,55 @@ body {
     color: green;
     font-size: 14px;
 }
+
+/* Botões dinâmicos para Adicionar e Remover */
+.button-escala {
+    background-color: #A07BE5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 5px;
+}
+
+.button-escala:hover {
+    background-color: #8A5DC4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajuste dos botões de remover */
+.button-remover {
+    background-color: #A07BE5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-left: 10px;
+}
+
+.button-remover:hover {
+    background-color: #8A5DC4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.d-flex {
+    display: flex;
+}
+
+.option-label {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap; /* Impede a quebra de linha */
+    margin-right: 8px; /* Espaço entre o label e o input */
+}
+
+
+
+
+

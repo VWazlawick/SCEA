@@ -202,7 +202,6 @@
         const div = document.createElement('div');
         div.className = "d-flex align-items-center mb-2";
         div.innerHTML = `
-                <label class="me-2">Opção ${index}</label>
                 <input type="number" class="form-control me-2" placeholder="Mínimo" name="escalas[${index}].escalaMin">
                 <input type="number" class="form-control me-2" placeholder="Máximo" name="escalas[${index}].escalaMin">
                 <select class="form-select me-2" name = "escalas[${index}].status">

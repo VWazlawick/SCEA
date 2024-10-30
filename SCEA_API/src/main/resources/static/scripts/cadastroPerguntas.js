@@ -201,30 +201,24 @@
 
         const div = document.createElement('div');
         div.className = "d-flex align-items-center mb-2";
-
-        // A label é um único bloco para garantir que "Opção 1" fique junto
         div.innerHTML = `
-        <div class="d-flex align-items-center me-3" style="min-width: 80px;">
-            <span>Opção ${index}</span>
-        </div>
-        <input type="number" class="form-control me-2" placeholder="Mínimo" style="max-width: 120px;">
-        <input type="number" class="form-control me-2" placeholder="Máximo" style="max-width: 120px;">
-        <select class="form-select me-2" style="max-width: 150px;">
-            <option value="">Selecione</option>
-            <option value="minima">Mínima</option>
-            <option value="media">Média</option>
-            <option value="maxima">Máxima</option>
-        </select>
-        <button type="button" class="btn btn-custom-roxo" onclick="removeEscala(this)">Remover</button>
-    `;
-
+                <label class="me-2">Opção ${index}</label>
+                <input type="number" class="form-control me-2" placeholder="Mínimo">
+                <input type="number" class="form-control me-2" placeholder="Máximo">
+                <select class="form-select me-2">
+                    <option value="">Selecione</option>
+                    <option value="minima">Mínima</option>
+                    <option value="media">Média</option>
+                    <option value="maxima">Máxima</option>
+                </select>
+                <button type="button" class="btn btn-custom-roxo" onclick="removeEscala(this)">Remover</button>
+            `;
         container.appendChild(div);
     });
 
     function removeEscala(button) {
         button.parentElement.remove();
     }
-
 
 
 

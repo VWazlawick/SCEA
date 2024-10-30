@@ -45,7 +45,7 @@ function showModal(action) {
         modal.hide();
         if (action === "salvar") {
             showProgressBar();
-            document.getElementById('tipoServicoForm').submit();
+            document.getElementById('tipoPerguntaForm').submit();
         }
     };
 }

@@ -70,10 +70,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const index = container.children.length;
 
         const div = document.createElement('div');
-        div.className = 'd-flex align-items-center mb-2'; // Mantém alinhamento
+        div.className = 'd-flex align-items-center mb-2';
 
         div.innerHTML = `
-            <label class="option-label me-2">Opção ${index + 1}</label>
             <input type="text" class="form-control me-2" name="opcoes[${index}].descricao" placeholder="Digite a descrição">
             <button type="button" class="btn btn-custom-roxo button-remover" onclick="removeOpcao(this)">Remover</button>
         `;

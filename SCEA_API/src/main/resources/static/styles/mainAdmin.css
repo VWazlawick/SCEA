@@ -11,12 +11,11 @@ body {
     height: 24px;
 }
 
-
 /* Estilo do título */
 .title {
     font-size: 4rem;
     font-weight: bold;
-    color: #b799e3; /* Cor roxa similar à da imagem */
+    color: #b799e3;
     margin-bottom: 10px;
 }
 
@@ -24,14 +23,14 @@ body {
 .titleAvaliacao {
     font-size: 3rem;
     font-weight: bold;
-    color: #b799e3; /* Cor roxa similar à da imagem */
+    color: #b799e3;
     margin-bottom: 10px;
 }
 
 /* Estilo do subtítulo */
 .subtitle {
     font-size: 1.2rem;
-    color: #b799e3; /* Cor roxa similar à da imagem */
+    color: #b799e3;
 }
 
 /* Centralização vertical e horizontal do conteúdo */
@@ -41,7 +40,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 80px; /* Espaço para compensar a barra de navegação fixa */
+    margin-top: 80px;
 }
 
 /* Estilo da barra de navegação */
@@ -61,6 +60,7 @@ body {
     background-color: #b799e3;
     transition: left 0.3s ease;
     padding-top: 60px;
+    z-index: 10; /* Aumentado para sobreposição sobre o conteúdo */
 }
 
 /* Ativando o menu lateral */
@@ -121,7 +121,6 @@ body {
 }
 
 /*CSS - Avaliações */
-/* Título Principal */
 .titleAvaliacao {
     font-size: 3rem;
     color: #5b95eb;
@@ -156,7 +155,6 @@ body {
     margin-top: 30px;
     padding: 25px;
     border-radius: 15px;
-    
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -228,12 +226,16 @@ textarea {
 /* Container do Perfil */
 #profileSection {
     margin-top: 50px;
+    position: relative;
+    z-index: 1; /* Ajuste para garantir que o conteúdo do perfil fique abaixo do menu quando fechado */
 }
 
 .card {
     background-color: #ffffff;
     border-radius: 20px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: auto;
 }
 
 /* Imagem de Perfil e Avatar */
@@ -241,14 +243,19 @@ textarea {
     position: relative;
     margin-top: -50px;
     margin-bottom: 20px;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .profile-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
@@ -286,6 +293,38 @@ input:focus {
     color: #5b95eb;
 }
 
+/* Estilo personalizado para o botão "Salvar Alterações" */
+.btn-primary {
+    background-color: #A07BE5; /* Cor roxa */
+    border-color: #A07BE5;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #8A5DC4; /* Cor roxa mais escura para hover */
+    border-color: #8A5DC4;
+    transform: scale(1.05); /* Leve aumento no hover */
+}
+
+/* Estilo para o botão "Editar Foto" */
+#editPhotoButton {
+    color: white;
+    background-color: #A07BE5;
+    border: none;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#editPhotoButton:hover {
+    background-color: #8A5DC4;
+}
+
+
 /* Responsividade */
 @media (max-width: 768px) {
     .card-body {
@@ -305,4 +344,3 @@ input:focus {
         width: 100%;
     }
 }
-

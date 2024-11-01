@@ -36,3 +36,4 @@ document.getElementById('confirmLogout').addEventListener('click', function () {
     window.location.href = '/logout';
 });
 
+// JS Pagina de Perfil

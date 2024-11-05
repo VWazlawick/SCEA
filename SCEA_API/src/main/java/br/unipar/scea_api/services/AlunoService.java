@@ -7,6 +7,8 @@ import br.unipar.scea_api.repositories.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,5 +70,9 @@ public class AlunoService {
 
     public List<Aluno> findByNome(String nome){
         return alunoRepository.findByNomeContainingIgnoreCase(nome);
+    }
+
+    public int calcularIdade(LocalDate data){
+        return Period.between(data, LocalDate.now()).getYears();
     }
 }

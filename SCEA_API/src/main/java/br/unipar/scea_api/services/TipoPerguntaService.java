@@ -29,7 +29,6 @@ public class TipoPerguntaService {
             for(int i = 0;i<opcoes.size();i++){
                 opcoes.get(i).setTipoPergunta(tipoPergunta);
             }
-
             opcaoPerguntaRepository.saveAll(opcoes);
         }
     }

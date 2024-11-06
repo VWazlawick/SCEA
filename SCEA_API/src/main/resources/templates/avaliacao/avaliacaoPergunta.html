@@ -94,13 +94,12 @@
         </div>
     </div>
 
-    <!-- Conteúdo Principal -->
     <div class="container-fluid">
         <h1 class="titleAvaliacao">Avaliações</h1>
 
-        <form th:action="@{/avaliacao}" method="GET">
+        <form th:action="@{/avaliacao/listarperguntas}" method="GET">
             <div class="col-md-6 mx-auto">
-                <label for="alunoSelect" class="form-label">Selecione o Aluno:</label>
+                <label for="alunoSelect" class="form    -label">Selecione o Aluno:</label>
                 <select name="alunoId" class="form-select" id="alunoSelect" onchange="this.form.submit()">
                     <option value="" selected>Escolha um aluno...</option>
                     <option th:each="aluno : ${alunos}" th:value="${aluno.id}" th:text="${aluno.nome}"></option>
@@ -108,8 +107,7 @@
             </div>
         </form>
 
-        <!-- Formulário -->
-        <div class="col-md-8 mx-auto">
+        <div id="avaliacoesContainer" class="col-md-8 mx-auto">
             <h3 class="form-title">Ficha de Observação - Avaliação Física e Psicológica</h3>
             <table>
                 <thead>
@@ -123,6 +121,8 @@
                         <td>Peso (kg)</td>
                         <td><input type="number" class="form-control" placeholder="Digite o peso"></td>
                     </tr>
+
+                    <th:block th:if="${perguntas}">
                         <tr th:each="pergunta : ${perguntas}">
                             <td th:text="${pergunta.descricao}"></td>
                             <td>
@@ -137,6 +137,7 @@
                                 <input type="text" class="form-control" th:if="${pergunta.tipoPergunta.estiloTpPergunta  == 'TEXT'}">
                             </td>
                         </tr>
+                    </th:block>
 
                     <tr>
                         <td>Comentário do Professor</td>

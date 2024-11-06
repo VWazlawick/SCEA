@@ -218,7 +218,6 @@
     })
 
     // JS da Pagina de Carregamento
-
     document.addEventListener("DOMContentLoaded", function() {
         // Simula um tempo de carregamento (opcional)
         setTimeout(function() {
@@ -226,6 +225,7 @@
             document.getElementById("content").style.display = "block";
         }, 2500); // Ajuste o tempo conforme necessário
     });
+
 
     /*document.addEventListener('DOMContentLoaded', function (){
         const dtNascimentoInput = document.getElementById('data-nascimento');

@@ -73,3 +73,10 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("content").style.display = "block";
     }, 2500); // Ajuste o tempo conforme necessário
 });
+
+
+
+
+
+
+

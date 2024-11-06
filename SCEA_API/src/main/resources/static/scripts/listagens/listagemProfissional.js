@@ -65,7 +65,6 @@ editButton.addEventListener('click', function (){
 });
 
 // JS da Pagina de Carregamento
-
 document.addEventListener("DOMContentLoaded", function() {
     // Simula um tempo de carregamento (opcional)
     setTimeout(function() {

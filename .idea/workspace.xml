@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37b3a611-b97f-49f9-ab85-2586103d3bdb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCEA_API/src/main/java/br/unipar/scea_api/controllers/PerguntaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SCEA_API/src/main/java/br/unipar/scea_api/controllers/PerguntaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCEA_API/src/main/resources/static/scripts/cadastroPerguntas.js" beforeDir="false" afterPath="$PROJECT_DIR$/SCEA_API/src/main/resources/static/scripts/cadastroPerguntas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCEA_API/src/main/resources/templates/pergunta/cadastro.html" beforeDir="false" afterPath="$PROJECT_DIR$/SCEA_API/src/main/resources/templates/pergunta/cadastro.html" afterDir="false" />
-    </list>
+    <list default="true" id="37b3a611-b97f-49f9-ab85-2586103d3bdb" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,23 +29,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/victo/OneDrive/Área de Trabalho/SCEA&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.index.html.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/joaov/OneDrive/Documentos/SCEA/SCEA_API",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\victo\OneDrive\Área de Trabalho\SCEA\img" />
@@ -89,6 +85,7 @@
       <workItem from="1724287158818" duration="84000" />
       <workItem from="1729636883286" duration="35000" />
       <workItem from="1729636937581" duration="154000" />
+      <workItem from="1730246036525" duration="165000" />
     </task>
     <servers />
   </component>

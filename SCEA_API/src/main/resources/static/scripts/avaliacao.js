@@ -30,28 +30,6 @@ menuItems.forEach(function (item) {
     });
 });
 
-
-    // Exibir avaliações ao selecionar um aluno
-    alunoSelect.addEventListener('change', () => {
-        const alunoId = alunoSelect.value;
-
-        if (alunoId) {
-            avaliacoesContainer.innerHTML = `
-                <div class="card">
-                    <div class="card-header">
-                        Avaliações do Aluno ${alunoId}
-                    </div>
-                    <div class="card-body">
-                        <p>Ficha 1: Avaliação Física</p>
-                        <p>Ficha 2: Progresso Acadêmico</p>
-                        <p>Ficha 3: Comportamento</p>
-                    </div>
-                </div>
-            `;
-        } else {
-            avaliacoesContainer.innerHTML = `<h5 class="text-muted text-center">Selecione um aluno para visualizar as avaliações</h5>`;
-        }
-    });
 });
 
 // Função de logout com modal de confirmação
@@ -66,10 +44,10 @@ document.getElementById('confirmLogout').addEventListener('click', function () {
 
 // JS da Pagina de Carregamento
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Simula um tempo de carregamento (opcional)
-    setTimeout(function() {
-        document.getElementById("loadingScreen").style.display = "none";
-        document.getElementById("content").style.display = "block";
-    }, 2500); // Ajuste o tempo conforme necessário
-});
+// document.addEventListener("DOMContentLoaded", function() {
+//     // Simula um tempo de carregamento (opcional)
+//     setTimeout(function() {
+//         document.getElementById("loadingScreen").style.display = "none";
+//         document.getElementById("content").style.display = "block";
+//     }, 0); // Ajuste o tempo conforme necessário
+// });

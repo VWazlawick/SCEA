@@ -37,9 +37,11 @@ public class AvaliacaoController {
 
         mv.addObject("avaliacao", avaliacao);
         mv.addObject("alunos", alunos);
+        mv.addObject("alunoId", alunoId);
 
         if(alunoId != null){
             Aluno aluno = alunoService.findById(alunoId);
+            avaliacao.setAluno(aluno);
             List<Pergunta> perguntas = avaliacaoService.getPerguntas(aluno.getId());
 
             mv.addObject("aluno", aluno);

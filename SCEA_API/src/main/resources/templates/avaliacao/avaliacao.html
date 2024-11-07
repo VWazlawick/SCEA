@@ -12,14 +12,14 @@
 </head>
 
 <body>
-<div id="loadingScreen">
-    <p>Carregando<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></p>
-    <div class="loader-wrapper">
-        <div class="loader">
-            <div class="loader-inner"></div>
-        </div>
-    </div>
-</div>
+<!--<div id="loadingScreen">-->
+<!--    <p>Carregando<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></p>-->
+<!--    <div class="loader-wrapper">-->
+<!--        <div class="loader">-->
+<!--            <div class="loader-inner"></div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <div id="content" style="display: none;">
 </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -113,13 +113,13 @@
                 <label for="alunoSelect" class="form-label">Selecione o Aluno:</label>
                 <select name="alunoId" class="form-select" id="alunoSelect" onchange="this.form.submit()">
                     <option value="" selected>Escolha um aluno...</option>
-                    <option th:each="aluno : ${alunos}" th:value="${aluno.id}" th:text="${aluno.nome}"></option>
+                    <option th:each="aluno : ${alunos}" th:value="${aluno.id}" th:text="${aluno.nome}" th:selected="${aluno.id == alunoId}"></option>
                 </select>
             </div>
         </form>
 
         <!-- Formulário -->
-        <div class="col-md-8 mx-auto">
+        <div th:if="${perguntas}" class="col-md-8 mx-auto">
             <h3 class="form-title">Ficha de Observação - Avaliação Física e Psicológica</h3>
             <table>
                 <thead>
@@ -129,29 +129,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Peso (kg)</td>
-                        <td><input type="number" class="form-control" placeholder="Digite o peso"></td>
-                    </tr>
-                        <tr th:each="pergunta : ${perguntas}">
-                            <td th:text="${pergunta.descricao}"></td>
-                            <td>
-                                <select class="form-select" th:if="${pergunta.tipoPergunta.estiloTpPergunta == 'MULTIPLA_ESCOLHA'}">
-                                    <option th:each="opcao : ${pergunta.tipoPergunta.opcoes}" th:value="${opcao.id}" th:text="${opcao.descricao}"></option>
-                                </select>
+                <tr>
+                    <td>Peso (kg)</td>
+                    <td><input type="number" class="form-control" placeholder="Digite o peso"></td>
+                </tr>
+                <tr th:each="pergunta : ${perguntas}">
+                    <td th:text="${pergunta.descricao}"></td>
+                    <td>
+                        <select class="form-select" th:if="${pergunta.tipoPergunta.estiloTpPergunta == 'MULTIPLA_ESCOLHA'}">
+                            <option th:each="opcao : ${pergunta.tipoPergunta.opcoes}" th:value="${opcao.id}" th:text="${opcao.descricao}"></option>
+                        </select>
 
-                                <select class="form-select" th:if="${pergunta.tipoPergunta.estiloTpPergunta == 'ESCALA'}">
-                                    <option th:each="escala : ${pergunta.escalas}" th:value="${escala.id}" th:text="${escala}"></option>
-                                </select>
+                        <input type="text" class="form-control" th:if="${pergunta.tipoPergunta.estiloTpPergunta  == 'ESCALA'}">
 
-                                <input type="text" class="form-control" th:if="${pergunta.tipoPergunta.estiloTpPergunta  == 'TEXT'}">
-                            </td>
-                        </tr>
+                        <input type="text" class="form-control" th:if="${pergunta.tipoPergunta.estiloTpPergunta  == 'TEXTO'}">
+                    </td>
 
-                    <tr>
-                        <td>Comentário do Professor</td>
-                        <td><textarea class="form-control"></textarea></td>
-                    </tr>
+                </tr>
+                <tr>
+                    <td>Comentário do Professor</td>
+                    <td><textarea class="form-control"></textarea></td>
+                </tr>
+
+
                 </tbody>
             </table>
         </div>

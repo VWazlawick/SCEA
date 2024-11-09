@@ -227,3 +227,23 @@
             document.getElementById("content").style.display = "block";
         }, 2500); // Ajuste o tempo conforme necessário
     });
+
+    document.addEventListener("DOMContentLoaded", function(){
+        function mostrarOpcao(){
+            const tipoPerguntaSelect = document.getElementById("tipo-pergunta");
+            const opcaoWrapper = document.getElementById("escalaWrapper");
+            const estilo = tipoPerguntaSelect.options[tipoPerguntaSelect.selectedIndex].getAttribute("data-estilo");
+
+            if(estilo === "ESCALA"){
+                opcaoWrapper.style.display = "block";
+            }else{
+                opcaoWrapper.style.display= "none";
+            }
+
+        }
+
+        mostrarOpcao();
+
+        const tipoPerguntaSelect = document.getElementById("tipo-pergunta");
+        tipoPerguntaSelect.addEventListener("change", mostrarOpcao);
+    });

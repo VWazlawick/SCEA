@@ -399,6 +399,21 @@ input:focus {
     }
 }
 
+.btn-custom-roxo {
+    background-color: #007bff; /* Cor roxa */
+    color: white; /* Cor do texto */
+    border: none;
+    border-radius: 5px; /* Cantos arredondados */
+    padding: 8px 20px; /* Espaçamento interno */
+    font-weight: bold; /* Texto em negrito */
+    transition: background-color 0.3s ease; /* Transição suave */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 400px;
+    margin-top: 30px;
+}
+
 
 /* Loader Wrapper */
 .loader-wrapper {

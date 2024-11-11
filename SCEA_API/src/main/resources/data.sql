@@ -5598,5 +5598,20 @@ insert into cidade(id, nome,estado_id, st_ativo, dt_insert) values
 (5222054,'Vicentinópolis',52,true,'now'),
 (5222203,'Vila Boa',52,true,'now'),
 (5222302,'Vila Propício',52,true,'now'),
-(5300108,'Brasília',53,true,'now')
+(5300108,'Brasília',53,true,'now');
+
+insert into tipo_usuario (id, descricao, st_ativo, dt_insert) values
+(1, 'admin', true, 'now');
+
+insert into empresa(id, razao_social, nome_fantasia, cnpj, st_ativo,dt_insert) values
+(1, 'PersonalKids','PersonalKids','09174650000128',true,'now');
+
+insert into pessoa (id, nome ,cpf, rg,telefone,dt_insert, st_ativo) values
+(1,'Victor','05889512935', '131789122','45998618406','now',true);
+
+insert into profissional(id, empresa_id) values
+(1,1);
+
+insert into tipo_servico(id, descricao, dt_insert, st_ativo) values
+(1,'aula 2x', 'now',true);
 		

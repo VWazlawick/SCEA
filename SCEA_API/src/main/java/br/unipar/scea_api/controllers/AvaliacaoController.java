@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -51,26 +52,11 @@ public class AvaliacaoController {
         return mv;
     }
 
-//    @GetMapping()
-//    public ModelAndView listarPerguntas(@RequestParam("alunoId") Long alunoId, ModelMap model) {
-//        Aluno aluno = alunoService.findById(alunoId);
-//        ModelAndView mv = new ModelAndView("/avaliacao/avaliacao");
-//
-//        if(aluno == null){
-//            model.addAttribute("errorMessage", "Aluno não encontrar");
-//            return mv;
-//        }
-//
-//        List<Pergunta> perguntas = avaliacaoService.getPerguntas(aluno.getId());
-//
-//        mv.addObject("alunoId", alunoId);
-//        mv.addObject("perguntas", perguntas);
-//        mv.addObject("aluno", model.getAttribute("aluno"));
-//
-//
-//
-//        return mv;
-//    }
+    @PostMapping
+    public String insert(){
+        return null;
+    }
+
 
 
 }

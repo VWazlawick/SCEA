@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
-    <link rel="stylesheet" href="/static/styles/mainAdmin.css">
+    <link rel="stylesheet" href="/styles/mainAdmin.css">
 </head>
 
 <body>
@@ -120,44 +120,46 @@
 
         <!-- Formulário -->
         <div th:if="${perguntas}" class="col-md-8 mx-auto">
-            <h3 class="form-title">Ficha de Observação - Avaliação Física e Psicológica</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Parâmetro</th>
-                        <th>Resultado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Peso (kg)</td>
-                    <td><input type="number" class="form-control" placeholder="Digite o peso"></td>
-                </tr>
-                <tr th:each="pergunta : ${perguntas}">
-                    <td th:text="${pergunta.descricao}"></td>
-                    <td>
-                        <select class="form-select" th:if="${pergunta.tipoPergunta.estiloTpPergunta == 'MULTIPLA_ESCOLHA'}">
-                            <option th:each="opcao : ${pergunta.tipoPergunta.opcoes}" th:value="${opcao.id}" th:text="${opcao.descricao}"></option>
-                        </select>
+           <form th:action="@{/avaliacao}" th:object="${avaliacao}" method="POST" id="avaliacaoForm">
+               <h3 class="form-title">Ficha de Observação - Avaliação Física e Psicológica</h3>
+               <table>
+                   <thead>
+                   <tr>
+                       <th>Parâmetro</th>
+                       <th>Resultado</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   <tr>
+                       <td>Peso (kg)</td>
+                       <td><input type="number" class="form-control" placeholder="Digite o peso"></td>
+                   </tr>
+                   <tr th:each="pergunta : ${perguntas}">
+                       <td th:text="${pergunta.descricao}"></td>
+                       <td>
+                           <select th:field="*{avaliacaoPerguntas.resposta}" class="form-select" th:if="${pergunta.tipoPergunta.estiloTpPergunta == 'MULTIPLA_ESCOLHA'}">
+                               <option th:each="opcao : ${pergunta.tipoPergunta.opcoes}" th:value="${opcao.id}" th:text="${opcao.descricao}"></option>
+                           </select>
 
-                        <input type="text" class="form-control" th:if="${pergunta.tipoPergunta.estiloTpPergunta  == 'ESCALA'}">
+                           <input th:field="*{avaliacaoPerguntas.resposta}" type="text" class="form-control" th:if="${pergunta.tipoPergunta.estiloTpPergunta  == 'ESCALA'}">
 
-                        <input type="text" class="form-control" th:if="${pergunta.tipoPergunta.estiloTpPergunta  == 'TEXTO'}">
-                    </td>
+                           <input th:field="*{avaliacaoPerguntas.resposta}" type="text" class="form-control" th:if="${pergunta.tipoPergunta.estiloTpPergunta  == 'TEXTO'}">
+                       </td>
 
-                </tr>
-                <tr>
-                    <td>Comentário do Professor</td>
-                    <td><textarea class="form-control"></textarea></td>
-                </tr>
+                   </tr>
+                   <tr>
+                       <td>Comentário do Professor</td>
+                       <td><textarea class="form-control"></textarea></td>
+                   </tr>
 
 
-                </tbody>
-            </table>
-            <button type="button" class="btn btn-custom-roxo mb-3" id="salvarAvaliacao">
-                Salvar Avaliação
-            </button>
+                   </tbody>
+               </table>
+               <button type="button" class="btn btn-custom-roxo mb-3" id="salvarAvaliacao" onclick="this.form.submit()">
+                   Salvar Avaliação
+               </button>
         </div>
+           </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>

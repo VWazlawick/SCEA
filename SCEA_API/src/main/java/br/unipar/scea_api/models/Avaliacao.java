@@ -20,8 +20,8 @@ public class Avaliacao extends DefaultModel{
     @OneToMany
     private List<Grupo> grupos;
 
-    @OneToMany
-    private List<Pergunta>perguntas;
+    @OneToMany(mappedBy = "avaliacao")
+    private List<AvaliacaoPergunta> avaliacaoPerguntas;
 
     @ManyToOne
     private Aluno aluno;

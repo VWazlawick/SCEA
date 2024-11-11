@@ -51,3 +51,5 @@ document.getElementById('confirmLogout').addEventListener('click', function () {
 //         document.getElementById("content").style.display = "block";
 //     }, 0); // Ajuste o tempo conforme necessário
 // });
+
+

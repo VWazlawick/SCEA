@@ -407,6 +407,16 @@ input:focus {
     padding: 8px 20px; /* Espaçamento interno */
     font-weight: bold; /* Texto em negrito */
     transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.btn-custom-azul {
+    background-color: #007bff;
+    color: white; /* Cor do texto */
+    border: none;
+    border-radius: 5px; /* Cantos arredondados */
+    padding: 8px 20px; /* Espaçamento interno */
+    font-weight: bold; /* Texto em negrito */
+    transition: background-color 0.3s ease; /* Transição suave */
     display: flex;
     flex-direction: row;
     align-items: center;

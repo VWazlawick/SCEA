@@ -18,7 +18,7 @@ import java.util.List;
 
 @Tag(name = "TipoPergunta")
 @Controller
-@RequestMapping("/tipoPergunta")
+@RequestMapping("/tipopergunta")
 public class TipoPerguntaController {
 
     @Autowired

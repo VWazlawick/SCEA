@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tipo Serviço</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/styles/cadastro.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/styles/cadastro.css}">
 </head>
 <body>
 
@@ -23,10 +23,10 @@
 <div class="form-container animate__animated animate__fadeInUp">
     <div class="d-flex justify-content-start mb-3 header-buttons">
         <a th:href="@{/tiposervico}" data-bs-toggle="tooltip" title="Sair">
-            <img src="/images/sair.png" alt="Sair" id="sairButton">
+            <img th:src="@{/images/sair.png}" alt="Sair" id="sairButton">
         </a>
-        <img src="/images/salvar.png" alt="Salvar" id="saveButton" data-bs-toggle="tooltip" title="Salvar">
-        <img src="/images/excluir.png" alt="Excluir" id="excluirButton" data-bs-toggle="tooltip" title="Excluir">
+        <img th:src="@{/images/salvar.png}" alt="Salvar" id="saveButton" data-bs-toggle="tooltip" title="Salvar">
+        <img th:src="@{/images/excluir.png}" alt="Excluir" id="excluirButton" data-bs-toggle="tooltip" title="Excluir">
         <button class="btn btn-secondary ms-auto" id="clearButton" data-bs-toggle="tooltip" title="Limpar todos os campos">Limpar</button>
     </div>
 
@@ -79,6 +79,6 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/scripts/cadastros/cadastroTipoServico.js"></script>
+<script th:src="@{/scripts/cadastros/cadastroTipoPergunta.js}"></script>
 </body>
 </html>

@@ -37,4 +37,7 @@ public class Pergunta extends DefaultModel{
 
     @OneToMany(mappedBy = "pergunta")
     private List<Escala> escalas;
+
+    @ManyToOne
+    private AvaliacaoPergunta avaliacaoPergunta;
 }

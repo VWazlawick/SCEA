@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
-    <link rel="stylesheet" href="/static/styles/mainAdmin.css">
+    <link rel="stylesheet" th:href="@{styles/mainAdmin.css}">
 </head>
 
 <body>
@@ -134,16 +134,20 @@
                        <td>Peso (kg)</td>
                        <td><input type="number" class="form-control" placeholder="Digite o peso"></td>
                    </tr>
-                   <tr th:each="pergunta : ${perguntas}">
+                   <tr th:each="pergunta, stat : ${perguntas}">
                        <td th:text="${pergunta.descricao}"></td>
                        <td>
-                           <select th:field="*{avaliacaoPerguntas.resposta}" class="form-select" th:if="${pergunta.tipoPergunta.estiloTpPergunta == 'MULTIPLA_ESCOLHA'}">
+                           <select class="form-select" th:if="${pergunta.tipoPergunta.estiloTpPergunta == 'MULTIPLA_ESCOLHA'}"
+                           th:field="*{avaliacaoPerguntas[__${stat.index}__].resposta}">
                                <option th:each="opcao : ${pergunta.tipoPergunta.opcoes}" th:value="${opcao.id}" th:text="${opcao.descricao}"></option>
                            </select>
 
-                           <input th:field="*{avaliacaoPerguntas.resposta}" type="text" class="form-control" th:if="${pergunta.tipoPergunta.estiloTpPergunta  == 'ESCALA'}">
+                           <input type="text" class="form-control" th:if="${pergunta.tipoPergunta.estiloTpPergunta  == 'ESCALA'}"
+                                  th:field="*{avaliacaoPerguntas[__${stat.index}__].resposta}">
 
-                           <input th:field="*{avaliacaoPerguntas.resposta}" type="text" class="form-control" th:if="${pergunta.tipoPergunta.estiloTpPergunta  == 'TEXTO'}">
+                           <input type="text" class="form-control" th:if="${pergunta.tipoPergunta.estiloTpPergunta  == 'TEXTO'}"
+                                  th:field="*{avaliacaoPerguntas[__${stat.index}__].resposta}">
+
                        </td>
 
                    </tr>
@@ -164,7 +168,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="/static/scripts/avaliacao.js"></script>
+    <script th:src="@{/scripts/avaliacao.js}"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Simula um tempo de carregamento (opcional)

@@ -1,6 +1,7 @@
 package br.unipar.scea_api.services;
 
 import br.unipar.scea_api.models.*;
+import br.unipar.scea_api.repositories.AvaliacaoPerguntaRepository;
 import br.unipar.scea_api.repositories.AvaliacaoRepository;
 import br.unipar.scea_api.repositories.GrupoRepository;
 import br.unipar.scea_api.repositories.PerguntaRepository;
@@ -22,9 +23,19 @@ public class AvaliacaoService {
     private GrupoRepository grupoRepository;
     @Autowired
     private PerguntaRepository perguntaRepository;
+    @Autowired
+    private AvaliacaoPerguntaRepository avaliacaoPerguntaRepository;
 
     public Avaliacao insert(Avaliacao avaliacao){
-        return avaliacaoRepository.save(avaliacao);
+        Avaliacao a = avaliacaoRepository.save(avaliacao);
+
+        for(AvaliacaoPergunta avaliacaoPergunta : a.getAvaliacaoPerguntas()){
+            avaliacaoPergunta.setAvaliacao(a);
+
+            avaliacaoPerguntaRepository.save(avaliacaoPergunta);
+
+        }
+        return a;
     }
 
     public Avaliacao update(Avaliacao avaliacao){

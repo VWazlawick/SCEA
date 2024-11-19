@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listagem de Cadastros</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="styles/listagem.css" rel="stylesheet"> <!-- CSS específico para esta página -->
+    <link rel="stylesheet" th:href="@{/styles/listagem.css}"> <!-- CSS específico para esta página -->
 </head>
 <body>
 
@@ -23,10 +23,10 @@
 <div class="listagem-container animate__animated animate__fadeInUp">
     <!-- Header with icons -->
     <div class="d-flex justify-content-start mb-3 header-buttons">
-        <img src="images/sair.png" alt="Sair" id="sairButton" data-bs-toggle="tooltip" title="Sair Da Tela de Cadastro">
-        <img src="images/adicionar.png" alt="Adicionar" id="addButton" data-bs-toggle="tooltip" title="Adicionar Novo Cadastro">
-        <img src="images/editar-arquivo.png" alt="Editar" id="editButton" data-bs-toggle="tooltip" title="Editar Cadastro Selecionado">
-        <img src="images/excluir.png" alt="Excluir" id="deleteButton" data-bs-toggle="tooltip" title="Excluir Cadastro Selecionado">
+        <img th:src="@{/images/sair.png}" alt="Sair" id="sairButton" data-bs-toggle="tooltip" title="Sair Da Tela de Cadastro">
+        <img th:src="@{/images/adicionar.png}" alt="Adicionar" id="addButton" data-bs-toggle="tooltip" title="Adicionar Novo Cadastro">
+        <img th:src="@{/images/editar-arquivo.png}" alt="Editar" id="editButton" data-bs-toggle="tooltip" title="Editar Cadastro Selecionado">
+        <img th:src="@{/images/excluir.png}" alt="Excluir" id="deleteButton" data-bs-toggle="tooltip" title="Excluir Cadastro Selecionado">
     </div>
 
     <!-- Table for Listing Cadastros -->
@@ -76,6 +76,6 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/scripts/listagens/listagemGrupo.js"></script> <!-- JavaScript específico para esta página -->
+<script th:src="@{/scripts/listagens/listagemGrupo.js}"></script> <!-- JavaScript específico para esta página -->
 </body>
 </html>

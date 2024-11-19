@@ -6,7 +6,7 @@
     <title>SCEA - Sistema para Controle de Evolução de Alunos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="/static/styles/mainAdmin.css">
+    <link rel="stylesheet" th:href="@{/styles/mainAdmin.css}">
 </head>
 <body>
 
@@ -32,28 +32,28 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a href="#" id="toggleMenu" class="nav-link">
-                        <img src="/static/images/menu_roxo.png" alt="Menu Icon" class="icon-image">
+                        <img th:src="@{/images/menu_roxo.png}" alt="Menu Icon" class="icon-image">
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="page1.html" class="nav-link">
-                        <img src="/static/images/cadastros.png" alt="People Icon" class="icon-image">
+                        <img th:src="@{/images/cadastros.png}" alt="People Icon" class="icon-image">
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="page2.html" class="nav-link">
-                        <img src="/static/images/professor.png" alt="Person Icon" class="icon-image">
+                        <img th:src="@{/images/professor.png}" alt="Person Icon" class="icon-image">
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="page3.html" class="nav-link">
-                        <img src="/static/images/relatorio.png" alt="File Icon" class="icon-image">
+                        <img th:src="@{/images/relatorio.png}" alt="File Icon" class="icon-image">
                     </a>
                 </li>
             </ul>
             <div class="d-flex align-items-center">
                 <span class="me-2">Sair</span>
-                <img src="/static/images/perfil.png" alt="Profile Icon" class="icon-image" id="logoutButton">
+                <img th:src="@{/images/perfil.png}" alt="Profile Icon" class="icon-image" id="logoutButton">
             </div>
         </div>
     </div>
@@ -63,7 +63,7 @@
 <div id="sidebarMenu" class="sidebar">
     <div class="close-btn">
         <a href="#" id="closeMenu">
-            <img src="/static/images/menu_branco.png" alt="Fechar Menu" class="icon-image">
+            <img th:src="@{/images/menu_branco.png}" alt="Fechar Menu" class="icon-image">
         </a>
     </div>
 
@@ -100,7 +100,7 @@
 
     <div class="sidebar-footer">
         <a href="#">
-            <img src="/static/images/config_branco.png" alt="Configurações" class="icon-image">
+            <img th:src="@{/images/config_branco.png}" alt="Configurações" class="icon-image">
             Configurações
         </a>
     </div>
@@ -114,7 +114,7 @@
                 <!-- Imagem de Perfil -->
                 <div class="col-md-4 text-center">
                     <div class="profile-avatar">
-                        <img src="/static/images/perfil.jpeg" alt="Foto de Perfil" class="profile-image" id="profileImage">
+                        <img th:src="@{/images/perfil.jpeg}" alt="Foto de Perfil" class="profile-image" id="profileImage">
                         <!-- Input oculto para seleção de arquivo -->
                         <input type="file" id="fileInput" accept="image/*" style="display: none;">
                     </div>
@@ -166,8 +166,16 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/static/scripts/mainAdmin.js"></script>
+<script th:src="@{/scripts/mainAdmin.js}"></script>
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Simula um tempo de carregamento (opcional)
+        setTimeout(function() {
+            document.getElementById("loadingScreen").style.display = "none";
+            document.getElementById("content").style.display = "block";
+        }, 2500); // Ajuste o tempo conforme necessário
+    });
+
     document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("editPhotoButton").addEventListener("click", function() {
             document.getElementById("fileInput").click();

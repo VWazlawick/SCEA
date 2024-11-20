@@ -36,7 +36,7 @@ editButton.addEventListener('click', function (){
         const idCell = selectedRow.querySelector('.id');
         const id = idCell ? idCell.textContent.trim() : null;
         if(id){
-            window.location.href = '/subGrupo/editar/' + id;
+            window.location.href = '/subgrupo/editar/' + id;
         }else{
             alert('ID sub grupo não encontrado')
         }

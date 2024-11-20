@@ -22,7 +22,9 @@
 
 <div class="listagem-container animate__animated animate__fadeInUp">
     <div class="d-flex justify-content-start mb-3 header-buttons">
-        <img th:src="@{/images/sair.png}" alt="Sair" id="sairButton" data-bs-toggle="tooltip" title="Sair Da Tela de Cadastro">
+        <a th:href="@{/home}" data-bs-toggle="tooltip" title="Sair Da Tela de Cadastro">
+            <img th:src="@{/images/sair.png}" alt="Sair" id="sairButton">
+        </a>
         <a th:href="@{/profissional/cadastrar}" data-bs-toggle="tooltip" title="Adicionar Novo Cadastro">
             <img th:src="@{/images/adicionar.png}" alt="Adicionar" id="addButton">
         </a>
@@ -48,11 +50,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="profissional : ${profissionais}">
-                    <td th:text="${profissional.id}"></td>
+                <tr th:each="profissional : ${profissionais}" class="table-row">
+                    <td th:text="${profissional.id}" class="id"></td>
                     <td th:text="${profissional.nome}"></td>
-                    <td th:text="${profissional.cpf}"></td>
-                    <td th:text="${profissional.telefone}"></td>
+                    <td th:text="${profissional.cpf}" class="cpf"></td>
+                    <td th:text="${profissional.telefone}" class="telefone"></td>
                 </tr>
             </tbody>
         </table>
@@ -60,6 +62,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script th:src="@{/scrips/listagens/listagemProfissional.js}"></script>
+<script th:src="@{/scripts/listagens/listagemProfissional.js}"></script>
+<!--<script src=""></script>-->
 </body>
 </html>

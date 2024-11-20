@@ -1,15 +1,13 @@
 package br.unipar.scea_api.controllers;
 
+import br.unipar.scea_api.models.TipoPergunta;
 import br.unipar.scea_api.models.TipoServico;
 import br.unipar.scea_api.services.TipoServicoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,5 +37,14 @@ public class TipoServicoController {
         TipoServico tipoServico = new TipoServico();
         model.addAttribute("tipoServico", tipoServico);
         return "/tiposervico/cadastro";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String update(@PathVariable Long id, ModelMap model){
+        TipoServico tipoServico = tipoServicoService.findById(id);
+
+        model.addAttribute("tipoServico", tipoServico);
+
+        return "tiposervico/cadastro";
     }
 }

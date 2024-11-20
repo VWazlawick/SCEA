@@ -1,6 +1,7 @@
 package br.unipar.scea_api.controllers;
 
 import br.unipar.scea_api.models.OpcaoPergunta;
+import br.unipar.scea_api.models.SubGrupo;
 import br.unipar.scea_api.models.TipoPergunta;
 import br.unipar.scea_api.services.OpcaoPerguntaService;
 import br.unipar.scea_api.services.TipoPerguntaService;
@@ -59,5 +60,14 @@ public class TipoPerguntaController {
         opcaoPerguntaService.insert(opcaoPergunta);
 
         return "redirect:/tipoPergunta/cadastrar";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String update(@PathVariable Long id, ModelMap model){
+        TipoPergunta tipoPergunta = tipoPerguntaService.findById(id);
+
+        model.addAttribute("tipoPergunta", tipoPergunta);
+
+        return "tipoPergunta/cadastro";
     }
 }

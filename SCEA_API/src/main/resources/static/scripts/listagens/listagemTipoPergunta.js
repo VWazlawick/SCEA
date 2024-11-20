@@ -37,7 +37,7 @@ editButton.addEventListener('click', function (){
         const idCell = selectedRow.querySelector('.id');
         const id = idCell ? idCell.textContent.trim() : null;
         if(id){
-            window.location.href = '/tipoPergunta/editar/' + id;
+            window.location.href = '/tipopergunta/editar/' + id;
         }else{
             alert('ID tipo pergunta não encontrado')
         }

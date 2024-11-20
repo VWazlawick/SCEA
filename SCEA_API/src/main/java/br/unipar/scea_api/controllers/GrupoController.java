@@ -1,5 +1,6 @@
 package br.unipar.scea_api.controllers;
 
+import br.unipar.scea_api.models.Empresa;
 import br.unipar.scea_api.models.Grupo;
 import br.unipar.scea_api.models.SubGrupo;
 import br.unipar.scea_api.services.GrupoService;
@@ -26,7 +27,8 @@ public class GrupoController {
 
     @GetMapping
     public String findAll(ModelMap model) {
-        model.addAttribute("grupos", grupoService.findAll());
+        List<Grupo> grupos = grupoService.findAll();
+        model.addAttribute("grupos", grupos);
         return "/grupo/listagem";
     }
 
@@ -49,5 +51,20 @@ public class GrupoController {
         model.addAttribute("subGrupos", subGrupos);
 
         return "/grupo/cadastro";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String update(@PathVariable Long id, ModelMap model){
+        Grupo grupo = grupoService.findById(id);
+
+        List<SubGrupo> subGrupos = subGrupoService.findAll();
+        if(subGrupos.isEmpty()) {
+            subGrupos = new ArrayList<>();
+        }
+
+        model.addAttribute("grupo", grupo);
+        model.addAttribute("subGrupos", subGrupos);
+
+        return "grupo/cadastro";
     }
 }

@@ -1,9 +1,6 @@
 package br.unipar.scea_api.controllers;
 
-import br.unipar.scea_api.models.Escala;
-import br.unipar.scea_api.models.Pergunta;
-import br.unipar.scea_api.models.SubGrupo;
-import br.unipar.scea_api.models.TipoPergunta;
+import br.unipar.scea_api.models.*;
 import br.unipar.scea_api.services.PerguntaService;
 import br.unipar.scea_api.services.SubGrupoService;
 import br.unipar.scea_api.services.TipoPerguntaService;
@@ -66,6 +63,27 @@ public class PerguntaController {
         model.addAttribute("escala", escala);
         model.addAttribute("tipoPerguntas", tipoPerguntas);
         model.addAttribute("subGrupos", subGrupos);
+
+        return "pergunta/cadastro";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String update(@PathVariable Long id, ModelMap model){
+       Pergunta pergunta = perguntaService.findById(id);
+
+        List<TipoPergunta> tipoPerguntas = tipoPerguntaService.findAll();
+        List<SubGrupo> subGrupos = subGrupoService.findAll();
+
+        if(tipoPerguntas.isEmpty()) {
+            tipoPerguntas = new ArrayList<>();
+        }
+        if(subGrupos.isEmpty()) {
+            subGrupos = new ArrayList<>();
+        }
+
+        model.addAttribute("tipoPerguntas", tipoPerguntas);
+        model.addAttribute("subGrupos", subGrupos);
+        model.addAttribute("pergunta", pergunta);
 
         return "pergunta/cadastro";
     }

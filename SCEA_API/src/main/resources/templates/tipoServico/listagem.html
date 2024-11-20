@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listagem de Cadastros</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/styles/listagem.css}"> <!-- CSS específico para esta página -->
+    <link rel="stylesheet" th:href="@{/styles/listagem.css}">
 </head>
 <body>
 
@@ -22,7 +22,9 @@
 
 <div class="listagem-container animate__animated animate__fadeInUp">
     <div class="d-flex justify-content-start mb-3 header-buttons">
-        <img th:src="@{/images/sair.png}" alt="Sair" id="sairButton" data-bs-toggle="tooltip" title="Sair Da Tela de Cadastro">
+        <a th:href="@{/home}" data-bs-toggle="tooltip" title="Sair Da Tela de Cadastro">
+            <img th:src="@{/images/sair.png}" alt="Sair" id="sairButton">
+        </a>
         <a th:href="@{/tiposervico/cadastrar}" data-bs-toggle="tooltip" title="Adicionar Novo Cadastro">
             <img th:src="@{/images/adicionar.png}" alt="Adicionar" id="addButton">
         </a>
@@ -43,8 +45,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="tiposervico : ${tipoServicos}">
-                    <td th:text="${tiposervico.id}"></td>
+                <tr th:each="tiposervico : ${tipoServicos}" class="table-row">
+                    <td th:text="${tiposervico.id}" class="id"></td>
                     <td th:text="${tiposervico.descricao}"></td>
                 </tr>
             </tbody>

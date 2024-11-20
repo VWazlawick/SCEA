@@ -1,16 +1,17 @@
 package br.unipar.scea_api.controllers;
 
+import br.unipar.scea_api.models.Aluno;
 import br.unipar.scea_api.models.Empresa;
+import br.unipar.scea_api.models.Profissional;
+import br.unipar.scea_api.models.TipoServico;
 import br.unipar.scea_api.services.EmpresaService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Tag(name="Empresa")
@@ -31,7 +32,7 @@ public class EmpresaController {
     public String findAll(ModelMap mode){
         List<Empresa> empresas = empresaService.findAll();
         mode.addAttribute("empresas", empresas);
-        return "/empresa/listagem";
+        return "empresa/listagem";
     }
 
     @GetMapping("/cadastrar")
@@ -42,4 +43,11 @@ public class EmpresaController {
     }
 
 
+    @GetMapping("/editar/{id}")
+    public String update(@PathVariable Long id, ModelMap model){
+        Empresa empresa = empresaService.findById(id);
+
+        model.addAttribute("empresa", empresa);
+        return "empresa/cadastro";
+    }
 }

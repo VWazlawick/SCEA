@@ -36,7 +36,7 @@ editButton.addEventListener('click', function (){
         const idCell = selectedRow.querySelector('.id');
         const id = idCell ? idCell.textContent.trim() : null;
         if(id){
-            window.location.href = '/tipoServico/editar/' + id;
+            window.location.href = '/tiposervico/editar/' + id;
         }else{
             alert('ID tipo serviço não encontrado')
         }

@@ -22,7 +22,9 @@
 <div class="listagem-container animate__animated animate__fadeInUp">
 
     <div class="d-flex justify-content-start mb-3 header-buttons">
-        <img th:src="@{/images/sair.png}" alt="Sair" id="sairButton" data-bs-toggle="tooltip" title="Sair Da Tela de Cadastro">
+        <a th:href="@{/home}" data-bs-toggle="tooltip" title="Sair Da Tela de Cadastro">
+            <img th:src="@{/images/sair.png}" alt="Sair" id="sairButton">
+        </a>
         <a th:href="@{/aluno/cadastrar}" data-bs-toggle="tooltip" title="Adicionar Novo Cadastro">
             <img th:src="@{/images/adicionar.png}" alt="Adicionar" id="addButton">
         </a>

@@ -1,11 +1,8 @@
 function filterTable(columnIndex) {
-    // Obtém a tabela e as linhas
     const table = document.querySelector('.custom-table tbody');
     const rows = table.querySelectorAll('tr');
-    // Obtém o valor da entrada de filtro correspondente
     const filterValue = document.querySelectorAll('.filter-input')[columnIndex].value.toLowerCase();
 
-    // Itera pelas linhas da tabela e oculta as que não correspondem ao filtro
     rows.forEach(row => {
         const cell = row.cells[columnIndex];
         if (cell) {
@@ -20,14 +17,15 @@ function filterTable(columnIndex) {
 }
 document.addEventListener('DOMContentLoaded', function (){
     var cnpjElement = document.querySelectorAll('.cnpj');
-    function formatarCpf(cnpj){
-        return cnpj.replace(/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/, '$1.$2.$3-$4');
+    function formatarCnpj(cnpj){
+        return cnpj.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, '$1.$2.$3/$4-$5');
     }
     cnpjElement.forEach(function (element){
         var cnpj = element.textContent.trim();
-        element.textContent = formatarCpf(cnpj);
+        element.textContent = formatarCnpj(cnpj);
     })
 });
+
 function toggleRowSelection(event){
     const rows = document.querySelectorAll('.table-row');
     rows.forEach(row => row.classList.remove('selected'));

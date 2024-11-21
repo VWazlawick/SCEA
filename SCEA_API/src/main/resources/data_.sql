@@ -5601,7 +5601,11 @@ insert into cidade(id, nome,estado_id, st_ativo, dt_insert) values
 (5300108,'Brasília',53,true,'now');
 
 insert into tipo_usuario (id, descricao, st_ativo, dt_insert) values
-(1, 'admin', true, 'now');
+(1, 'Admin', true, 'now');
+insert into tipo_usuario (id, descricao, st_ativo, dt_insert) values
+(2, 'Profissional', true, 'now');
+insert into tipo_usuario (id, descricao, st_ativo, dt_insert) values
+(3, 'Responsável', true, 'now');
 
 insert into empresa(id, razao_social, nome_fantasia, cnpj, st_ativo,dt_insert) values
 (1, 'PersonalKids','PersonalKids','09174650000128',true,'now');

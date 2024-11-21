@@ -8,9 +8,9 @@ function filterTable(columnIndex) {
         if (cell) {
             const cellText = cell.textContent.toLowerCase();
             if (cellText.indexOf(filterValue) > -1) {
-                row.style.display = ''; // Mostra a linha
+                row.style.display = '';
             } else {
-                row.style.display = 'none'; // Oculta a linha
+                row.style.display = 'none';
             }
         }
     });
@@ -54,12 +54,9 @@ editButton.addEventListener('click', function (){
     }
 });
 
-// JS da Pagina de Carregamento
-
 document.addEventListener("DOMContentLoaded", function() {
-    // Simula um tempo de carregamento (opcional)
     setTimeout(function() {
         document.getElementById("loadingScreen").style.display = "none";
         document.getElementById("content").style.display = "block";
-    }, 2500); // Ajuste o tempo conforme necessário
+    }, 2500);
 });

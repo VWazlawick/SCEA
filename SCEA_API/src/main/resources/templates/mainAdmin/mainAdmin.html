@@ -57,7 +57,6 @@
         </div>
     </nav>
 
-    <!-- Menu lateral -->
     <div id="sidebarMenu" class="sidebar">
         <div class="close-btn">
             <a href="#" id="closeMenu">
@@ -72,7 +71,6 @@
                     <li><a th:href="@{/aluno}">Aluno</a></li>
                     <li><a th:href="@{/grupo}">Grupo Avaliativo</a></li>
                     <li><a th:href="@{/subgrupo}">Sub Grupo</a></li>
-                    <li><a href="#">Ficha Avaliativa</a></li>
                     <li><a th:href="@{/profissional}">Professor</a></li>
                     <li><a th:href="@{/pergunta}">Pergunta</a></li>
                     <li><a th:href="@{/tipopergunta}">Tipo Pergunta</a></li>
@@ -83,7 +81,7 @@
             <li>
                 <a href="#" class="menu-item" data-toggle="relatorios">Relatórios</a>
                 <ul class="sub-menu list-unstyled" id="relatorios">
-                    <li><a href="#">Avaliações</a></li>
+                    <li><a th:href="@{/avaliacao}">Avaliações</a></li>
                     <li><a href="#">Alunos Cadastrados</a></li>
                     <li><a href="#">Comparativo de Alunos</a></li>
                     <li><a href="#">Resultado Esperado x Atual</a></li>
@@ -91,7 +89,7 @@
                     <li><a href="#">Distribuição de Alunos por cidade</a></li>
                 </ul>
             </li>
-            <li><a href="avaliacao.html">Avaliações</a></li>
+            <li><a th:href="@{/avaliacao}">Avaliações</a></li>
             <li><a href="#">Controle de Acessos</a></li>
         </ul>
 
@@ -108,7 +106,6 @@
         <p class="subtitle">Sistema para Controle de Evolução de Alunos</p>
     </div>
 
-    <!-- Modal de Confirmação para Logout -->
     <div class="modal fade" id="confirmLogoutModal" tabindex="-1" aria-labelledby="confirmLogoutLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

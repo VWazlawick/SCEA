@@ -36,17 +36,17 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="page1.html" class="nav-link">
+                        <a th:href="@{/aluno}" class="nav-link">
                             <img th:src="@{/images/cadastros.png}" alt="People Icon" class="icon-image">
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="page2.html" class="nav-link">
+                        <a th:href="@{/profissional}" class="nav-link">
                             <img th:src="@{/images/professor.png}" alt="Person Icon" class="icon-image">
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="page3.html" class="nav-link">
+                        <a th:href="@{/avaliacao}" class="nav-link">
                             <img th:src="@{/images/relatorio.png}" alt="File Icon" class="icon-image">
                         </a>
                     </li>
@@ -59,7 +59,6 @@
         </div>
     </nav>
 
-    <!-- Menu lateral -->
     <div id="sidebarMenu" class="sidebar">
         <div class="close-btn">
             <a href="#" id="closeMenu">
@@ -71,15 +70,15 @@
             <li>
                 <a href="#" class="menu-item" data-toggle="cadastros">Cadastros</a>
                 <ul class="sub-menu list-unstyled" id="cadastros">
-                    <li><a href="#">Aluno</a></li>
-                    <li><a href="#">Grupo Avaliativo</a></li>
-                    <li><a href="#">Sub Grupo</a></li>
+                    <li><a th:href="@{/aluno}">Aluno</a></li>
+                    <li><a th:href="@{/grupo}">Grupo Avaliativo</a></li>
+                    <li><a th:href="@{/subgrupo}">Sub Grupo</a></li>
                     <li><a href="#">Ficha Avaliativa</a></li>
-                    <li><a href="#">Professor</a></li>
-                    <li><a href="#">Pergunta</a></li>
-                    <li><a href="#">Tipo Pergunta</a></li>
-                    <li><a href="#">Tipo de Serviço</a></li>
-                    <li><a href="#">Empresa</a></li>
+                    <li><a th:href="@{/profissional}">Professor</a></li>
+                    <li><a th:href="@{/pergunta}">Pergunta</a></li>
+                    <li><a th:href="@{/tipopergunta}">Tipo Pergunta</a></li>
+                    <li><a th:href="@{/tiposervico}">Tipo de Serviço</a></li>
+                    <li><a th:href="@{/empresa}">Empresa</a></li>
                 </ul>
             </li>
             <li>
@@ -105,7 +104,6 @@
         </div>
     </div>
 
-    <!-- Conteúdo Principal -->
     <div class="container-fluid">
         <h1 class="titleAvaliacao">Avaliações</h1>
 
@@ -119,7 +117,6 @@
             </div>
         </form>
 
-        <!-- Formulário -->
         <div th:if="${perguntas}" class="col-md-8 mx-auto">
            <form th:action="@{/avaliacao}" th:object="${avaliacao}" method="POST" id="avaliacaoForm">
                <h3 class="form-title">Ficha de Observação - Avaliação Física e Psicológica</h3>
@@ -135,6 +132,19 @@
                        <td>Peso (kg)</td>
                        <td><input type="number" class="form-control" placeholder="Digite o peso"></td>
                    </tr>
+                   <tr>
+                       <td>Altura (cm)</td>
+                       <td><input type="number" class="form-control" placeholder="Digite a Altura"></td>
+                   </tr>
+                   <tr>
+                       <td>Cintura (cm)</td>
+                       <td><input type="number" class="form-control" placeholder="Digite a Cintura"></td>
+                   </tr>
+                   <tr>
+                       <td>Envergadura (cm)</td>
+                       <td><input type="number" class="form-control" placeholder="Digite a Envergadura"></td>
+                   </tr>
+
                    <tr th:each="pergunta, stat : ${perguntas}">
                        <td th:text="${pergunta.descricao}"></td>
                        <td>
@@ -173,11 +183,10 @@
     <script th:src="@{/scripts/avaliacao.js}" ></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Simula um tempo de carregamento (opcional)
             setTimeout(function() {
                 document.getElementById("loadingScreen").style.display = "none";
                 document.getElementById("content").style.display = "block";
-            }, 2500); // Ajuste o tempo conforme necessário
+            }, 2500);
         });
     </script>
 <!--    <script>-->

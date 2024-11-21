@@ -6,37 +6,35 @@ body {
     overflow-x: hidden;
 }
 
-/* Estilo personalizado para o botão "Adicionar Tipo de Pergunta" */
 .btn-custom-roxo {
-    background-color: #A07BE5; /* Cor roxa */
-    color: white; /* Cor do texto */
+    background-color: #A07BE5;
+    color: white;
     border: none;
-    border-radius: 5px; /* Cantos arredondados */
-    padding: 8px 20px; /* Espaçamento interno */
-    font-weight: bold; /* Texto em negrito */
-    transition: background-color 0.3s ease; /* Transição suave */
+    border-radius: 5px;
+    padding: 8px 20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 .btn-custom-roxo:hover {
-    background-color: #8A5DC4; /* Cor mais escura ao passar o mouse */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+    background-color: #8A5DC4;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 
 .custom-switch:checked {
-    background-color: #b3d1ff; /* Cor de fundo azul claro quando ativado */
+    background-color: #b3d1ff;
 }
 
 .custom-switch:checked::before {
-    transform: translateX(30px); /* Movimento do círculo ao ativar */
+    transform: translateX(30px);
 }
 
-/* Ajuste do alinhamento do label com o switch */
 .form-check-label {
     margin-left: 10px;
     vertical-align: middle;
     font-size: 16px;
-    color: #A07BE5; /* Cor azul clara para combinar com o switch */
+    color: #A07BE5;
     font-weight: bold;
 }
 
@@ -136,7 +134,6 @@ body {
     font-size: 14px;
 }
 
-/* Botões dinâmicos para Adicionar e Remover */
 .button-escala {
     background-color: #A07BE5;
     color: white;
@@ -154,7 +151,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Ajuste dos botões de remover */
 .button-remover {
     background-color: #A07BE5;
     color: white;
@@ -179,11 +175,9 @@ body {
 .option-label {
     display: inline-flex;
     align-items: center;
-    white-space: nowrap; /* Impede a quebra de linha */
-    margin-right: 8px; /* Espaço entre o label e o input */
+    white-space: nowrap;
+    margin-right: 8px;
 }
-
-/* Tela de Carregamento */
 
 #loadingScreen {
     position: fixed;
@@ -191,12 +185,12 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Fundo semi-transparente */
+    background-color: rgba(0, 0, 0, 0.9);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 9999; /* Para ficar sobre o conteúdo */
+    z-index: 9999;
 }
 
 #loadingScreen p {
@@ -206,7 +200,6 @@ body {
     font-weight: bold;
 }
 
-/* Animação dos Pontinhos */
 .dot {
     animation: bounce 1s infinite;
     display: inline-block;
@@ -234,14 +227,11 @@ body {
     }
 }
 
-
-/* Loader Wrapper */
 .loader-wrapper {
     width: 100px;
     height: 100px;
 }
 
-/* Loader Animation */
 .loader {
     width: 100%;
     height: 100%;

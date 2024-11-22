@@ -144,6 +144,30 @@
 
         requiredFields.forEach(field => validateField(field.id, field.errorId, field.errorMessage));
 
+        const dtNascimento = document.getElementById('data-nascimento');
+        const dataError = document.createElement('data-error');
+        if(dtNascimento< new Date()){
+            dtNascimento.classList.add('is-invalid');
+            dtNascimento.parentElement.appendChild(dataError);
+            return isValid = false;
+        }else{
+            dtNascimento.classList.remove('is-invalid');
+            dtNascimento.classList.add('is-valid');
+            dataError.style.display = 'none';
+        }
+
+        const altura = document.getElementById('altura');
+        const alturaError = document.createElement('altura-error');
+        if(altura<100){
+            altura.classList.add('is-invalid');
+            altura.parentElement.appendChild(alturaError);
+            return isValid = false;
+        }else{
+            altura.classList.remove('is-invalid');
+            altura.classList.add('is-valid');
+            alturaError.style.display = 'none';
+        }
+
         return isValid;
     }
 

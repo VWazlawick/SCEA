@@ -37,22 +37,30 @@
                 <label for="id" class="form-label">ID</label>
                 <input type="text" class="form-control" id="id" aria-label="ID do Grupo" disabled>
             </div>
-            <div class="col-md-6">
-                <label for="descricao-grupo" class="form-label">Descrição do Grupo Avaliativo</label>
-                <input th:field="*{descricao}" type="text" class="form-control" id="descricao-grupo" placeholder="Digite a descrição do grupo">
-                <span class="error-message" id="descricao-grupo-error">Descrição é obrigatória.</span>
-            </div>
 
-
-            <div class="col-md-4">
-                <label for="subgrupo" class="form-label">Selecionar Sub Grupo</label>
-                <select th:field="*{subGrupos}" class="form-select" id="subgrupo">
-                    <option value="" selected>Selecione</option>
-                    <option th:each="subGrupos : ${subGrupos}" th:value="${subGrupos.id}" th:text="${subGrupos.descricao}"></option>
-                </select>
-                <span class="error-message" id="subgrupo-error">Selecione um subgrupo.</span>
-            </div>
-        </div>
+            <div class="row align-fields">
+                <div class="col-md-6">
+                    <label for="descricao-grupo" class="form-label">Descrição do Grupo Avaliativo</label>
+                    <input th:field="*{descricao}" type="text" class="form-control" id="descricao-grupo" placeholder="Digite a descrição do grupo">
+                    <span class="error-message" id="descricao-grupo-error">Descrição é obrigatória.</span>
+                </div>
+                <div class="col-md-6">
+                    <label for="subgrupo" class="form-label">Selecionar Sub Grupo</label>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="subgrupoDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sub Grupos
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="subgrupoDropdown">
+                            <li th:each="subGrupo : ${subGrupos}">
+                                <div class="form-check ms-3">
+                                    <input class="form-check-input" type="checkbox" th:id="'subGrupo-' + ${subGrupo.id}" th:value="${subGrupo.id}" th:name="subGrupos" th:field="*{subGrupos}">
+                                    <label class="form-check-label" th:for="'subGrupo-' + ${subGrupo.id}" th:text="${subGrupo.descricao}"></label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="error-message" id="subgrupo-error">Selecione pelo menos um subgrupo.</span>
+                </div>
 
         <div class="row mt-3">
             <div class="col-md-3">

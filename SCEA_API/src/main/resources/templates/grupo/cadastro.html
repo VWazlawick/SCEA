@@ -44,17 +44,19 @@
                     <input th:field="*{descricao}" type="text" class="form-control" id="descricao-grupo" placeholder="Digite a descrição do grupo">
                     <span class="error-message" id="descricao-grupo-error">Descrição é obrigatória.</span>
                 </div>
+
                 <div class="col-md-6">
-                    <label for="subgrupo" class="form-label">Selecionar Sub Grupo</label>
+                    <label class="form-label">Selecionar Sub Grupo</label>
                     <div class="dropdown">
                         <button class="btn btn-outline-primary dropdown-toggle" type="button" id="subgrupoDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             Sub Grupos
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="subgrupoDropdown">
-                            <li th:each="subGrupo : ${subGrupos}">
+                            <li th:each="subGrupo, stat : ${subGrupos}">
                                 <div class="form-check ms-3">
-                                    <input class="form-check-input" type="checkbox" th:id="'subGrupo-' + ${subGrupo.id}" th:value="${subGrupo.id}" th:name="subGrupos" th:field="*{subGrupos}">
-                                    <label class="form-check-label" th:for="'subGrupo-' + ${subGrupo.id}" th:text="${subGrupo.descricao}"></label>
+                                    <input class="form-check-input" type="checkbox"
+                                           th:value="${subGrupo.id}" th:name="subGrupos">
+                                    <label class="form-check-label" th:text="${subGrupo.descricao}"></label>
                                 </div>
                             </li>
                         </ul>

@@ -13,15 +13,18 @@ function validateForm() {
         descricaoGrupoError.style.display = 'none';
     }
 
-    const subgrupo = document.getElementById('subgrupo');
+    const subgrupoDropdown = document.getElementById('subgrupoDropdown');
     const subgrupoError = document.getElementById('subgrupo-error');
-    if (subgrupo.value === 'Selecione') {
-        subgrupo.classList.add('is-invalid');
+    const checkboxes = document.querySelectorAll('.form-check-input');
+    const isAnySelected = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+    if (!isAnySelected) {
+        subgrupoDropdown.classList.add('is-invalid');
         subgrupoError.style.display = 'block';
         isValid = false;
     } else {
-        subgrupo.classList.remove('is-invalid');
-        subgrupo.classList.add('is-valid');
+        subgrupoDropdown.classList.remove('is-invalid');
+        subgrupoDropdown.classList.add('is-valid');
         subgrupoError.style.display = 'none';
     }
 

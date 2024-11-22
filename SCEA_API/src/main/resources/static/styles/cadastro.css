@@ -134,40 +134,33 @@ body {
     font-size: 14px;
 }
 
+/* Ajustar o tamanho do menu de opções */
 .dropdown-menu {
+    max-height: 300px; /* Ajuste a altura máxima do menu */
+    overflow-y: auto; /* Permitir rolagem vertical */
+    padding: 10px; /* Espaçamento interno para mais conforto visual */
     background-color: #f8f9fa;
     border: 1px solid #a07be5;
     border-radius: 8px;
 }
 
+/* Estilo das opções */
+.dropdown-menu .form-check {
+    padding: 8px 10px; /* Aumenta o espaço ao redor das opções */
+}
+
 .dropdown-menu .form-check-label {
+    font-size: 16px; /* Aumenta o tamanho da fonte */
     color: #5b95eb;
     font-weight: bold;
 }
 
-.dropdown-menu .form-check-input:checked {
-    background-color: #a07be5;
-    border-color: #a07be5;
-}
-
-.row.align-fields {
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-}
-
-.form-check-input {
-    margin-right: 10px;
-}
-
-.form-check-label {
-    font-weight: normal;
-    cursor: pointer;
-}
-
+/* Ajustar o botão */
 .btn-outline-primary {
     color: #a07be5;
     border-color: #a07be5;
+    padding: 10px 20px; /* Tornar o botão maior */
+    font-size: 16px;
 }
 
 .btn-outline-primary:hover,
@@ -176,6 +169,7 @@ body {
     background-color: #a07be5;
     border-color: #a07be5;
 }
+
 
 .button-escala {
     background-color: #A07BE5;

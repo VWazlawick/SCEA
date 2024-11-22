@@ -92,6 +92,18 @@ document.getElementById('clearButton').addEventListener('click', function() {
     document.querySelectorAll('.is-valid, .is-invalid').forEach(field => field.classList.remove('is-valid', 'is-invalid'));
 });
 
+document.getElementById('saveButton').addEventListener('click', function () {
+    const checkboxes = document.querySelectorAll('input[name="subGrupos"]:checked');
+    const error = document.getElementById('subgrupo-error');
+
+    if (checkboxes.length === 0) {
+        error.style.display = 'block';
+    } else {
+        error.style.display = 'none';
+    }
+});
+
+
 document.addEventListener("DOMContentLoaded", function() {
     setTimeout(function() {
         document.getElementById("loadingScreen").style.display = "none";

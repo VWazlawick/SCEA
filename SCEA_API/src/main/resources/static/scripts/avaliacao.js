@@ -1,7 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const alunoSelect = document.getElementById('alunoSelect');
-    const avaliacoesContainer = document.getElementById('avaliacoesContainer');
-
 document.getElementById('toggleMenu').addEventListener('click', function () {
     var sidebar = document.getElementById('sidebarMenu');
     if (sidebar.classList.contains('active')) {
@@ -27,8 +23,6 @@ menuItems.forEach(function (item) {
     });
 });
 
-});
-
 document.getElementById('logoutButton').addEventListener('click', function () {
     var logoutModal = new bootstrap.Modal(document.getElementById('confirmLogoutModal'));
     logoutModal.show();
@@ -37,6 +31,14 @@ document.getElementById('logoutButton').addEventListener('click', function () {
 document.getElementById('confirmLogout').addEventListener('click', function () {
     window.location.href = '/logout';
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+        document.getElementById("loadingScreen").style.display = "none";
+        document.getElementById("content").style.display = "block";
+    }, 2500);
+});
+
 
 
 document.addEventListener("DOMContentLoaded", function() {

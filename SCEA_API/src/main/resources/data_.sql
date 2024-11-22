@@ -1,4 +1,4 @@
-INSERT INTO estado(id, nome, sigla, st_ativo, dt_insert) values
+nINSERT INTO estado(id, nome, sigla, st_ativo, dt_insert) values
 (16,'Amapá','AP',true,'now'),
 (13,'Amazonas','AM',true,'now'),
 (29,'Bahia','BA',true,'now'),
